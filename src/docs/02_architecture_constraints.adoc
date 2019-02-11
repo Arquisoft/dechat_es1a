@@ -3,37 +3,50 @@
 
 
 [role="arc42help"]
-****
-== 2.1-Technical Constraints
 
+=== 2.1-Technical Constraints
 
+.List of Technical Constraints
 |=== 
 
 |  | *Constraint* | *Background and /or motivation*
 
-| TC1 | Implementation in JavaScript/TypeScript | Because the application will be web-based, the best option is to use JavaScript.
+| TC1 | Implementation in JavaScript/TypeScript | Due to the application will be web-based, the best option would be to use JavaScript.
 
-| TC2 | Angular as front end framework | Most SOLID-based applications use this framework, so it is a sensible bet to use it as well.
+| TC2 | Angular as front end framework | Most SOLID-based applications use this framework so it is a reasonable option.
 
-| TC3 | Docker and Heroku for application deployment | Due to the experience of several team members these deployment tools have been chosen.
+| TC3 | Docker and Heroku for application deployment | Due to several team members experience's, the choosen tools are Docker and Heroku.
 
 | TC4 | Descentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
 
 |=== 
 
-== 2.2-Organizational Constraints
+=== 2.2-Organizational Constraints
 
+.List of Organizational Constraints
 |=== 
 
 |  | *Constraint* | *Background and /or motivation*
 
-| OC1 | Implementation in JavaScript/TypeScript | Because the application will be web-based, the best option is to use JavaScript.
+| OC1 | Team | The team is formed by Pelayo Rodríguez García, Samuel Moreno Vincent, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto.
 
-| TC2 | Angular as front end framework | Most SOLID-based applications use this framework, so it is a sensible bet to use it as well.
+| OC2 | Time schedule | The project will be carried out during the Software Architecture course.
 
-| TC3 | Docker and Heroku for application deployment | Due to the experience of several team members these deployment tools have been chosen.
+| OC3 | Version control | For version control we have chosen GitHub.
 
-| TC4 | Descentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
+| OC4 | WebStorm as IDE | WebStorm's IDE is one of the most powerful IDE for web development.
 
 |=== 
-****
+
+=== 2.3-Conventions
+
+.List of Conventions
+|=== 
+
+|  | *Conventions* | *Background and / or motivation*
+
+| C1 | Architecture documentation | Structure based on the english arc42-Template.
+
+| C2 | Language | English. The project's target is an international audience, so English should be used throughout the whole project.
+
+|=== 
