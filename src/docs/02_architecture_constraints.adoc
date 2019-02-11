@@ -4,16 +4,36 @@
 
 [role="arc42help"]
 ****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+== 2.1-Technical Constraints
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
 
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+|=== 
+
+|  | *Constraint* | *Background and /or motivation*
+
+| TC1 | Implementation in JavaScript/TypeScript | Because the application will be web-based, the best option is to use JavaScript.
+
+| TC2 | Angular as front end framework | Most SOLID-based applications use this framework, so it is a sensible bet to use it as well.
+
+| TC3 | Docker and Heroku for application deployment | Due to the experience of several team members these deployment tools have been chosen.
+
+| TC4 | Descentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
+
+|=== 
+
+== 2.2-Organizational Constraints
+
+|=== 
+
+|  | *Constraint* | *Background and /or motivation*
+
+| OC1 | Implementation in JavaScript/TypeScript | Because the application will be web-based, the best option is to use JavaScript.
+
+| TC2 | Angular as front end framework | Most SOLID-based applications use this framework, so it is a sensible bet to use it as well.
+
+| TC3 | Docker and Heroku for application deployment | Due to the experience of several team members these deployment tools have been chosen.
+
+| TC4 | Descentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
+
+|=== 
 ****
