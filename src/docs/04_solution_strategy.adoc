@@ -1,24 +1,12 @@
 [[section-solution-strategy]]
 == Solution Strategy
-
-
 [role="arc42help"]
 ****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
+Building the application using Angular is an obvious choice as one of the main quality goals is to learn about it, and almost all of the public resources for Solid apps' development are implemented in this language. 
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+The Solid Community provides a simple "Solid Authentification Client" implemented in Angular 6. This project-example will be used as a starting point in which we will include our chat, as it provides all the configurations and resources for working with Solid and Angular. 
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+This project will be developed using Webstorm IDE by Jetbrains. Webstorm is a light-weight and powerful JavaScript IDE that can easily handle complex server and client side development with Node.js. The latest version includes some major improvements regarding Angular and Node.js support, as well as autoimports while using JavaScript.
 
-.Form
-Keep the explanation of these key decisions short.
-
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
+App display will be carried out using Docker and Heroku, due to the experience of some team members with the use of these technologies.  
 ****
