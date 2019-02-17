@@ -26,11 +26,11 @@ This requirements revolve around a decentralized app, which is all https://githu
 ****
 .Quality goals
 |===
-|Nr.|Quality|Motivation
-|1|Usability| The app has to be easy to use for non-technical people.
-|2| Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
-|3| Privacy| As this is based on SOLID, decentralized means private.
-|4| Security| The chat has to be secure so the user knows who are they talking to and who has access to the chat.
+|Quality|Motivation
+|Usability| The app has to be easy to use for non-technical people.
+|Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
+|Privacy| As this is based on SOLID, decentralized means private.
+|Security| The chat has to be secure so the user knows who are they talking to and who has access to the chat.
 |===
 ****
 
@@ -40,7 +40,7 @@ This requirements revolve around a decentralized app, which is all https://githu
 ****
 .Stakeholders
 |===
-|Role/Name|Expectations
+|*Role/Name*|*Expectations*
 | Developers | A good working project so their reputation and skills (also their mark) improve.
 | Labra | A good workflow and functional project so he sees we learned the fundamentals of software architecture.
 | Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
