@@ -26,7 +26,7 @@ This requirements revolve around a decentralized app, which is all https://githu
 ****
 .Quality goals
 |===
-|Quality|Motivation
+|*Quality*|*Motivation*
 |Usability| The app has to be easy to use for non-technical people.
 |Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
 |Privacy| As this is based on SOLID, decentralized means private.

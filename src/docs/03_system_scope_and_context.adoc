@@ -29,17 +29,11 @@ image::./images/Business Concept Diagram1.jpg[Business Concept Diagram]
 
 
 ****
-image::./images/Deployment Diagram1.jpg
-[Deploymen Diagram]
 
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
+image::./images/Deployment Diagram1.jpg[Deployment Diagram]
+
+Our application will be deployed using https://www.docker.com/why-docker[Docker] and https://www.heroku.com/[Heroku]. The application itself can be seen as two main artifacts: On one hand, the login using POD identifiers. On the other hand, the shared messages between the members of the chat.
 
 ****
 
-**<Diagram or Table>**
 
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
