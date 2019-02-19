@@ -1,34 +1,35 @@
-.DS_STORE
+# Created by https://www.gitignore.io/api/angular
+# Edit at https://www.gitignore.io/?templates=angular
 
-/dist/
-/bazel-out
-/integration/bazel/bazel-*
-e2e_test.*
-node_modules
-tools/gulp-tasks/cldr/cldr-data/
+### Angular ###
+## Angular ##
+# compiled output
+/dist
+/tmp
+/app/**/*.js
+/app/**/*.js.map
 
-# Include when developing application packages.
-pubspec.lock
-.c9
-.idea/
-.settings/
-.vscode/launch.json
-*.swo
-modules/.settings
-modules/.vscode
+# dependencies
+/node_modules
+/bower_components
 
-# Don't check in secret files
-*secret.js
+# IDEs and editors
+/.idea
 
-# Ignore npm/yarn debug log
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
 npm-debug.log
-yarn-error.log
+testem.log
+/typings
 
-# build-analytics
-.build-analytics
+# e2e
+/e2e/*.js
+/e2e/*.map
 
-# rollup-test output
-/modules/rollup-test/dist/
+#System Files
+.DS_Store
 
-# User specific bazel settings
-.bazelrc.user
+# End of https://www.gitignore.io/api/angular
