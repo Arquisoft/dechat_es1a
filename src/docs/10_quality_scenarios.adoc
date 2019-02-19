@@ -2,34 +2,27 @@
 == Quality Requirements
 
 
-[role="arc42help"]
-****
 
-This section contains quality tree with scenarios, in order to understan the central quality objetives (described in section 1.2.) as well as other required quality characteristics.
+This section contains a quality tree with scenarios, in order to understand the central quality goals (described in section 1.2.) as well as other required quality characteristics.
 
-
-****
 
 === Quality Tree
 
-[role="arc42help"]
-****
+
 
 image::./images/qualities.jpeg[image,width=435,height=235]
 
-****
+
 
 === Quality Scenarios
 
-[role="arc42help"]
-****
 [width="100%",cols="34%,33%,33%",]
 |===
 |[.SpellE]#Nr#. |[.SpellE]#Quality# |[.SpellE]#Scenario#
 
 |1 |[.SpellE]#Usability# |Each section of the technical documentation
 must be understood by itself without the need to read the rest of the
-documentation. Any content should be founded immediately in the
+documentation. Any content should be found immediately in the
 documentation
 
 |2 |[.SpellE]#Responsiveness# |Once completed, the application must pass
@@ -40,7 +33,7 @@ the Google Responsiveness Test
 the data transmitted between two users in a chat session.
 
 |4 |[.SpellE]#Simplicity# |A non-technical user who has never used the
-application, should be able to open a chat session with another user in
+application should be able to open a chat session with another user in
 less than 3 minutes.
 
 |5 |[.SpellE]#Efficiency# |When sending a message through the chat, it
@@ -50,4 +43,4 @@ will be received by the recipient in less than 3s
 correct design so that the modifications that must be made during the 
 project can be addressed by the team in less than a week of work.#
 |===
-****
+
