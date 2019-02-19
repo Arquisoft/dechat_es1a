@@ -1,10 +1,6 @@
 [[section-glossary]]
 == Glossary
 
-
-
-[role="arc42help"]
-****
 .Contents
 The most important domain and technical terms that your stakeholders use when discussing the system.
 
@@ -21,7 +17,6 @@ A table with columns <Term> and <Definition>.
 
 Potentially more columns in case you need translations.
 
-****
 
 [options="header"]
 |===

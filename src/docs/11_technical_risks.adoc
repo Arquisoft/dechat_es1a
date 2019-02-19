@@ -1,9 +1,6 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-
-[role="arc42help"]
-****
 .Contents
 In the following page we are going to identify, measure and priorize the risks and different technical debts that the project has.
 
@@ -20,4 +17,3 @@ The principal restrictions that we have to face with Heroku are related to the n
 * Git: we have a lack of knowledge in this useful tool.
 *
 
-****

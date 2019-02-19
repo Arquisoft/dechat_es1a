@@ -1,12 +1,11 @@
 [[section-solution-strategy]]
 == Solution Strategy
-[role="arc42help"]
-****
-Building the application using Angular is is the optimal approach because one of the main quality goals is to learn about it, and almost all of the public resources for Solid apps development are implemented in this language.
+
+Building the application using Angular  is the optimal approach because one of the main quality goals is to learn about it, and almost all of the public resources for Solid apps development are implemented in this language.
 
 The Solid Community provides a simple "Solid Authentification Client" implemented in Angular 6. This project-example will be used as a starting point in which we will include our chat, as it provides all the configurations and resources for working with Solid and Angular. 
 
 This project will be developed using Webstorm IDE by Jetbrains. Webstorm is a light-weight and powerful JavaScript IDE that can easily handle complex server and client side development with Node.js. The latest version includes some major improvements regarding Angular and Node.js support, as well as autoimports while using JavaScript.
 
 App display will be carried out using Docker and Heroku, due to the experience of some team members with the use of these technologies.  
-****
+

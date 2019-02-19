@@ -22,7 +22,7 @@ This requirements revolve around a decentralized app, which is all https://githu
 |Usability| The app has to be easy to use for non-technical people.
 |Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
 |Privacy| As this is based on SOLID, decentralized means private.
-|Security| The chat has to be secure so the user knows who are they talking to and who has access to the chat.
+|Security| The chat has to be secure so the users know who are they talking to and who has access to the chat.
 |===
 
 === Stakeholders
@@ -31,9 +31,9 @@ This requirements revolve around a decentralized app, which is all https://githu
 |===
 |*Role/Name*|*Expectations*
 | Developers | A good working project so their reputation and skills (also their mark) improve.
-| Labra | A good workflow and functional project so he sees we learned the fundamentals of software architecture.
+| Labra | A good workflow and functional project so he sees we have learned the fundamentals of software architecture.
 | Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
-| Users | An app you can use if you feel your privacy is being attacked using other similar apps.
+| Users | An app you can use if you feel your privacy is being invaded using other similar apps.
 | Technologies used | A new useful app so they can brand their technology with a relevant and innovative release.
 |===
 

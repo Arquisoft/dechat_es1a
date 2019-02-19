@@ -1,0 +1,37 @@
+<div class="profile-container">
+    <!-- EXAMPLE TOP NAV -->
+    <div class="topnav">
+        <div class="logo">Solid</div>
+        <div class="menu-item">
+            <div>
+                <i class="far fa-compass"></i>
+            </div>
+            Menu Item 1
+        </div>
+        <div class="menu-item">
+            <a href="chat.html">
+                <div>
+                    <i class="far fa-comment"></i>
+                </div>
+                CHAT
+            </a>
+        </div>
+        <div class="menu-item">
+            <div>
+                <i class="fas fa-sliders-h"></i>
+            </div>
+            Menu Item 3
+        </div>
+
+        <div class="profile-menu" (click)="logout()">
+            <img [src]="profileImage" />
+        </div>
+    </div>
+    <h1>Profile</h1>
+
+    <!-- LOADING IMAGE -->
+    <div class="loading-image" *ngIf="loadingProfile">
+        <i class="fas fa-circle-notch fa-4x fa-spin"></i>
+    </div>
+
+</div>
