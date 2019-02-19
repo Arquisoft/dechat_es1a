@@ -1,14 +1,23 @@
 {
-  "name": "solid-app",
+  "name": "dechat_es1a",
   "version": "0.0.0",
+  "description": "Decentralized chat",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "coverage": "nyc --reporter text-lcov node_modules/.bin/_mocha --require @babel/register -R spec --timeout 100 | coveralls",
+    "test-with-coverage": "nyc --reporter text-lcov node_modules/.bin/_mocha --require @babel/register -R spec --timeout 100 && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
+    "travisRepo": "./test/travisRepo.sh",
+    "travis-deploy-once": "travis-deploy-once",
+    "puml": "./node_modules/.bin/puml",
+    "doc": "./node_modules/.bin/asciidoctorjs  docs/index.adoc --destination-dir dist/docs"
   },
+  "author": "Arquisoft/ES1A",
+  "license": "MIT",
   "browser": {
     "crypto": false,
     "fetch": false,
@@ -47,13 +56,15 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.6.8",
+    "@angular-devkit/build-angular": "^0.6.8",
     "@angular/cli": "^6.2.3",
     "@angular/compiler-cli": "^6.0.3",
     "@angular/language-service": "^6.0.3",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "asciidoctor-cli": "^1.5.6-rc.1",
+    "asciidoctor.js": "^1.5.9",
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

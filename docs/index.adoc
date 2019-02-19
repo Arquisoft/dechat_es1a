@@ -3,7 +3,7 @@
 //
 // ====================================
 
-= image:LogoASW.png[arc42] deChat - Decentralized Chat 0
+= image:LogoASW.png[arc42] deChat - Decentralized Chat ES1A
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Table of Contents
 
