@@ -1,16 +1,11 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
-****
 This software project aims to be a SOLID chat, helping people communicate with each other in a decentralized way. 
-****
 
 
 === Requirements Overview
 
-[role="arc42help"]
-****
 .What is dechat_es1a?
 The main purpose of our app is to let people communicate with each other while storing their own data, letting them decide who shall view their information rather than storing it in a traditional centralized server, where you are not completely sure who has access to it.
 
@@ -18,12 +13,9 @@ The main purpose of our app is to let people communicate with each other while s
 App requirements are written down in the  https://labra.solid.community/public/SoftwareArchitecture/EnunciadoPractica/#requirements[requirements document].
 
 This requirements revolve around a decentralized app, which is all https://github.com/solid/solid#about-solid[SOLID is about]. Other than that, the app has to be a classic chat where you can talk to friends (individually or in groups), receive notifications and share multimedia. 
-****
 
 === Quality Goals
 
-[role="arc42help"]
-****
 .Quality goals
 |===
 |*Quality*|*Motivation*
@@ -32,12 +24,9 @@ This requirements revolve around a decentralized app, which is all https://githu
 |Privacy| As this is based on SOLID, decentralized means private.
 |Security| The chat has to be secure so the user knows who are they talking to and who has access to the chat.
 |===
-****
 
 === Stakeholders
 
-[role="arc42help"]
-****
 .Stakeholders
 |===
 |*Role/Name*|*Expectations*
@@ -48,7 +37,6 @@ This requirements revolve around a decentralized app, which is all https://githu
 | Technologies used | A new useful app so they can brand their technology with a relevant and innovative release.
 |===
 
-****
 
 [options="header",cols="1,2,2"]
 
