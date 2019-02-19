@@ -15,7 +15,7 @@ This section contains quality tree with scenarios, in order to understan the cen
 [role="arc42help"]
 ****
 
-image:/images/qualities.jpeg[image,width=435,height=235]
+image::./images/qualities.jpeg[image,width=435,height=235]
 
 ****
 
