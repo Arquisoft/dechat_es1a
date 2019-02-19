@@ -50,18 +50,74 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== _<Concept 1>_
+=== _ 8.1 Domain Models_
 
-_<explanation>_
+_UML/ER Diagrams in progress_
 
 
 
-=== _<Concept 2>_
+=== _8.2 Persistency>_
 
-_<explanation>_
+_In progress_
 
 ...
 
-=== _<Concept n>_
+=== _8.3 User Interface_
 
-_<explanation>_
+_The default interface used for Solid project is written in JavaScript and AngularJS with a minimal Bootstrap template._
+
+=== _8.4. JavaScript and CSS optimization_
+
+_In progress_
+
+=== _8.5. Transaction Processing_
+
+_In progress_
+
+=== _8.6. Session Handling_
+
+_In progress_
+
+=== _8.7. Security_
+
+_In progress_
+
+=== _8.8. Safety_
+
+_No part of the system has life endangering aspect._
+
+=== _8.9. Communications and Integration_
+
+_In progress_
+
+=== _8.10. Plausibility and Validity Checks_
+
+_In progress_
+
+=== _8.11. Exception/Error Handling_
+
+_Errors handling to inconsistent data (in regard to the data models constraint) as well as failures to validation are mapped to HTTP errors. Those errors are handled by the frontends controller code. Technical errors (hardware, database etc.) are not handled and may lead to application failure or lost data._
+
+=== _8.12. Logging, Tracing_
+
+_In progress_
+
+=== _8.13. Configurability_
+
+_In progress_
+
+=== _8.14. Internationalization_
+
+_Englis is the only supported language at the moment and there are no plans for creating a new one._
+
+=== _8.15. Migration_
+
+_In progress_
+
+=== _8.16. Testability_
+
+_In progress_
+
+=== _8.17. Build-Management_
+
+_In progress_

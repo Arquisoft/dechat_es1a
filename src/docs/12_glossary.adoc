@@ -26,6 +26,13 @@ Potentially more columns in case you need translations.
 [options="header"]
 |===
 | Term         | Definition
-| <Term-1>     | <definition-1>
-| <Term-2>     | <definition-2>
+| AngularJS    | <definition-1>
+| Docker       | <definition-2>
+| Heroku       | <definition-2>
+| IDE          | <definition-2>
+| Ionic        | <definition-2>
+| JavaScript   | <definition-2>
+| Jetbrains    | <definition-2>
+| NodeJS       | <definition-2>
+| Webstorm     | <definition-2>
 |===
