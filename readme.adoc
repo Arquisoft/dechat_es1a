@@ -6,58 +6,31 @@ image:https://coveralls.io/repos/github/Arquisoft/dechat_es1a/badge.svg["Coverag
 image:https://api.codacy.com/project/badge/Grade/fc7dc1da60ee4e9fb67ccff782625794["Codacy code quality", link="https://www.codacy.com/app/jelabra/dechat_es1a?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/dechat_es1a&utm_campaign=Badge_Grade"]
 
 
-== Build documentation
+== How to use the app?
 
-The documentation is done in http://asciidoc.org/[AsciiDoc]
-using the https://arc42.org/[arc42] templates.
-The source documents are located at
- https://github.com/Arquisoft/dechat_es1a/tree/master/src/docs[src/docs].
-
-Using https://maven.apache.org/[Maven] and the
-https://asciidoctor.org/[AsciiDoctor plugin] it is possible to generate
-the documentation running:
+1. Clone the repository:
 
 ----
-mvn generate-resources
+git clone https://github.com/Arquisoft/dechat_es1a.git
 ----
 
-== Compile and run
-
-The skeleton project is a simple
- https://spring.io/projects/spring-boot[Spring-boot] application which can be run as:
+2. Enter in the folder dechat_es1a:
 
 ----
- mvn spring-boot:run
+ cd dechat_es1a
 ----
 
-Once executed, the application should be available at: http://localhost:8080
-
-== Testing
-
-There are some simple Unit tests at:
- https://github.com/Arquisoft/dechat_es1a/tree/master/src/test[src/test].
-
-There are also some
- https://cucumber.io/[Cucumber based tests]
- with a simple user story defined at:
- https://github.com/Arquisoft/dechat_es1a/tree/master/src/test/resources/features[src/test/resources/features].
-
-To run tests execute:
+3. Install angular dependencies:
 
 ----
-mvn test
+npm install --save-dev @angular-devkit/build-angular
 ----
 
-== Site documentation
-
-The https://github.com/Arquisoft/dechat_es1a/tree/master/pom.xml[pom.xml] file
- has also been configured to generate site project documentation running:
+4. Start server:
 
 ----
-mvn site
+ng server -o
 ----
-
-
 
 
 
