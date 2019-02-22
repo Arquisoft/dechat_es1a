@@ -1,16 +1,22 @@
-sudo: false
-addons:
-  chrome: stable
+dist: trusty
+sudo: false # faster builds
 
 language: node_js
 node_js:
-  - "8"
+  - '8'
 
-branches:
-  only:
-    - master
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
-before_script:
+cache:
+  directories:
+    - ./node_modules
+
+install:
   - npm install -g @angular/cli
 
 script:
