@@ -33,5 +33,5 @@ jobs:
         - bash <(curl -s https://codecov.io/bash)
         deploy:
             provider: heroku
-            api_key: API_KEY
+            api_key: $API_KEY
             secure: KEY
