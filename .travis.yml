@@ -1,24 +1,33 @@
-dist: trusty
-sudo: false # faster builds
+sudo: required
 
-language: node_js
-node_js:
-  - '8'
+language: bash
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+jobs:
+  include:
+    - stage: Generate documentation
+      if: branch = master AND commit_message != "Updated GitHub Pages"
+      before_script:
+        - mkdir -p output
+      script:
+        - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -a toc=left -D /documents/output docs/*.adoc
+      after_error:
+        - docker logs asciidoc-to-html
+      after_failure:
+        - docker logs asciidoc-to-html
+      after_success:
+        - cd output
+        - cp -R ../docs/images/ images
+        - cd ..
+        - git clone "https://github.com/Arquisoft/dechat_es1a.git"
+        - cd dechat_es1a
+        - rm -R docs
+        - mv ../output/ dist/
+        - git add .
+        - git commit -m "Updated GitHub Pages"
+        - git push --force --quiet "https://https://github.com/Arquisoft/dechat_es1a.git" master
 
-cache:
-  directories:
-    - ./node_modules
-
-install:
-  - npm install -g @angular/cli
-
-script:
-  - ng build --prod --aot # faster builds
- # - ng test
+    - stage: tests
+      if: commit_message != "Updated GitHub Pages"
+      script: echo "Implement tests"
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
