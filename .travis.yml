@@ -1,23 +1,18 @@
-dist: trusty
-sudo: false # faster builds
+sudo: false
+addons:
+  chrome: stable
 
 language: node_js
 node_js:
-  - '8'
+  - "8"
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+branches:
+  only:
+    - master
 
-cache:
-  directories:
-    - ./node_modules
-
-install:
-  - npm install
+before_script:
+  - npm install -g @angular/cli
 
 script:
-  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - ng build --prod --aot
+  - ng test
