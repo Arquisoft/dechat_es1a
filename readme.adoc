@@ -16,6 +16,13 @@ image:https://api.codacy.com/project/badge/Grade/fc7dc1da60ee4e9fb67ccff78262579
 - https://github.com/iker2410[Ignacio Bermejo Álvarez]
 - https://github.com/samuelmorenov[Samuel Moreno Vincent]
 
+== Requirements
+- Install node.js and npm https://nodejs.org/en/download/[here]
+- Install angular/cli
+----
+npm install -g @angular/cli
+----
+
 
 == How to use the app?
 
