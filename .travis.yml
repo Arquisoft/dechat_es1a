@@ -34,7 +34,7 @@ jobs:
       deploy:	
             provider: heroku	
             api_key:
-                secure: 4bf2aef5-b99f-4cbe-9ebd-8532684715eb
+                secure: 6af94bee-0789-41b6-9739-c2a35d324b4a
             app: dechat_es1a
             on:
                all_branches: true
