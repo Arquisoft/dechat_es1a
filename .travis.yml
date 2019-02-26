@@ -32,7 +32,8 @@ jobs:
       after_success:
         - bash <(curl -s https://codecov.io/bash)
       deploy:	
-            provider: heroku	
-            api_key: 6b7c70fc-6448-4d2a-8d36-729369e2a07b
-            app: dechat_es1a
+          provider: heroku	
+          api_key: 
+            secure: 4bf2aef5-b99f-4cbe-9ebd-8532684715eb
+          app: dechat_es1a
             on: fix/travis
