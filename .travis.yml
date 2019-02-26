@@ -36,4 +36,5 @@ jobs:
             api_key:
                 secure: 4bf2aef5-b99f-4cbe-9ebd-8532684715eb
             app: dechat_es1a
-            on: fix/travis
+            on:
+               all_branches: true
