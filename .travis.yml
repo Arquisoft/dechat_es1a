@@ -35,5 +35,4 @@ jobs:
             provider: heroku	
             api_key: 6b7c70fc-6448-4d2a-8d36-729369e2a07b
             app: dechat_es1a
-            on:
-                branch: fix/travis
+            on: fix/travis
