@@ -31,3 +31,6 @@ jobs:
       script: echo "Implement tests"
       after_success:
         - bash <(curl -s https://codecov.io/bash)
+        - deploy:	
+            provider: heroku	
+            api_key: 56bf39e7-03da-42f9-9225-b656e7150907
