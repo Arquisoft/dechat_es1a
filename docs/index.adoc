@@ -3,9 +3,10 @@
 //
 // ====================================
 
-= image:LogoASW.png[arc42] deChat - Decentralized Chat ES1A
+= image:./images/LogoASW.png[arc42] deChat - Decentralized Chat ES1A
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Table of Contents
+:data-uri:
 
 //additional style for arc42 help callouts
 ifdef::basebackend-html[]

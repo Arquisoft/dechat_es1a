@@ -14,7 +14,7 @@
     "travisRepo": "./test/travisRepo.sh",
     "travis-deploy-once": "travis-deploy-once",
     "puml": "./node_modules/.bin/puml",
-    "doc": "./node_modules/.bin/asciidoctorjs  docs/index.adoc --destination-dir dist/docs"
+    "doc": "./node_modules/.bin/asciidoctorjs  docs/index.adoc  --attributes data-uri --destination-dir dist/docs"
   },
   "author": "Arquisoft/ES1A",
   "license": "MIT",
