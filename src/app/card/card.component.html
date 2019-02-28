@@ -1,4 +1,4 @@
-<div class="profile-container">
+<div class="profile-container" xmlns="http://www.w3.org/1999/html">
   <!-- EXAMPLE TOP NAV -->
   <div class="topnav">
     <div class="logo">DeChat
@@ -78,6 +78,11 @@
         <div class="pure-u-1-1 pure-u-md-1-2 form-group">
           <i class="fas fa-sticky-note" style="width: 12px; margin-left: 2px;"></i><input type="text" class="field-text form-control" name="note" placeholder="NOTE" [(ngModel)]="profile.note" />
         </div>
+        <div>
+          <i class="fas fa-user-friends" style="width: 12px; margin-left: 2px;"></i>
+          <button (click)="loadFriends()" class="wide-button profile-save-button"> My Friends </button>
+        </div>
+
       </div>
 
       <div class="profile-save-button-container">

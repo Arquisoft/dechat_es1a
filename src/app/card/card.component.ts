@@ -5,6 +5,8 @@ import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
 import { shortChatPane } from '../chat/shortChatPane';
+import {forEach} from '@angular/router/src/utils/collection';
+import {store} from '@angular/core/src/render3/instructions';
 
 
 @Component({
@@ -15,6 +17,7 @@ import { shortChatPane } from '../chat/shortChatPane';
 export class CardComponent implements OnInit  {
 
   profile: SolidProfile;
+  friends: Array<String>;
   profileImage: string;
   loadingProfile: Boolean;
   chat: shortChatPane;
@@ -22,7 +25,8 @@ export class CardComponent implements OnInit  {
   @ViewChild('f') cardForm: NgForm;
 
   constructor(private rdf: RdfService,
-    private route: ActivatedRoute, private auth: AuthService) {}
+    private route: ActivatedRoute, private auth: AuthService) {
+  }
 
   ngOnInit() {
     this.loadingProfile = true;
@@ -32,6 +36,20 @@ export class CardComponent implements OnInit  {
     // TODO: Remove this code and find a better way to get the old data
     localStorage.removeItem('oldProfileData');
   }
+
+  async loadFriends() {
+    try {
+      const list_friends = await this.rdf.getFriends();
+      console.log(list_friends);
+      if (list_friends) {
+        this.friends = list_friends;
+    }
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  }
+
+
 
   // Loads the profile from the rdf service and handles the response
   async loadProfile() {
