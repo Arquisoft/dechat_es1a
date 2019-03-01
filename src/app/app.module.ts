@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 
 
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'components/friends',
+    component: FriendsComponent
   }
 ];
 
@@ -57,7 +62,8 @@ const routes: Routes = [
     DashboardComponent,
     CardComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,

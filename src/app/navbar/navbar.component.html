@@ -16,7 +16,9 @@
   </div>
   <div class="menu-item">
     <div>
-      <i class="fas fa-user-friends" (click)="loadFriends()"></i>
+      <a [routerLink]="['../components/friends']">
+        <i class="fas fa-user-friends"></i>
+      </a>
     </div>
       Friends
   </div>
