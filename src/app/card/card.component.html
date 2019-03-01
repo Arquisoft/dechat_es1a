@@ -1,32 +1,6 @@
 <div class="profile-container" xmlns="http://www.w3.org/1999/html">
   <!-- EXAMPLE TOP NAV -->
-  <div class="topnav">
-    <div class="logo">DeChat
-       <i class="fab fa-earlybirds"></i>
-    </div>
-    <div class="menu-item">
-      <div>
-        <i class="far fa-compass"></i>
-      </div>
-      Menu Item 1
-    </div>
-    <div class="menu-item">
-        <div>
-          <i class="far fa-comment"></i>
-        </div>
-        CHAT
-    </div>
-    <div class="menu-item">
-      <div>
-        <i class="fas fa-sliders-h"></i>
-      </div>
-      Menu Item 3
-    </div>
-
-    <div class="profile-menu" (click)="logout()">
-      <img [src]="profileImage" />
-    </div>
-  </div>
+ <app-navbar></app-navbar>
   <h1>Profile</h1>
 
   <!-- LOADING IMAGE -->
@@ -78,17 +52,12 @@
         <div class="pure-u-1-1 pure-u-md-1-2 form-group">
           <i class="fas fa-sticky-note" style="width: 12px; margin-left: 2px;"></i><input type="text" class="field-text form-control" name="note" placeholder="NOTE" [(ngModel)]="profile.note" />
         </div>
-        <div>
-          <i class="fas fa-user-friends" style="width: 12px; margin-left: 2px;"></i>
-          <button class="wide-button profile-save-button" (click)="loadFriends()"> My Friends</button>
-        </div>
       </div>
 
       <div class="profile-save-button-container">
         <button type="submit" class="wide-button profile-save-button" [disabled]="!cardForm || cardForm.pristine">Save</button>
       </div>
       <div>
-        <h1>My Friends</h1>
         <h2><script src="../card/card.component.ts"></script></h2>
       </div>
     </form>
