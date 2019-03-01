@@ -8,6 +8,7 @@ declare let $rdf: any;
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import {T} from '@angular/core/src/render3';
+import {listener} from '@angular/core/src/render3/instructions';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -291,12 +292,27 @@ export class RdfService {
   getFriends = async () => {
     const person = this.session.webId;
     const friends = this.store.each($rdf.sym(person), FOAF('knows'));
-    const list_friends = Array<String>();
+    const list_friends = Array<string>();
     try {
       friends.forEach(async (friend) => {
         await this.fetcher.load(friend);
-        //const fullName = this.store.any(friend, FOAF('name')); USE THIS IF YOU WANT TO SHOW NAMES
-        list_friends.push(friend);
+        list_friends.push(friend.value);
+      });
+      return list_friends;
+    } catch (error) {
+      console.log(`Error fetching data: ${error}`);
+    }
+  }
+
+  getFriendsNames = async () => {
+    const person = this.session.webId;
+    const friends = this.store.each($rdf.sym(person), FOAF('knows'));
+    const list_friends = Array<string>();
+    try {
+      friends.forEach(async (friend) => {
+        await this.fetcher.load(friend);
+        const fullName = this.store.any(friend, FOAF('name'));
+        list_friends.push(fullName.value);
       });
       return list_friends;
     } catch (error) {

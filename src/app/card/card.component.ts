@@ -7,6 +7,7 @@ import { AuthService } from '../services/solid.auth.service';
 import { shortChatPane } from '../chat/shortChatPane';
 import {forEach} from '@angular/router/src/utils/collection';
 import {store} from '@angular/core/src/render3/instructions';
+import {of} from 'rxjs';
 
 
 @Component({
@@ -17,7 +18,8 @@ import {store} from '@angular/core/src/render3/instructions';
 export class CardComponent implements OnInit  {
 
   profile: SolidProfile;
-  friends: Array<String>;
+  friends: Array<string>;
+  friends_names: Array<string>;
   profileImage: string;
   loadingProfile: Boolean;
   chat: shortChatPane;
@@ -40,16 +42,15 @@ export class CardComponent implements OnInit  {
   async loadFriends() {
     try {
       const list_friends = await this.rdf.getFriends();
-      console.log(list_friends);
-      if (list_friends) {
-        this.friends = list_friends;
-    }
+      const list_names = await this.rdf.getFriendsNames();
+      this.friends = list_friends;
+      this.friends_names = list_names;
+      console.log(this.friends_names);
+      console.log(this.friends);
     } catch (error) {
       console.log(`Error: ${error}`);
     }
   }
-
-
 
   // Loads the profile from the rdf service and handles the response
   async loadProfile() {
