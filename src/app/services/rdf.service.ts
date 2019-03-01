@@ -294,31 +294,29 @@ export class RdfService {
     const friends = this.store.each($rdf.sym(person), FOAF('knows'));
     const list_friends = Array<string>();
     try {
-      friends.forEach(async (friend) => {
-        await this.fetcher.load(friend);
-        list_friends.push(friend.value);
-      });
+      for ( let i = 0; i < friends.length; i++) {
+        list_friends.push(friends[i].value);
+      }
       return list_friends;
     } catch (error) {
       console.log(`Error fetching data: ${error}`);
     }
   }
-
+/**
   getFriendsNames = async () => {
     const person = this.session.webId;
     const friends = this.store.each($rdf.sym(person), FOAF('knows'));
     const list_friends = Array<string>();
     try {
-      friends.forEach(async (friend) => {
-        await this.fetcher.load(friend);
-        const fullName = this.store.any(friend, FOAF('name'));
-        list_friends.push(fullName.value);
-      });
+      for ( let i = 0; i < friends.length; i++) {
+        const fullName = this.store.any(friends[i], FOAF('name'));
+        list_friends[i] = fullName.value;
+      }
       return list_friends;
     } catch (error) {
       console.log(`Error fetching data: ${error}`);
     }
-  }
+  }**/
   getProfile = async () => {
 
     if (!this.session) {

@@ -42,11 +42,13 @@ export class CardComponent implements OnInit  {
   async loadFriends() {
     try {
       const list_friends = await this.rdf.getFriends();
-      const list_names = await this.rdf.getFriendsNames();
-      this.friends = list_friends;
-      this.friends_names = list_names;
-      console.log(this.friends_names);
-      console.log(this.friends);
+      //const list_names = await this.rdf.getFriendsNames();
+      if (list_friends) {
+        document.write("<h1>These are my friends</h1>");
+        for (let i = 0; i < list_friends.length; i++) {
+          document.write("<a href='list_friends[i]'>" + list_friends[i] + "</a><br>");
+        }
+      }
     } catch (error) {
       console.log(`Error: ${error}`);
     }
