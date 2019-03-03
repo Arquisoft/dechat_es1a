@@ -302,7 +302,7 @@ export class RdfService {
       console.log(`Error fetching data: ${error}`);
     }
   }
-/**
+
   getFriendsNames = async () => {
     const person = this.session.webId;
     const friends = this.store.each($rdf.sym(person), FOAF('knows'));
@@ -316,7 +316,7 @@ export class RdfService {
     } catch (error) {
       console.log(`Error fetching data: ${error}`);
     }
-  }**/
+  }
   getProfile = async () => {
 
     if (!this.session) {
