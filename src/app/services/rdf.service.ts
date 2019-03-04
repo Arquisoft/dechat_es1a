@@ -310,7 +310,7 @@ export class RdfService {
     try {
       for ( let i = 0; i < friends.length; i++) {
         const fullName = this.store.any(friends[i], FOAF('name'));
-        list_friends[i] = fullName.value;
+        list_friends.push(fullName);
       }
       return list_friends;
     } catch (error) {

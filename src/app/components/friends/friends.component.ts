@@ -21,7 +21,7 @@ export class FriendsComponent implements OnInit {
       if (list_friends) {
         document.write('<h1>These are my friends</h1>');
         for (let i = 0; i < list_friends.length; i++) {
-          document.write('<a href=' + list_friends + '>' + list_names + '</a><br>');
+          document.write('<a href='list_friends[i]'>'list_friends[i]'</a><br>');
         }
       }
     } catch (error) {
