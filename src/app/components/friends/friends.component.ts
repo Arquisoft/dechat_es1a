@@ -16,12 +16,10 @@ export class FriendsComponent implements OnInit {
 
   async loadFriends() {
     try {
-      const list_friends = await this.rdf.getFriends();
-      const list_names = await this.rdf.getFriendsNames();
+      const list_friends = await this.rdf.getFriends(); //devuelve un array de urls
       if (list_friends) {
-        document.write('<h1>These are my friends</h1>');
         for (let i = 0; i < list_friends.length; i++) {
-          document.write('<a href='list_friends[i]'>'list_friends[i]'</a><br>');
+          return list_friends[i];
         }
       }
     } catch (error) {
