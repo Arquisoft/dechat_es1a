@@ -15,4 +15,4 @@ All the design decisions made so far are explained and detailed in
 
 Relating to the Chat view, it will be arranged into a separate component, with its own HTML and CSS implementations. The layout is separated
 in two columns. On the left, a list of the user's friends wil be displayed, and on the right, once you choose the
-friend you want to talk to, the chat view will pop up. 
+friend you want to talk to, the chat view will pop up.
