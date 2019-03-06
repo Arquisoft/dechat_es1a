@@ -15,5 +15,5 @@ The principal restrictions that we have to face with Heroku are related to the n
 
 .Technical debt
 * Git: we have a lack of knowledge in this useful tool.
-*
+* Bootstrap: none of the team members has previous experience with these libraries. It will not be such a huge risk due to the extensive guide and documentation provided online. 
 
