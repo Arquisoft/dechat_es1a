@@ -9,16 +9,12 @@
     <title>Friends</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid nav_space">
 <div class="grid-rows">
     <div class="row">
     <div class="col-sm-4">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">Friend 1</a>
-            <a href="#" class="list-group-item list-group-item-action">Friend 2</a>
-            <a href="#" class="list-group-item list-group-item-action">Friend 3</a>
-            <a href="#" class="list-group-item list-group-item-action">Friend 4</a>
-            <a href="#" class="list-group-item list-group-item-action">Friend 5</a>
+        <div class="list-group" >
+            <a  *ngFor="let item of mi_listado_de_friends" href="{{item.url}}" class="list-group-item list-group-item-action">{{item.name}}</a>
         </div>
     </div>
     <div  class="col-sm-8">
