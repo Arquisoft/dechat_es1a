@@ -1,37 +1,55 @@
-<div class="profile-container">
-    <!-- EXAMPLE TOP NAV -->
-    <div class="topnav">
-        <div class="logo">Solid</div>
-        <div class="menu-item">
-            <div>
-                <i class="far fa-compass"></i>
-            </div>
-            Menu Item 1
-        </div>
-        <div class="menu-item">
-            <a href="chat.html">
-                <div>
-                    <i class="far fa-comment"></i>
-                </div>
-                CHAT
-            </a>
-        </div>
-        <div class="menu-item">
-            <div>
-                <i class="fas fa-sliders-h"></i>
-            </div>
-            Menu Item 3
-        </div>
+<html>
+<head>
+    <title>
+        DECHAT_ES1A
+    </title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 
-        <div class="profile-menu" (click)="logout()">
-            <img [src]="profileImage" />
-        </div>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Dechat_ES1A</h1>
     </div>
-    <h1>Profile</h1>
 
-    <!-- LOADING IMAGE -->
-    <div class="loading-image" *ngIf="loadingProfile">
-        <i class="fas fa-circle-notch fa-4x fa-spin"></i>
+
+    <div id="contentWrap" class="row" style="height: 70%;">
+        <div class="col-md-2"></div>
+        <div id="chatWrap"  class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">Chat</div>
+                <div id="chat" class="panel-body"></div>
+            </div>
+
+            <div>
+                <form id="send-message" class="input-group" style="text-align:center;margin:0 auto;">
+                    <input id="message" class="form-control input-lg" type="text">
+                    <span class="input-group-btn">
+                            <button class="btn btn-lg btn-primary" type="submit" id="SendButton">Enviar</button>
+                        </span>
+                </form>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Usuario
+                </div>
+                <div id="users" class="panel-body"></div>
+            </div>
+        </div>
+
     </div>
 
 </div>
+
+</body>
+</html>
