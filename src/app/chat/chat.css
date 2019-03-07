@@ -1,0 +1,14 @@
+#contentWrap{
+    display: none;
+}
+#chatWrap{
+    float: left;
+}
+#chat{
+    position: relative;
+    width: 100%;
+    float:left;
+    min-height:100px;
+    height: 90%;
+    overflow: auto;
+}
