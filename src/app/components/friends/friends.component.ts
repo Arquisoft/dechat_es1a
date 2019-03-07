@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
+import { FileService } from '../../services/app.file';
+
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
@@ -21,7 +23,7 @@ export class FriendsComponent implements OnInit {
   async loadFriends() {
     let list_friends;
     try {
-      list_friends = await this.rdf.getFriends(); //devuelve un array de urls
+      list_friends = await this.rdf.getFriends(); // devuelve un array de urls
       console.log(list_friends);
       if (list_friends) {
         for (let i = 0; i < list_friends.length; i++) {
