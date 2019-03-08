@@ -2,26 +2,25 @@
 == Architecture Constraints
 
 
-[role="arc42help"]
 
-=== 2.1-Technical Constraints
+=== Technical Constraints
 
 .List of Technical Constraints
 |=== 
 
 |  | *Constraint* | *Background and /or motivation*
 
-| TC1 | Implementation in JavaScript/TypeScript | Due to the application will be web-based, the best option would be to use JavaScript.
+| TC1 | Implementation in JavaScript/TypeScript | Due to the application being web-based, the best option would be using JavaScript.
 
 | TC2 | Angular as front end framework | Most SOLID-based applications use this framework so it is a reasonable option.
 
-| TC3 | Docker and Heroku for application deployment | Due to several team members experience's, the choosen tools are Docker and Heroku.
+| TC3 | Docker and Heroku for application deployment | Due to several team members experience with this technologies, the choosen tools are Docker and Heroku.
 
 | TC4 | Decentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
 
 |=== 
 
-=== 2.2-Organizational Constraints
+=== Organizational Constraints
 
 .List of Organizational Constraints
 |=== 
@@ -30,7 +29,7 @@
 
 | OC1 | Team | The team is formed by Pelayo Rodríguez García, Samuel Moreno Vincent, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto, Ignacio Bermejo Álvarez.
 
-| OC2 | Time schedule | The project will be carried out during the Software Architecture course.
+| OC2 | Time schedule | The project will be carried out during the Software Architecture course, lasting a total of 4 months.
 
 | OC3 | Version control | For version control we have chosen GitHub.
 
@@ -38,7 +37,7 @@
 
 |=== 
 
-=== 2.3-Conventions
+=== Conventions
 
 .List of Conventions
 |=== 
