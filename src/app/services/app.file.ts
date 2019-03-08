@@ -1,7 +1,7 @@
 import fileClient from 'solid-file-client';
 
 export class FileService {
-    name = 'fileService';
+    fs: FileService;
 
     /**
      *
@@ -25,6 +25,17 @@ export class FileService {
         fileClient.createFolder(URL).then(success => {
             console.log(`Created folder ${URL}.`);
         }, err => console.log(err));
+    }
+
+    /**
+     * Method to give name to the folder where the chat files will be stored
+     * @param abreChat The one who opens the chat
+     * @param recibeChat the one who receives communications from chat
+     */
+    protected fileName(openChat: string, receiveChat: string): string {
+        openChat = fileClient.checkSession();
+        const fileName = openChat.concat(receiveChat);
+        return fileName;
     }
 
 }

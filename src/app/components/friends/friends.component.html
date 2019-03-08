@@ -15,6 +15,7 @@
     <div class="col-sm-4">
         <div class="list-group" >
             <a  *ngFor="let item of mi_listado_de_friends" href="{{item.url}}" class="list-group-item list-group-item-action">{{item.name}}</a>
+<!--            <a  *ngFor="let file = fs; let item of mi_listado_de_friends" href="{{ }}" class="list-group-item list-group-item-action">{{file.createFolder(file.fileName(parseURL(RdfService.getSession()), item.name), )}}</a>-->
         </div>
     </div>
     <div  class="col-sm-8">
