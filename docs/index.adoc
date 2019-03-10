@@ -4,6 +4,7 @@
 // ====================================
 
 = image:./images/LogoASW.png[arc42] deChat - Decentralized Chat ES1A
+:toc: left
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Table of Contents
 :data-uri:
@@ -24,7 +25,7 @@ ifdef::basebackend-html[]
 endif::basebackend-html[]
 
 // configure EN settings for asciidoc
-include::config.adoc[]
+//include::config.adoc[]
 
 // numbering from here on
 :numbered:
