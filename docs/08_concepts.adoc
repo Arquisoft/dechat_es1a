@@ -50,74 +50,74 @@ image::./images/08-Crosscutting-Concepts-Structure-EN.png["Possible topics for c
 ****
 
 
-=== _ 8.1 Domain Models_
+=== Domain Models
 
 _UML/ER Diagrams in progress_
 
 
 
-=== _8.2 Persistency>_
+=== Persistency
 
 _In progress_
 
 ...
 
-=== _8.3 User Interface_
+=== User Interface
 
 _The default interface used for Solid project is written in JavaScript and AngularJS with a minimal Bootstrap template._
 
-=== _8.4. JavaScript and CSS optimization_
+=== JavaScript and CSS optimization
 
 _In progress_
 
-=== _8.5. Transaction Processing_
+=== Transaction Processing
 
 _In progress_
 
-=== _8.6. Session Handling_
+=== Session Handling
 
 _In progress_
 
-=== _8.7. Security_
+=== Security
 
 _In progress_
 
-=== _8.8. Safety_
+=== Safety
 
 _No part of the system has life endangering aspect._
 
-=== _8.9. Communications and Integration_
+=== Communications and Integration
 
 _In progress_
 
-=== _8.10. Plausibility and Validity Checks_
+=== Plausibility and Validity Checks
 
 _In progress_
 
-=== _8.11. Exception/Error Handling_
+=== Exception/Error Handling
 
 _Errors handling to inconsistent data (in regard to the data models constraint) as well as failures to validation are mapped to HTTP errors. Those errors are handled by the frontends controller code. Technical errors (hardware, database etc.) are not handled and may lead to application failure or lost data._
 
-=== _8.12. Logging, Tracing_
+=== Logging, Tracing
 
 _In progress_
 
-=== _8.13. Configurability_
+=== Configurability
 
 _In progress_
 
-=== _8.14. Internationalization_
+=== Internationalization
 
 _Englis is the only supported language at the moment and there are no plans for creating a new one._
 
-=== _8.15. Migration_
+=== Migration
 
 _In progress_
 
-=== _8.16. Testability_
+=== Testability
 
 _In progress_
 
-=== _8.17. Build-Management_
+=== Build-Management
 
 _In progress_

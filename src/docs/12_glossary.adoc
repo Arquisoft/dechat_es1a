@@ -1,0 +1,18 @@
+[[section-glossary]]
+== Glossary
+.Glossary
+
+|===
+| *Term*         | *Definition*
+| AngularJS    | JavaScript-based open-source front-end web framework mainly maintained by Google and by a community of individuals and corporations to address many of the challenges encountered in developing single-page applications.
+| Docker       | Program that performs operating-system-level virtualization, also known as "containerization".
+| Heroku       | Cloud platform as a service (PaaS) supporting several programming languages.
+| IDE          | Integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
+| SDK          | Software development kit (SDK or devkit) is typically a set of software development tools that allows the creation of applications for a certain software package, software framework, hardware platform, computer system, video game console, operating system, or similar development platform.
+| Ionic        | Open-source SDK for hybrid mobile app development
+| JavaScript   | High-level, interpreted programming language that conforms to the ECMAScript specification. It is a language that is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.
+| Jetbrains    | Software development company whose tools are targeted towards software developers and project managers.
+| NodeJS       | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
+| Webstorm     | Cross-platform IDE primarily for web, JavaScript and TypeScript development.
+|===
+[options="header",cols="1,2,2"]
