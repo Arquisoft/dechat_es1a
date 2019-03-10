@@ -1,33 +1,23 @@
 [[section-glossary]]
 == Glossary
 
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
 
 [options="header"]
 |===
 | Term         | Definition
-| AngularJS    | <definition-1>
-| Docker       | <definition-2>
-| Heroku       | <definition-2>
-| IDE          | <definition-2>
-| Ionic        | <definition-2>
-| JavaScript   | <definition-2>
-| Jetbrains    | <definition-2>
-| NodeJS       | <definition-2>
-| Webstorm     | <definition-2>
+| AngularJS    | Open source Model-View-Controller framework, developed by Google. [Official Website:](https://angular.io/) 
+| Docker       | Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](https://www.docker.com/) 
+| Heroku       | Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](https://www.heroku.com/) 
+| IDE          | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
+| Ionic        | Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](https://ionicframework.com/) 
+| JavaScript   | JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. 
+| NodeJS       | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](https://nodejs.org/) 
+| Webstorm     | IDE for JavaScript development. [Official Website:](https://www.jetbrains.com/webstorm/) 
+| npm     	   | Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](https://www.npmjs.com/) 
+| Solid        | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](https://solid.mit.edu/) 
+| Linked Data  | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks. 
+| POD		   | Derived from "Personal Online Data". It's a simple file that contains user data. Also can be accesed by other users/apps to write or read data. 
+| RDF		   | model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally. 
+| Stakeholder  | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project. 
+| Decentralized Web  | web technology where services are distributed rather than localized, where users own and control their own data 
 |===
