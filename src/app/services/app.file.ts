@@ -1,17 +1,16 @@
-import fileClient from 'solid-file-client';
+import { FileClient } from 'solid-file-client';
 
 export class FileService {
     fs: FileService;
-
+    fileClient: FileClient;
     /**
      *
      * @param URL direction where the file will be saved
      * @param content
      * @param contentType file extension for the file, it could be a ttl
      */
-    protected createFile(URL, content, contentType) {
-
-        fileClient.createFile(URL).then(fileCreated => {
+    createFile(URL, content, contentType) {
+        this.fileClient.createFile(URL).then(fileCreated => {
             console.log(`Created file ${fileCreated}.`);
         }, err => console.log(err));
     }
@@ -21,8 +20,8 @@ export class FileService {
      * @param URL direction where the folder will be saved
      * It will be top if we name the folder as the users who have the chat inside
      */
-    protected createFolder(URL) {
-        fileClient.createFolder(URL).then(success => {
+    createFolder(URL) {
+        this.fileClient.createFolder(URL).then(success => {
             console.log(`Created folder ${URL}.`);
         }, err => console.log(err));
     }
@@ -32,10 +31,19 @@ export class FileService {
      * @param abreChat The one who opens the chat
      * @param recibeChat the one who receives communications from chat
      */
-    protected fileName(openChat: string, receiveChat: string): string {
-        openChat = fileClient.checkSession();
+    fileName(openChat: string, receiveChat: string): string {
+        openChat = this.fileClient.checkSession();
         const fileName = openChat.concat(receiveChat);
         return fileName;
     }
+
+    readFile(newFile) {
+        let content;
+        this.fileClient.readFile(newFile).then(body => {
+            content = body;
+            return content;
+        }, err => console.log(err));
+    }
+
 
 }
