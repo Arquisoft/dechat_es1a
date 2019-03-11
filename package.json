@@ -50,6 +50,8 @@
     "rxjs": "^6.0.0",
     "solid-auth-client": "^2.2.3",
     "solid-file-client": "^0.4.9",
+    "solid-permissions": "^0.6.0",
+    "solid-web-client": "^0.3.2",
     "stdio": "^0.2.7",
     "text-encoding": "^0.6.4",
     "webcrypto": "^0.1.1",
