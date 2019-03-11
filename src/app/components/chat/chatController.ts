@@ -1,4 +1,4 @@
-import { FileService } from 'solid-file-client';
+import { FileService } from '../../services/app.file';
 import { PermissionsService } from '../../services/permissions.service';
 import { WebClient } from 'solid-web-client';
 

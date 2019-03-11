@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
+import { FileService } from '../../services/app.file';
 import { Friend } from '../../models/friend.model';
 import { ChatController} from './chatController';
 
@@ -16,6 +17,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.loadFriends();
+    this.createChat();
   }
 
   /*
@@ -47,8 +49,8 @@ export class ChatComponent implements OnInit {
   }
 
   async createChat() {
-    //const id = this.rdf.getSession();
-    this.chat.newChat('https://sofimrtn.solid.community/private');
+    const id = this.rdf.getSession();
+    this.chat.newChat(id);
   }
 
 }
