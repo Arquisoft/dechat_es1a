@@ -18,6 +18,8 @@
 
 | TC4 | Decentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
 
+| TC5 | No databases | As TC4 explains, we won't be using any kind of traditional database. Rather so, we'll store data in private folders.
+
 |=== 
 
 === Organizational Constraints
