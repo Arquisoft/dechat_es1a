@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
-import { FileService } from '../../services/app.file';
 
 @Component({
     selector: 'app-friends',
@@ -11,7 +10,6 @@ import { FileService } from '../../services/app.file';
 export class FriendsComponent implements OnInit {
 
     mi_listado_de_friends: Friend[] = [];
-    fileName: string;
 
     constructor(private rdf: RdfService) { }
 
