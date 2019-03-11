@@ -1,0 +1,13 @@
+.nav_space{
+    margin-top:100px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.top-bar {
+    background: #7C4DFF;
+    color: white;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}

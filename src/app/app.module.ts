@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'components/friends',
     component: FriendsComponent
+  },
+  {
+    path: 'components/chat',
+    component: ChatComponent
   }
 ];
 
@@ -64,7 +69,8 @@ const routes: Routes = [
     CardComponent,
     RegisterComponent,
     NavbarComponent,
-    FriendsComponent
+    FriendsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
