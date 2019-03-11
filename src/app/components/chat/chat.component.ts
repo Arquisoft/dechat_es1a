@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
+import { FileService } from '../../services/app.file';
 import { Friend } from '../../models/friend.model';
+import { ChatController} from './chatController';
 
 @Component({
   selector: 'app-chat',
@@ -11,10 +13,11 @@ export class ChatComponent implements OnInit {
 
   mi_listado_de_friends: Friend[] = [];
 
-  constructor(private rdf: RdfService) { }
+  constructor(private rdf: RdfService, private chat: ChatController) { }
 
   ngOnInit() {
     this.loadFriends();
+    this.createChat();
   }
 
   /*
@@ -43,6 +46,11 @@ export class ChatComponent implements OnInit {
     const sinHttps = url.replace('https://', '');
     const name = sinHttps.split('.')[0];
     return name;
+  }
+
+  async createChat() {
+    const id = this.rdf.getSession();
+    this.chat.newChat(id);
   }
 
 }
