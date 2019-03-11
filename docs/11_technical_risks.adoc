@@ -7,11 +7,12 @@ In the following page we are going to identify, measure and priorize the risks a
 .Risks
 The following, is the list of risks that we had in the project
 
-* SOLID: we haven't got any knowledge about this technology until it was presented to us for this project
-* AngularJS: most of the members of the team doesn't know a lot about this programming language
+* SOLID: We haven't got any knowledge about this technology until it was presented to us for this project.
+* AngularJS: Most of the members of the team don't know a lot about this programming language
 * Ionic: This is the language for the SOLID app. We have to learn how to do it and apply this knowledge in making the app.
 * Heroku: We are going to use this platform to host our SOLID server. We have to learn how it works and accept that the account has restrictions.
 The principal restrictions that we have to face with Heroku are related to the number of queries that it allows with the free account that are 75 queries per user, app, hour.
+* Typescript: As we researched, most SOLID apps are written using Typescript and we don't know anything about it. Adapting to it will be a risk, although it can't differ too much from Javascipt itself. 
 
 .Technical debt
 * Git: we have a lack of knowledge in this useful tool.

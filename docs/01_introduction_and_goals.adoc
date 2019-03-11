@@ -19,10 +19,10 @@ This requirements revolve around a decentralized app, which is all https://githu
 .Quality goals
 |===
 |*Quality*|*Motivation*
-|Usability| The app has to be easy to use for non-technical people.
-|Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
-|Privacy| As this is based on SOLID, decentralized means private.
-|Security| The chat has to be secure so the users know who are they talking to and who has access to the chat.
+|Q1. Usability| The app has to be easy to use for non-technical people.
+|Q2. Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
+|Q3. Privacy| As this is based on SOLID, decentralized means private.
+|Q4. Security| The chat has to be secure so the users know who are they talking to and who has access to the chat.
 |===
 
 === Stakeholders
@@ -30,11 +30,11 @@ This requirements revolve around a decentralized app, which is all https://githu
 .Stakeholders
 |===
 |*Role/Name*|*Expectations*
-| Developers | A good working project so their reputation and skills (also their mark) improve.
-| Labra | A good workflow and functional project so he sees we have learned the fundamentals of software architecture.
-| Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
-| Users | An app you can use if you feel your privacy is being invaded using other similar apps.
-| Technologies used | A new useful app so they can brand their technology with a relevant and innovative release.
+| ST1. Developers | A good working project so their reputation and skills (also their mark) improve.
+| ST2. Labra | A good workflow and functional project so he sees we have learned the fundamentals of software architecture.
+| ST3. Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
+| ST4. Users | An app you can use if you feel your privacy is being invaded using other similar apps.
+| ST5. Technologies used | A new useful app so they can brand their technology with a relevant and innovative release.
 |===
 
 

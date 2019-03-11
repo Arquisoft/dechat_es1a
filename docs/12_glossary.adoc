@@ -17,7 +17,7 @@
 | Solid        | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](https://solid.mit.edu/) 
 | Linked Data  | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks. 
 | POD		   | Derived from "Personal Online Data". It's a simple file that contains user data. Also can be accesed by other users/apps to write or read data. 
-| RDF		   | model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally. 
+| RDF		   | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally. 
 | Stakeholder  | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project. 
-| Decentralized Web  | web technology where services are distributed rather than localized, where users own and control their own data 
+| Decentralized Web  | Wweb technology where services are distributed rather than localized, where users own and control their own data 
 |===

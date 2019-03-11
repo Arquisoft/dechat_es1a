@@ -10,7 +10,7 @@
 
 |  | *Constraint* | *Background and /or motivation*
 
-| TC1 | Implementation in JavaScript/TypeScript | Due to the application being web-based, the best option would be using JavaScript.
+| TC1 | Implementation in JavaScript/TypeScript | Due to the application being web-based, the best option is using JavaScript.
 
 | TC2 | Angular as front end framework | Most SOLID-based applications use this framework so it is a reasonable option.
 
@@ -44,7 +44,7 @@
 
 |  | *Conventions* | *Background and / or motivation*
 
-| C1 | Architecture documentation | Structure based on the english arc42-Template.
+| C1 | Architecture documentation | Structure based on the english arc42-Template using adoc.
 
 | C2 | Language | English. The project's target is an international audience, so English should be used throughout the whole project.
 

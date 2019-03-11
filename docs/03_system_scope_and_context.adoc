@@ -14,10 +14,10 @@ image::./images/Business Concept Diagram1.jpg[Business Concept Diagram]
 
 |===
 |*Participant*|*Action*
-| User 1 | Sends message to the app.
-| SOLID Pod User 1 | Stores the message sent, so only User 1 can read it.
-| User 2 | Reads the message from the app.
-| Solid Pod User 2 | Stores the message received, so he can read it through the whole conversation.
+| P1. User 1 | Sends message to the app.
+| P2. SOLID Pod User 1 | Stores the message sent, so only User 1 can read it.
+| P3. User 2 | Reads the message from the app.
+| P4. Solid Pod User 2 | Stores the message received, so he can read it through the whole conversation.
 |===
 
 
