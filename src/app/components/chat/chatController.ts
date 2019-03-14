@@ -9,11 +9,21 @@ export class ChatController {
         this.file.createFolder(URL);
     }
 
+    /**
+     *
+     * @param fileURL
+     * @param user
+     */
     grantPermissions(fileURL: string, user: string) {
         const aclURL = fileURL + '.acl';
-
+        this.generateACL(aclURL, user);
     }
 
+    /**
+     * Generates an ACL permissions file in the specified folder and grants read privilege to the other user
+     * @param fileURL
+     * @param user the user who we are granting permissions to read the file
+     */
     generateACL(fileURL: string, user: string) {
         user = user.replace('#me', '#');
         const ACL = '@prefix : <#>. \n'
