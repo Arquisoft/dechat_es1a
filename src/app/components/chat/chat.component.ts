@@ -76,13 +76,13 @@ export class ChatComponent implements OnInit {
     private createFile() {
 
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A');
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/file');
 
         this.solidFileClient.popupLogin().then( webId => {
             console.log( `Logged in as ${webId}.`);
         }, err => console.log(err) );
 
-        this.solidFileClient.createFile(solidId).then(success => {
+        this.solidFileClient.updateFile(solidId).then(success => {
             console.log(`Created file ${solidId}.`);
             this.toastr.success('File created!', 'Success!');
         }, err => console.log(err) );
