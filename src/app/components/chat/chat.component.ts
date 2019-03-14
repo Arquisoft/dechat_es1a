@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit {
   async loadFriends() {
     let list_friends;
     try {
-      list_friends = await this.rdf.getFriends(); // devuelve un array de urls
+      list_friends = await this.rdf.getFriends(); // returns an array of urls
       console.log(list_friends);
       if (list_friends) {
         for (let i = 0; i < list_friends.length; i++) {
@@ -67,6 +67,7 @@ export class ChatComponent implements OnInit {
             console.log( `Logged in as ${webId}.`);
         }, err => console.log(err) );
 
+        // We must check that the folder not exists before create it
         this.solidFileClient.createFolder(solidId).then(success => {
             console.log(`Created folder ${solidId}.`);
         }, err => console.log(err) );
