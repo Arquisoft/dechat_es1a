@@ -75,10 +75,10 @@ export class ChatComponent implements OnInit {
 
     // Crea un fichero nuevo si no existe, sino lo deja tal cual
     // El metodo "createFile" crea indefinidos ficheros con un numero distinto
-    private createFile() {
+    protected createFile(name: string) {
 
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/file');
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
 
         this.solidFileClient.popupLogin().then( webId => {
             console.log( `Logged in as ${webId}.`);

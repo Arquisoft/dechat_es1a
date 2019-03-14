@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="list-group" >
-          <a  *ngFor="let item of mi_listado_de_friends" href="#" class="list-group-item list-group-item-action" ><div class="fas fa-user"></div> {{item.name}}</a>
+          <a  *ngFor="let item of mi_listado_de_friends" href="#" class="list-group-item list-group-item-action" (click)="createFile(item.name)"><div class="fas fa-user"></div> {{item.name}}</a>
         </div>
       </div>
     </div>
