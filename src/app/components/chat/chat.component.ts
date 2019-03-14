@@ -3,6 +3,7 @@ import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
 // import { ChatController} from './chatController';
 import { ToastrService } from 'ngx-toastr';
+import {Message} from '../../models/message.model';
 
 declare var require: any;
 
@@ -18,6 +19,7 @@ export class ChatComponent implements OnInit {
   username = '';
   isHidden = false;
   messageText = '';
+  mensajes: Message[] = [];
 
 
     constructor(private rdf: RdfService, private toastr: ToastrService) { }
@@ -83,6 +85,7 @@ export class ChatComponent implements OnInit {
 
         let solidId = this.rdf.session.webId;
         solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+        // const body = this.readFile(this.username);
 
         this.solidFileClient.popupLogin().then( webId => {
             console.log( `Logged in as ${webId}.`);
@@ -92,6 +95,8 @@ export class ChatComponent implements OnInit {
         this.username = name;
         // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
         this.createNewFolder();
+
+        // Borra el fichero pisando lo anterior CUIDADO TODO
         this.solidFileClient.updateFile(solidId).then(success => {
             console.log(`Created file ${solidId}.`);
             this.toastr.success('File created!', 'Success!');
@@ -119,13 +124,14 @@ export class ChatComponent implements OnInit {
 
         let solidId = this.rdf.session.webId;
         solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+        const body = this.readFile(this.username);
 
         this.solidFileClient.popupLogin().then( webId => {
             console.log( `Logged in as ${webId}.`);
         }, err => console.log(err) );
 
-        this.solidFileClient.updateFile(solidId, this.messageText).then(success => {
-            console.log(`Mensaje enviado ${solidId}.` + this.messageText);
+        this.solidFileClient.updateFile(solidId, body + this.messageText + '\n').then(success => {
+            console.log(`Mensaje enviado ` + this.messageText);
             this.toastr.success('Mensaje enviado!', 'Success!');
         }, err => console.log(err) );
 
@@ -141,6 +147,9 @@ export class ChatComponent implements OnInit {
         }, err => console.log(err) );
 
         this.solidFileClient.readFile(solidId).then(body => {
+            body.slice(0, 8);
+
+            this.messageText = body;
             console.log(`File content is : ${body}.`);
             this.toastr.success('Fichero leido!', 'Success!');
         }, err => console.log(err) );

@@ -57,8 +57,7 @@
               </div>
               <div class="col-md-10 col-xs-10">
                 <div class="messages msg_receive">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
+                  <p>{{messageText}}</p>
                   <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                 </div>
               </div>
@@ -73,7 +72,7 @@
             </div>
             <button (click)="createNewFolder()" class="wide-button profile-save-button"> Create Folder </button>
             <button (click)="startConversation()" class="wide-button profile-save-button"> Create File </button>
-            <button (click)="readFile()" class="wide-button profile-save-button"> Read File </button>
+            <button (click)="readFile(username)" class="wide-button profile-save-button"> Read File </button>
 
           </div>
         </div>
