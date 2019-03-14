@@ -20,19 +20,22 @@
           </div>
         </div>
         <div class="list-group" >
-          <a  *ngFor="let item of mi_listado_de_friends" href="#" class="list-group-item list-group-item-action" ><div class="fas fa-user"></div> {{item.name}}</a>
+          <a  *ngFor="let item of mi_listado_de_friends" class="list-group-item list-group-item-action" (click)="createFile(item.name)"><div class="fas fa-user"></div> {{item.name}}</a>
         </div>
       </div>
     </div>
 
 
+    <div class="col-md-8 col-xs-8" *ngIf="!isHidden">
+      <h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Click one contact to start a conversation!</h3>
+    </div>
 
-    <div class="col-sm-8">
+    <div *ngIf="isHidden" class="col-sm-8">
       <div class="chatbody">
         <div class="panel panel-primary">
           <div class="panel-heading top-bar" style="background-color: #7C4DFF">
             <div class="col-md-8 col-xs-8">
-              <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> DECHAT </h3>
+              <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> {{username}} </h3>
             </div>
           </div>
           <div class="panel-body msg_container_base">
@@ -69,6 +72,8 @@
                         </span>
             </div>
             <button (click)="createNewFolder()" class="wide-button profile-save-button"> Create Folder </button>
+            <button (click)="createFile()" class="wide-button profile-save-button"> Create File </button>
+
           </div>
         </div>
 

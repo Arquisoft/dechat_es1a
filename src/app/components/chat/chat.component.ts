@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {RdfService} from '../../services/rdf.service';
-import {Friend} from '../../models/friend.model';
-//import { ChatController} from './chatController';
-import {ToastrService} from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { RdfService } from '../../services/rdf.service';
+import { Friend } from '../../models/friend.model';
+// import { ChatController} from './chatController';
+import { ToastrService } from 'ngx-toastr';
 
 declare var require: any;
 
@@ -13,12 +13,12 @@ declare var require: any;
 })
 export class ChatComponent implements OnInit {
 
-    mi_listado_de_friends: Friend[] = [];
-    solidFileClient: any;
-    private toastr: any;
+  mi_listado_de_friends: Friend[] = [];
+  solidFileClient: any;
+  username = '';
+  isHidden = false;
 
-    constructor(private rdf: RdfService) {
-    }
+  constructor(private rdf: RdfService, private toastr: ToastrService) { }
 
     ngOnInit() {
         this.loadFriends();
@@ -72,14 +72,31 @@ export class ChatComponent implements OnInit {
         // We must check that the folder not exists before create it
         this.solidFileClient.createFolder(solidId).then(success => {
             console.log(`Created folder ${solidId}.`);
-        }, err => console.log(err));
+            this.toastr.success('Folder created!', 'Success!');
+        }, err => console.log(err) );
 
     }
 
-    private createFile(folder: string, user: string) {
+    // Crea un fichero nuevo si no existe, sino lo deja tal cual
+    // El metodo "createFile" crea indefinidos ficheros con un numero distinto
+    protected createFile(name: string) {
+
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A');
-        folder = solidId;
-        user = 'sofimrtn.solid-community';
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+
+        this.solidFileClient.popupLogin().then( webId => {
+            console.log( `Logged in as ${webId}.`);
+        }, err => console.log(err) );
+
+        this.isHidden = true;
+        this.username = name;
+        // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
+        this.createNewFolder();
+        this.solidFileClient.updateFile(solidId).then(success => {
+            console.log(`Created file ${solidId}.`);
+            this.toastr.success('File created!', 'Success!');
+        }, err => console.log(err) );
+
     }
+
 }
