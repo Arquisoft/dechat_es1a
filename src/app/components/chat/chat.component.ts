@@ -73,6 +73,8 @@ export class ChatComponent implements OnInit {
 
     }
 
+    // Crea un fichero nuevo si no existe, sino lo deja tal cual
+    // El metodo "createFile" crea indefinidos ficheros con un numero distinto
     private createFile() {
 
         let solidId = this.rdf.session.webId;
@@ -82,6 +84,8 @@ export class ChatComponent implements OnInit {
             console.log( `Logged in as ${webId}.`);
         }, err => console.log(err) );
 
+        // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
+        this.createNewFolder();
         this.solidFileClient.updateFile(solidId).then(success => {
             console.log(`Created file ${solidId}.`);
             this.toastr.success('File created!', 'Success!');
