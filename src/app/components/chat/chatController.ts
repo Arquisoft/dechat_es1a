@@ -3,20 +3,22 @@ import { PermissionsService } from '../../services/permissions.service';
 import { WebClient } from 'solid-web-client';
 
 export class ChatController {
-    constructor(private file: FileService) { }
+    constructor(private file: FileService) {  }
 
     newChat(URL) {
         this.file.createFolder(URL);
     }
 
     /**
-     *
+     * Method to grant privileges to a user in an specific file
      * @param fileURL
      * @param user
      */
     grantPermissions(fileURL: string, user: string) {
         const aclURL = fileURL + '.acl';
-        this.generateACL(aclURL, user);
+        console.log('Creating file in ' + aclURL);
+        this.file.updateFile(aclURL, this.generateACL(aclURL, user), );
+        console.log('File created');
     }
 
     /**

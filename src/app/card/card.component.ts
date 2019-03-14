@@ -5,10 +5,6 @@ import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
 import { shortChatPane } from '../chat/shortChatPane';
-import {forEach} from '@angular/router/src/utils/collection';
-import {store} from '@angular/core/src/render3/instructions';
-import {of} from 'rxjs';
-
 
 @Component({
   selector: 'app-card',
@@ -19,7 +15,6 @@ export class CardComponent implements OnInit  {
 
   profile: SolidProfile;
   friends: Array<string>;
-  friends_names: Array<string>;
   profileImage: string;
   loadingProfile: Boolean;
   chat: shortChatPane;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
-// import { ChatController} from './chatController';
+import { ChatController } from './chatController';
 import { ToastrService } from 'ngx-toastr';
 
 declare var require: any;
@@ -17,18 +17,19 @@ export class ChatComponent implements OnInit {
   solidFileClient: any;
   username = '';
   isHidden = false;
+  chatController: any;
 
   constructor(private rdf: RdfService, private toastr: ToastrService) { }
 
     ngOnInit() {
         this.loadFriends();
         this.solidFileClient = require('solid-file-client');
-        // this.createChat();
+        this.chatController = new ChatController(this.solidFileClient);
     }
 
-    /*
-   get user's friends from rdf.
-    */
+    /**
+     * get user's friends from rdf
+     */
     async loadFriends() {
         let list_friends;
         try {
@@ -46,8 +47,9 @@ export class ChatComponent implements OnInit {
         }
     }
 
-    /*
-    get names from friend's url.
+    /**
+     * get names from friend's url
+     * @param url
      */
     parseURL(url: string): string {
         const sinHttps = url.replace('https://', '');
@@ -60,6 +62,9 @@ export class ChatComponent implements OnInit {
       this.chat.newChat(id);
     }*/
 
+    /**
+     * Method that creates a folder where our app will write our persistence
+     */
     private createNewFolder() {
 
         let solidId = this.rdf.session.webId;
@@ -77,8 +82,11 @@ export class ChatComponent implements OnInit {
 
     }
 
-    // Crea un fichero nuevo si no existe, sino lo deja tal cual
-    // El metodo "createFile" crea indefinidos ficheros con un numero distinto
+    /**
+     * This method creates a new file if it doesn't exist, in other case it lets as it is
+     * This method creates undefined files with a different number
+     * @param name
+     */
     protected createFile(name: string) {
 
         let solidId = this.rdf.session.webId;
@@ -96,7 +104,6 @@ export class ChatComponent implements OnInit {
             console.log(`Created file ${solidId}.`);
             this.toastr.success('File created!', 'Success!');
         }, err => console.log(err) );
-
+        this.chatController.grantPermissions(solidId, name);
     }
-
 }
