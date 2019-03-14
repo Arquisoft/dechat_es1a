@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
 //import { ChatController} from './chatController';
+import { ToastrService } from 'ngx-toastr';
+
+declare var require: any;
 
 @Component({
   selector: 'app-chat',
@@ -11,12 +14,15 @@ import { Friend } from '../../models/friend.model';
 export class ChatComponent implements OnInit {
 
   mi_listado_de_friends: Friend[] = [];
+  solidFileClient: any;
+  private toastr: any;
 
   constructor(private rdf: RdfService) { }
 
   ngOnInit() {
     this.loadFriends();
-    //this.createChat();
+    this.solidFileClient = require('solid-file-client');
+    // this.createChat();
   }
 
   /*
@@ -25,7 +31,7 @@ export class ChatComponent implements OnInit {
   async loadFriends() {
     let list_friends;
     try {
-      list_friends = await this.rdf.getFriends(); //devuelve un array de urls
+      list_friends = await this.rdf.getFriends(); // devuelve un array de urls
       console.log(list_friends);
       if (list_friends) {
         for (let i = 0; i < list_friends.length; i++) {
@@ -51,5 +57,20 @@ export class ChatComponent implements OnInit {
     const id = this.rdf.getSession();
     this.chat.newChat(id);
   }*/
+
+    private createNewFolder() {
+
+        let solidId = this.rdf.session.webId;
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A');
+
+        this.solidFileClient.popupLogin().then( webId => {
+            console.log( `Logged in as ${webId}.`);
+        }, err => console.log(err) );
+
+        this.solidFileClient.createFolder(solidId).then(success => {
+            console.log(`Created folder ${solidId}.`);
+        }, err => console.log(err) );
+
+    }
 
 }
