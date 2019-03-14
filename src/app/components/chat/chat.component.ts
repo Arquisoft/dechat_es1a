@@ -15,6 +15,8 @@ export class ChatComponent implements OnInit {
 
   mi_listado_de_friends: Friend[] = [];
   solidFileClient: any;
+  username = '';
+  isHidden = false;
 
   constructor(private rdf: RdfService, private toastr: ToastrService) { }
 
@@ -84,6 +86,8 @@ export class ChatComponent implements OnInit {
             console.log( `Logged in as ${webId}.`);
         }, err => console.log(err) );
 
+        this.isHidden = true;
+        this.username = name;
         // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
         this.createNewFolder();
         this.solidFileClient.updateFile(solidId).then(success => {
