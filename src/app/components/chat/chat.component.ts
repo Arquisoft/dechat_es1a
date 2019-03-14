@@ -17,8 +17,10 @@ export class ChatComponent implements OnInit {
   solidFileClient: any;
   username = '';
   isHidden = false;
+  messageText = '';
 
-  constructor(private rdf: RdfService, private toastr: ToastrService) { }
+
+    constructor(private rdf: RdfService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.loadFriends();
@@ -76,8 +78,8 @@ export class ChatComponent implements OnInit {
     }
 
     // Crea un fichero nuevo si no existe, sino lo deja tal cual
-    // El metodo "createFile" crea indefinidos ficheros con un numero distinto
-    protected createFile(name: string) {
+    // El metodo "startConversation" crea indefinidos ficheros con un numero distinto
+    protected startConversation(name: string) {
 
         let solidId = this.rdf.session.webId;
         solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
@@ -96,5 +98,55 @@ export class ChatComponent implements OnInit {
         }, err => console.log(err) );
 
     }
+
+    protected updateFile(name: string, text: string) {
+
+        let solidId = this.rdf.session.webId;
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+
+        this.solidFileClient.popupLogin().then( webId => {
+            console.log( `Logged in as ${webId}.`);
+        }, err => console.log(err) );
+
+        this.solidFileClient.updateFile(solidId).then(success => {
+            console.log(`Updated file ${solidId}.`);
+            this.toastr.success('Fichero actualizado!', 'Success!');
+        }, err => console.log(err) );
+
+    }
+
+    protected sendMessage(name: string) {
+
+        let solidId = this.rdf.session.webId;
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+
+        this.solidFileClient.popupLogin().then( webId => {
+            console.log( `Logged in as ${webId}.`);
+        }, err => console.log(err) );
+
+        this.solidFileClient.updateFile(solidId, this.messageText).then(success => {
+            console.log(`Mensaje enviado ${solidId}.` + this.messageText);
+            this.toastr.success('Mensaje enviado!', 'Success!');
+        }, err => console.log(err) );
+
+    }
+
+    protected readFile(name: string) {
+
+        let solidId = this.rdf.session.webId;
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+
+        this.solidFileClient.popupLogin().then( webId => {
+            console.log( `Logged in as ${webId}.`);
+        }, err => console.log(err) );
+
+        this.solidFileClient.readFile(solidId).then(body => {
+            console.log(`File content is : ${body}.`);
+            this.toastr.success('Fichero leido!', 'Success!');
+        }, err => console.log(err) );
+
+    }
+
+
 
 }
