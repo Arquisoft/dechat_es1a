@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
-//import { ChatController} from './chatController';
+// import { ChatController} from './chatController';
 import { ToastrService } from 'ngx-toastr';
 
 declare var require: any;
@@ -15,9 +15,8 @@ export class ChatComponent implements OnInit {
 
   mi_listado_de_friends: Friend[] = [];
   solidFileClient: any;
-  private toastr: any;
 
-  constructor(private rdf: RdfService) { }
+  constructor(private rdf: RdfService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.loadFriends();
@@ -69,6 +68,7 @@ export class ChatComponent implements OnInit {
 
         this.solidFileClient.createFolder(solidId).then(success => {
             console.log(`Created folder ${solidId}.`);
+            this.toastr.success('Folder created!', 'Success!');
         }, err => console.log(err) );
 
     }
