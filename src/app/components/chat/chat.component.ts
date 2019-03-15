@@ -72,7 +72,7 @@ export class ChatComponent implements OnInit {
     private createNewFolder() {
 
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A');
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + this.username);
 
         this.solidFileClient.popupLogin().then(webId => {
             console.log(`Logged in as ${webId}.`);
@@ -102,6 +102,7 @@ export class ChatComponent implements OnInit {
         this.username = name;
         // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
         this.createNewFolder();
+        this.createPermissions(solidId + '/' + name, this.username);
 
         // Borra el fichero pisando lo anterior CUIDADO TODO
         this.solidFileClient.updateFile(solidId).then(success => {
@@ -114,7 +115,7 @@ export class ChatComponent implements OnInit {
     protected updateFile(name: string, text: string) {
 
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name + '/' + name);
 
         this.solidFileClient.popupLogin().then( webId => {
             console.log( `Logged in as ${webId}.`);
@@ -130,7 +131,7 @@ export class ChatComponent implements OnInit {
     protected sendMessage(name: string) {
 
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name );
         const body = this.readFile(this.username);
 
         this.solidFileClient.popupLogin().then( webId => {
@@ -147,7 +148,8 @@ export class ChatComponent implements OnInit {
     protected readFile(name: string) {
 
         let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name + '/' + name);
+
 
         this.solidFileClient.popupLogin().then( webId => {
             console.log( `Logged in as ${webId}.`);
@@ -160,6 +162,17 @@ export class ChatComponent implements OnInit {
             console.log(`File content is : ${body}.`);
             this.toastr.success('Fichero leido!', 'Success!');
         }, err => console.log(err) );
+
+    }
+
+
+    protected createPermissions(route: string, user: string) {
+        const aclRoute = route + '.acl';
+        const acl = this.chatController.generateACL(aclRoute, user + 'ACL');
+
+        this.solidFileClient.updateFile(aclRoute, acl).then(success => {
+            console.log( `ACL creado`);
+        }, err => this.solidFileClient.createFile(aclRoute, acl).then(200));
 
     }
 
