@@ -3,7 +3,7 @@ import { RdfService } from '../../services/rdf.service';
 import { Friend } from '../../models/friend.model';
 import { ChatController } from './chatController';
 import { ToastrService } from 'ngx-toastr';
-import {Message} from '../../models/message.model';
+import { Message } from '../../models/message.model';
 
 declare var require: any;
 
@@ -101,14 +101,22 @@ export class ChatComponent implements OnInit {
         this.username = name;
         // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
        this.createNewFolder();
-       // this.createPermissions(this.solidIdFolder, this.username);
+
+       let friendURL: string;
+       for (let i = 0; i < this.mi_listado_de_friends.length; i++) {
+           if (this.username === this.mi_listado_de_friends[i].name) {
+               friendURL = (this.mi_listado_de_friends[i].url);
+           }
+       }
+       this.createPermissions(this.solidIdFolder, friendURL);
 
         // Borra el fichero pisando lo anterior CUIDADO TODO
         await this.solidFileClient.updateFile(this.solidId + this.username + 'Chat').then(success => {
             console.log(`Created file ${this.solidId + this.username + 'Chat'}.`);
             this.toastr.success('File created!', 'Success!');
         }, err => console.log(err) );
-       // this.chatController.grantPermissions(this.solidIdFolder + 'ACL', name);
+        console.log(this.solidIdFolder);
+        this.chatController.grantPermissions(this.solidIdFolder, name);
     }
 
     protected updateFile(name: string, text: string) {
@@ -155,17 +163,14 @@ export class ChatComponent implements OnInit {
 
     }
 
-
     protected createPermissions(route: string, user: string) {
+        console.log(route);
         const aclRoute = route + '.acl';
-        const acl = this.chatController.generateACL(aclRoute, user + 'ACL');
+        console.log(aclRoute);
+        /*const acl = this.chatController.generateACL(aclRoute, user);
 
         this.solidFileClient.updateFile(aclRoute, acl).then(success => {
-            console.log( `ACL creado`);
+            console.log( 'ACL created');
         }, err => this.solidFileClient.createFile(aclRoute, acl).then(200));
-
-    }
-
-
-
+    */}
 }
