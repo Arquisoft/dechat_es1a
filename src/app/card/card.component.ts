@@ -5,10 +5,6 @@ import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
 import { shortChatPane } from '../chat/shortChatPane';
-import {forEach} from '@angular/router/src/utils/collection';
-import {store} from '@angular/core/src/render3/instructions';
-import {of} from 'rxjs';
-
 
 @Component({
   selector: 'app-card',
@@ -19,7 +15,6 @@ export class CardComponent implements OnInit  {
 
   profile: SolidProfile;
   friends: Array<string>;
-  friends_names: Array<string>;
   profileImage: string;
   loadingProfile: Boolean;
   chat: shortChatPane;
@@ -42,7 +37,7 @@ export class CardComponent implements OnInit  {
   async loadFriends() {
     try {
       const list_friends = await this.rdf.getFriends();
-      //const list_names = await this.rdf.getFriendsNames();
+      // const list_names = await this.rdf.getFriendsNames();
       if (list_friends) {
         document.write('<h1>These are my friends</h1>');
         for (let i = 0; i < list_friends.length; i++) {
