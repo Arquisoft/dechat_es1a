@@ -22,9 +22,9 @@ export class ChatComponent implements OnInit {
   mensajes: Message[] = [];
   chatController: any;
   // https://jonivalles.solid.community/public/deChatES1A/sofimrtn.
-  solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA3/' + this.username);
+  solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA4/' + this.username);
   // https://jonivalles.solid.community/public/deChatES1A/sofimrtn/XXXXXX (Inside folder)
-  solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA3/' + this.username + '/' + this.username);
+  solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA4/' + this.username + '/' + this.username);
 
 
     constructor(private rdf: RdfService, private toastr: ToastrService) { }
@@ -75,7 +75,6 @@ export class ChatComponent implements OnInit {
      */
     private createNewFolder() {
 
-
         this.solidFileClient.popupLogin().then(webId => {
             console.log(`Logged in as ${webId}.`);
         }, err => console.log(err));
@@ -108,7 +107,9 @@ export class ChatComponent implements OnInit {
                friendURL = (this.mi_listado_de_friends[i].url);
            }
        }
+       console.log(this.solidIdFolder);
        this.createPermissions(this.solidIdFolder, friendURL);
+        this.chatController.grantPermissions(this.solidIdFolder, friendURL);
 
         // Borra el fichero pisando lo anterior CUIDADO TODO
         await this.solidFileClient.updateFile(this.solidId + this.username + 'Chat').then(success => {
@@ -116,7 +117,6 @@ export class ChatComponent implements OnInit {
             this.toastr.success('File created!', 'Success!');
         }, err => console.log(err) );
         console.log(this.solidIdFolder);
-        this.chatController.grantPermissions(this.solidIdFolder, name);
     }
 
     protected updateFile(name: string, text: string) {
@@ -167,10 +167,10 @@ export class ChatComponent implements OnInit {
         console.log(route);
         const aclRoute = route + '.acl';
         console.log(aclRoute);
-        /*const acl = this.chatController.generateACL(aclRoute, user);
+        const acl = this.chatController.generateACL(aclRoute, user);
 
         this.solidFileClient.updateFile(aclRoute, acl).then(success => {
             console.log( 'ACL created');
         }, err => this.solidFileClient.createFile(aclRoute, acl).then(200));
-    */}
+    }
 }
