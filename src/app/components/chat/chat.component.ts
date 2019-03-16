@@ -33,31 +33,9 @@ export class ChatComponent implements OnInit {
      */
     async loadFriends() {
 
-        let list_friends;
-            list_friends = this.chat.loadFriends(); // returns an array of urls
-            if (list_friends) {
-                for (let i = 0; i < list_friends.length; i++) {
-                    const names = this.parseURL(list_friends[i]);
-                    const amigo: Friend = {name: names, url: list_friends[i]};
-                    this.mi_listado_de_friends.push(amigo);
-                }
-            }
+        this.chat.loadFriends();
+        this.mi_listado_de_friends = this.chat.mi_listado_de_friends;
     }
-
-    /**
-     * get names from friend's url
-     * @param url
-     */
-    private parseURL(url: string): string {
-        const sinHttps = url.replace('https://', '');
-        const name = sinHttps.split('.')[0];
-        return name;
-    }
-
-    /*async createChat() {
-      const id = this.rdf.getSession();
-      this.chat.newChat(id);
-    }*/
 
     /**
      * Method that creates a folder where our app will write our persistence
