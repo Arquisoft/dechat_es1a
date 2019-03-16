@@ -4,7 +4,7 @@ import { RdfService } from './rdf.service';
 import { ToastrService } from 'ngx-toastr';
 import {ChatController} from '../components/chat/chatController';
 
-
+declare var require: any;
 import solid_file_client from 'solid-file-client';
 
 @Injectable({
@@ -23,8 +23,9 @@ export class ChatService {
   mi_listado_de_friends: Friend[] = [];
 
 
+
   constructor(private rdf: RdfService, private toastr: ToastrService) {
-    this.solidFileClient = solid_file_client;
+    this.solidFileClient = require('solid-file-client');
     this.chatController = new ChatController(this.solidFileClient);
   }
 
