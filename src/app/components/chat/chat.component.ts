@@ -70,14 +70,14 @@ export class ChatComponent implements OnInit {
     }
 
     private createURL(friendName: String) {
-        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA6/' + friendName + '/');
+        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA7/' + friendName + '/');
     }
 
     /**
      * Creates the base folder for the app
      */
     private createSolidId() {
-        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA6/');
+        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA7/');
     }
 
     private createBaseFolder() {
@@ -91,7 +91,7 @@ export class ChatComponent implements OnInit {
             this.toastr.success('Folder created!', 'Success!');
         }, err => console.log(err));
 
-        this.createBasePermissions(this.solidIdFolder);
+        this.createBasePermissions(this.solidId);
     }
 
     /**

@@ -6,9 +6,9 @@ export class ChatController {
     constructor(private file: FileService) {  }
 
     grantBasePermissions(fileURL: string) {
-        const aclURL = fileURL + '.acl';
+        const aclURL = fileURL;
         console.log('Creating file in ' + aclURL);
-        this.file.updateFile(aclURL, this.generateBaseACL(aclURL), );
+        this.file.updateFile(aclURL, this.generateBaseACL(aclURL));
         console.log('File created');
     }
 
@@ -18,9 +18,9 @@ export class ChatController {
      * @param user
      */
     grantPermissions(fileURL: string, user: string) {
-        const aclURL = fileURL + '.acl';
+        const aclURL = fileURL;
         console.log('Creating file in ' + aclURL);
-        this.file.updateFile(aclURL, this.generateACL(aclURL, user), );
+        this.file.updateFile(aclURL, this.generateACL(aclURL, user));
         console.log('File created');
     }
 
@@ -42,7 +42,7 @@ export class ChatController {
             + '\tacl:mode acl:Control, acl:Read, acl:Write. \n'
 
             + '<#public>'
-            + ':Read \n'
+            + '\n:Read \n'
             + '\ta acl:Authorization; \n'
             + '\tacl:accessTo <' + fileURL + '>; \n'
             + '\tacl:agent c0:me; \n'
