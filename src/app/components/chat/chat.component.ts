@@ -70,16 +70,19 @@ export class ChatComponent implements OnInit {
     }
 
     private createURL(friendName: String) {
-        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA7/' + friendName + '/');
+        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA8/' + friendName + '/');
+    }
+
+    /**
+     * Creates the base folder route for the app
+     */
+    private createSolidId() {
+        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA8/');
     }
 
     /**
      * Creates the base folder for the app
      */
-    private createSolidId() {
-        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA7/');
-    }
-
     private createBaseFolder() {
         this.solidFileClient.popupLogin().then(webId => {
             console.log(`Logged in as ${webId}.`);
@@ -184,6 +187,10 @@ export class ChatComponent implements OnInit {
 
     }
 
+    /**
+     * Creates the permissions for the base folder of the app
+     * @param route
+     */
     protected createBasePermissions(route: string) {
         console.log(route);
         const aclRoute = route + '.acl';
@@ -195,6 +202,11 @@ export class ChatComponent implements OnInit {
         }, err => this.solidFileClient.createFile(aclRoute, acl).then(200));
     }
 
+    /**
+     * Creates the permissions file for a specific folder
+     * @param route
+     * @param user
+     */
     protected createPermissions(route: string, user: string) {
         console.log(route);
         const aclRoute = route + '.acl';

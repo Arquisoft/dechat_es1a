@@ -5,6 +5,10 @@ import { WebClient } from 'solid-web-client';
 export class ChatController {
     constructor(private file: FileService) {  }
 
+    /**
+     * Method to grant privileges to the main folder of the app
+     * @param fileURL
+     */
     grantBasePermissions(fileURL: string) {
         const aclURL = fileURL;
         console.log('Creating file in ' + aclURL);
@@ -25,9 +29,8 @@ export class ChatController {
     }
 
     /**
-     * Generates an ACL permissions file in the specified folder and grants read privilege to the other user
+     * Generates an ACL permissions file in the specified folder and grants read privilege to the public
      * @param fileURL
-     * @param user the user who we are granting permissions to read the file
      */
     private generateBaseACL(fileURL: string) {
         const ACL = '@prefix : <#>. \n'
