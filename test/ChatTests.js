@@ -1,9 +1,13 @@
 
-import {ChatService} from "../src/app/services/chat.service";
 
+
+import { ChatService } from './src/app/services/chat.service.ts'
+import { describe, it } from 'mocha'
+import { assert, expect } from 'chai'
+
+const WebID = "https://test1a.solid.community/profile/card#me";
 
 const chat = new ChatService();
-const WebID = "https://test1a.solid.community/profile/card#me";
 
 describe("Obtaining Friend List", function () {
 
