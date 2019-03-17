@@ -24,63 +24,63 @@ import { ChatComponent } from './components/chat/chat.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'login-popup',
-    component: LoginPopupComponent
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'card',
-    component: CardComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'components/friends',
-    component: FriendsComponent
-  },
-  {
-    path: 'components/chat',
-    component: ChatComponent
-  }
+    {
+        path: '',
+        component: LoginComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'login-popup',
+        component: LoginPopupComponent
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'card',
+        component: CardComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'register',
+        component: RegisterComponent
+    },
+    {
+        path: 'components/friends',
+        component: FriendsComponent
+    },
+    {
+        path: 'components/chat',
+        component: ChatComponent
+    }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    LoginPopupComponent,
-    DashboardComponent,
-    CardComponent,
-    RegisterComponent,
-    NavbarComponent,
-    FriendsComponent,
-    ChatComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(routes),
-    NgSelectModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule //required for toastr
-  ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        LoginPopupComponent,
+        DashboardComponent,
+        CardComponent,
+        RegisterComponent,
+        NavbarComponent,
+        FriendsComponent,
+        ChatComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
+        NgSelectModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule //required for toastr
+    ],
+    providers: [AuthService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
