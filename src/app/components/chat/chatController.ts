@@ -36,15 +36,15 @@ export class ChatController {
         const ACL = '@prefix : <#>. \n'
             + '@prefix acl: <http://www.w3.org/ns/auth/acl#>. \n'
             + '@prefix c: </profile/card#>. \n'
-
             + '@prefix c0: <#owner>. \n'
-            + '\n:ControlReadWrite \n'
-            + '\ta acl:Authorization; \n'
-            + '\tacl:accessTo <' + fileURL + '>; \n'
-            + '\tacl:agent c:me; \n'
-            + '\tacl:mode acl:Control, acl:Read, acl:Write. \n'
 
-            + '<#public>'
+            + '\n:ControlReadWrite \n'
+                + '\ta acl:Authorization; \n'
+                + '\tacl:accessTo <' + fileURL + '>; \n'
+                + '\tacl:agent c:me; \n'
+                + '\tacl:mode acl:Control, acl:Read, acl:Write. \n'
+
+
             + '\n:Read \n'
             + '\ta acl:Authorization; \n'
             + '\tacl:accessTo <' + fileURL + '>; \n'

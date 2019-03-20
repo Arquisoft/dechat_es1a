@@ -15,9 +15,9 @@ export class ChatService {
     solidFileClient: any;
     username = '';
     // https://jonivalles.solid.community/public/deChatES1A/sofimrtn.
-    solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA3/' + this.username);
+    solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA10/' + this.username);
     // https://jonivalles.solid.community/public/deChatES1A/sofimrtn/XXXXXX (Inside folder)
-    solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA3/' + this.username + '/' + this.username);
+    solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA10/' + this.username + '/' + this.username);
     messageText = '';
     mi_listado_de_friends: Friend[] = [];
 
@@ -74,11 +74,11 @@ export class ChatService {
             this.toastr.success('Folder created!', 'Success!');
         }, err => console.log(err));
 
-        this.createBasePermissions(this.solidId);
+        this.createPermissions(this.solidId, this.username);
     }
 
     private createSolidId() {
-        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA8/');
+        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA10/');
     }
 
 
@@ -129,7 +129,7 @@ export class ChatService {
 
     private createPermissions(route: string, user: string) {
         const aclRoute = route + '.acl';
-        const acl = this.chatController.generateACL(aclRoute, user + 'ACL');
+        const acl = this.chatController.generateACL(aclRoute, user);
 
         this.solidFileClient.updateFile(aclRoute, acl).then(success => {
             console.log(`ACL creado`);
@@ -202,6 +202,6 @@ export class ChatService {
 
 
     private createURL(friendName: String) {
-        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA8/' + friendName + '/');
+        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA10/' + friendName + '/');
     }
 }
