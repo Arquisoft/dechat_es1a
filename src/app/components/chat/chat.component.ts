@@ -35,6 +35,7 @@ export class ChatComponent implements OnInit {
 
     startConversation(name: string) {
         this.isHidden = true;
+        console.log(name);
         this.chat.startConversation(name);
     }
 

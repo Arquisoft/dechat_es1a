@@ -15,9 +15,9 @@ export class ChatService {
     solidFileClient: any;
     username = '';
     // https://jonivalles.solid.community/public/deChatES1A/sofimrtn.
-    solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA3/' + this.username);
+    solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA11/' + this.username);
     // https://jonivalles.solid.community/public/deChatES1A/sofimrtn/XXXXXX (Inside folder)
-    solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA3/' + this.username + '/' + this.username);
+    solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA11/' + this.username + '/' + this.username);
     messageText = '';
     mi_listado_de_friends: Friend[] = [];
 
@@ -78,7 +78,7 @@ export class ChatService {
     }
 
     private createSolidId() {
-        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA8/');
+        this.solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA11/');
     }
 
 
@@ -120,16 +120,16 @@ export class ChatService {
         console.log(route);
         const aclRoute = route + '.acl';
         console.log(aclRoute);
-        const acl = this.chatController.grantBasePermissions(aclRoute);
+        const acl = this.chatController.grantBasePermissions(route);
 
-        this.solidFileClient.updateFile(aclRoute, acl).then(success => {
+        this.solidFileClient.updateFile(route, acl).then(success => {
             console.log('ACL created');
-        }, err => this.solidFileClient.createFile(aclRoute, acl).then(200));
+        }, err => this.solidFileClient.createFile(route, acl).then(200));
     }
 
     private createPermissions(route: string, user: string) {
         const aclRoute = route + '.acl';
-        const acl = this.chatController.generateACL(aclRoute, user + 'ACL');
+        const acl = this.chatController.generateACL(aclRoute, user);
 
         this.solidFileClient.updateFile(aclRoute, acl).then(success => {
             console.log(`ACL creado`);
@@ -202,6 +202,6 @@ export class ChatService {
 
 
     private createURL(friendName: String) {
-        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA8/' + friendName + '/');
+        this.solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA11/' + friendName + '/');
     }
 }

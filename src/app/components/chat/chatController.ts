@@ -44,7 +44,6 @@ export class ChatController {
             + '\tacl:agent c:me; \n'
             + '\tacl:mode acl:Control, acl:Read, acl:Write. \n'
 
-            + '<#public>'
             + '\n:Read \n'
             + '\ta acl:Authorization; \n'
             + '\tacl:accessTo <' + fileURL + '>; \n'
