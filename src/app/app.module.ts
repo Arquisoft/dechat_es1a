@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 
 
@@ -70,7 +71,8 @@ const routes: Routes = [
         RegisterComponent,
         NavbarComponent,
         FriendsComponent,
-        ChatComponent
+        ChatComponent,
+        PruebaComponent
     ],
     imports: [
         BrowserModule,
@@ -78,8 +80,9 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
         NgSelectModule,
         ToastrModule.forRoot(),
-        BrowserAnimationsModule //required for toastr
+        BrowserAnimationsModule // required for toastr
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     providers: [AuthService],
     bootstrap: [AppComponent]
 })
