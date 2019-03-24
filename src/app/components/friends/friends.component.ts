@@ -27,7 +27,7 @@ export class FriendsComponent implements OnInit {
             if (list_friends) {
                 for (let i = 0; i < list_friends.length; i++) {
                     const names = this.parseURL(list_friends[i]);
-                    const amigo: Friend = {name: names, url: list_friends[i]};
+                    const amigo: Friend = {name: names, webid: list_friends[i]};
                     this.mi_listado_de_friends.push(amigo);
                 }
             }

@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="list-group" >
-          <a  *ngFor="let item of mi_listado_de_friends" class="list-group-item list-group-item-action" (click)="startConversation(item.name)"><div class="fas fa-user"></div> {{item.name}}</a>
+          <a  *ngFor="let item of mi_listado_de_friends" class="list-group-item list-group-item-action"><div class="fas fa-user"></div> {{item}}</a>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Click one contact to start a conversation!</h3>
     </div>
 
-    <div *ngIf="isHidden" class="col-sm-8">
+ <!--   <div *ngIf="isHidden" class="col-sm-8">
       <div class="chatbody">
         <div class="panel panel-primary">
           <div class="panel-heading top-bar" style="background-color: #7C4DFF">
@@ -38,31 +38,8 @@
               <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> {{username}} </h3>
             </div>
           </div>
-          <div class="panel-body msg_container_base">
-            <div class="row msg_container base_sent">
-              <div class="col-md-10 col-xs-10">
-                <div class="messages msg_sent">
-                  <p>that mongodb thing looks good, huh?
-                    tiny master db, and huge document store</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-            </div>
-            <div class="row msg_container base_receive">
-              <div class="col-md-2 col-xs-2 avatar">
-                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
-              </div>
-              <div class="col-md-10 col-xs-10">
-                <div class="messages msg_receive">
-                  <p>{{messageText}}</p>
-                  <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div *ngFor="let message of messages">
+              <p>{{message.content}}</p>
           <div class="panel-footer">
             <div class="input-group">
               <input id="btn-input" type="text" [(ngModel)]="messageText"  class="form-control input-sm chat_input" placeholder="Write your message here..." />
@@ -78,7 +55,7 @@
         </div>
 
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
 </body>

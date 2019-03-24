@@ -4,7 +4,7 @@ import {Friend} from '../../models/friend.model';
 import {ChatController} from './chatController';
 import {ToastrService} from 'ngx-toastr';
 import {ChatService} from '../../services/chat.service';
-import {Message} from '../../models/message.model';
+import {message} from '../../models/message.model';
 
 declare var require: any;
 
@@ -16,42 +16,26 @@ declare var require: any;
 export class ChatComponent implements OnInit {
 
 
-    mi_listado_de_friends: Friend[] = [];
+    mi_listado_de_friends: string[] = [];
     username = '';
     isHidden = false;
     messageText = '';
+    fileClient: any;
 
 
     constructor(private rdf: RdfService, private toastr: ToastrService, private chat: ChatService) {
     }
 
     ngOnInit() {
-        this.chat.loadFriends().then(res => {
+        this.chat.loadFriends().then( res => {
             this.mi_listado_de_friends = res;
         });
-        this.chat.createBaseFolder();
-
     }
-
-    startConversation(name: string) {
-        this.isHidden = true;
-        console.log(name);
-        this.chat.startConversation(name);
-    }
-
-    updateFile(name: string, text: string) {
-        this.chat.updateFile(name, text);
-    }
-
-    protected sendMessage(name: string) {
-
-        this.chat.sendMessage(name);
-    }
-
-    protected readFile(name: string) {
-
-        this.messageText = this.chat.readFile(name);
-
+    private getUserByUrl(ruta: string): string {
+        let sinhttp;
+        sinhttp = ruta.replace('https://', '');
+        const user = sinhttp.split('.')[0];
+        return user;
     }
 
 
