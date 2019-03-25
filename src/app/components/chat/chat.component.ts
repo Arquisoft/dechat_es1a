@@ -29,8 +29,15 @@ export class ChatComponent implements OnInit {
 
     ngOnInit() {
         this.chat.loadFriends().then(res => {
-            document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
-            this.mi_listado_de_friends = res;
+            if(res.length ==  0)
+            {
+                document.write('You don\'t have friends to chat');
+            }
+            else {
+                document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
+                this.mi_listado_de_friends = res;
+            }
+
         });
         this.fileClient = require('solid-file-client');
 
