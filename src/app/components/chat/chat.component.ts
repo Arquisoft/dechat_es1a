@@ -19,7 +19,6 @@ export class ChatComponent implements OnInit {
 
     mi_listado_de_friends: string[] = [];
     username = '';
-    isHidden = false;
     fileClient: any;
     ruta_seleccionada: string;
     messages: message[] = [];
@@ -30,9 +29,12 @@ export class ChatComponent implements OnInit {
 
     ngOnInit() {
         this.chat.loadFriends().then(res => {
+            document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
             this.mi_listado_de_friends = res;
         });
         this.fileClient = require('solid-file-client');
+
+      //  document.getElementById('receiver').innerHTML = this.mi_listado_de_friends;
     }
 
 
