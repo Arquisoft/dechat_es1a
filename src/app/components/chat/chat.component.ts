@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit {
     ruta_seleccionada: string;
     messages: message[] = [];
     ruta: string;
+    messages_size = 0;
 
     constructor(private rdf: RdfService, private toastr: ToastrService, private chat: ChatService) {
     }
@@ -38,7 +39,10 @@ export class ChatComponent implements OnInit {
         });
         this.fileClient = require('solid-file-client');
 
-      //  document.getElementById('receiver').innerHTML = this.mi_listado_de_friends;
+
+        setInterval(() => {
+            this.actualizar();
+            }, 3000);
     }
 
 
@@ -90,7 +94,7 @@ export class ChatComponent implements OnInit {
     }
 
     async actualizar() {
-        this.messages = [];
+        let messages_aux = [];
         const user = this.getUserByUrl(this.ruta_seleccionada);
         let senderId = this.rdf.session.webId;
         const stringToChange = '/profile/card#me';
@@ -111,9 +115,11 @@ export class ChatComponent implements OnInit {
                     recipient: messageArrayContent[1]
                 };
                 console.log(messageToAdd);
-                this.messages.push(messageToAdd);
+                messages_aux.push(messageToAdd);
             }
         });
+
+
 
         var urlArray = this.ruta_seleccionada.split("/");
         let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + "/Conversation.txt";
@@ -134,9 +140,18 @@ export class ChatComponent implements OnInit {
                         recipient: messageArrayContent[1]
                     };
                     console.log(messageToAdd);
-                    this.messages.push(messageToAdd);
+                    messages_aux.push(messageToAdd);
                 }
             });
+
+            console.log("TAMAÑO messages_AUX: " + messages_aux.length);
+            console.log("TAMAÑO messages: " + this.messages.length);
+
+            if(messages_aux.length != this.messages.length)
+            {
+                this.messages = [];
+                this.messages = messages_aux;
+            }
         }
     }
 
