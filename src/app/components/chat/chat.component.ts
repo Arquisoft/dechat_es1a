@@ -98,8 +98,8 @@ export class ChatComponent implements OnInit {
         senderId = senderId.replace(stringToChange, path);
         this.ruta = senderId;
         console.log('SENDERID:        ' + senderId);
-        const content = await this.readMessage(senderId);
-        const messageArray = content.split('\n');
+        let content = await this.readMessage(senderId);
+        let messageArray = content.split('\n');
         messageArray.forEach(element => {
             console.log(element.content);
             if (element[0]) {
@@ -115,6 +115,29 @@ export class ChatComponent implements OnInit {
             }
         });
 
+        var urlArray = this.ruta_seleccionada.split("/");
+        let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + "/Conversation.txt";
+        var contentReceiver = await this.readMessage(url);
+
+        if(!(contentReceiver === undefined)) {
+
+
+            var messageArrayReceiver = contentReceiver.split('\n');
+            messageArrayReceiver.forEach(element => {
+                console.log(element.content);
+                if (element[0]) {
+                    const messageArrayContent = element.split('###');
+                    const messageToAdd: message = {
+                        content: messageArrayContent[2],
+                        date: messageArrayContent[3],
+                        sender: messageArrayContent[0],
+                        recipient: messageArrayContent[1]
+                    };
+                    console.log(messageToAdd);
+                    this.messages.push(messageToAdd);
+                }
+            });
+        }
     }
 
     private async readMessage(url) {
