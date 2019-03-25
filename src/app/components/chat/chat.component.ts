@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RdfService} from '../../services/rdf.service';
 import {Friend} from '../../models/friend.model';
-import {ChatController} from './chatController';
 import {ToastrService} from 'ngx-toastr';
 import {ChatService} from '../../services/chat.service';
 import {message} from '../../models/message.model';
-import {initTransferState} from '@angular/platform-browser/src/browser/transfer_state';
 
 declare var require: any;
 
@@ -36,6 +34,7 @@ export class ChatComponent implements OnInit {
             else {
                 document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
                 this.mi_listado_de_friends = res;
+                this.ruta_seleccionada = res[0];
             }
 
         });
@@ -156,5 +155,29 @@ export class ChatComponent implements OnInit {
                 console.log(`Updated ${url}.`);
             }, err => console.log(err));
         }
+    }
+
+
+    async write() {
+
+        let myUser = this.getUserByUrl(this.rdf.session.webId);
+        let user = this.getUserByUrl(this.ruta_seleccionada);
+        var messageContent = (<HTMLInputElement>document.getElementById("comment")).value;
+
+  /*      //(document.getElementById("usermsg") as HTMLInputElement).value = "";
+        console.log("MY USER:          " + myUser);
+        console.log("RECEIVER:         " + this.ruta_seleccionada);
+        console.log("MESSAGE CONTENT   " + messageContent);
+*/
+
+        let senderId = this.rdf.session.webId;
+        let senderPerson: Friend = {webid: senderId, name: this.getUserByUrl(senderId)};
+
+        //Receiver WebId
+        let recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
+
+        let messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
+
+         console.log(messageToSend);
     }
 }
