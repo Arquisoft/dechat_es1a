@@ -151,8 +151,34 @@ export class ChatComponent implements OnInit {
             {
                 this.messages = [];
                 this.messages = messages_aux;
+                this.messages = this.order(this.messages);
             }
         }
+    }
+
+
+    private order(mess: message[]) {
+        let ordenado: message[] = [];
+        let aux = mess;
+        while (mess.length > 0) {
+            let idx = this.menor(aux);
+            ordenado.push(aux[idx]);
+            aux.splice(idx, 1);
+        }
+        return ordenado;
+    }
+
+
+    private menor(aux: message[]) {
+        var idx = 0;
+        var minor: message = aux[idx];
+        for (let i = 0; i < aux.length; i++) {
+            if (aux[i].date < minor.date) {
+                idx = i;
+                minor = aux[idx];
+            }
+        }
+        return idx;
     }
 
     private async readMessage(url) {
