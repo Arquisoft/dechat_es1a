@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Friend} from '../models/friend.model';
 import {RdfService} from './rdf.service';
 import {ToastrService} from 'ngx-toastr';
-import {ChatController} from '../components/chat/chatController';
 
 declare var require: any;
 import solid_file_client from 'solid-file-client';
@@ -24,7 +23,6 @@ export class ChatService {
 
     constructor(private rdf: RdfService, private toastr: ToastrService) {
         this.solidFileClient = require('solid-file-client');
-        this.chatController = new ChatController(this.solidFileClient);
     }
 
     /**
