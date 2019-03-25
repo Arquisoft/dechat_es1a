@@ -157,27 +157,16 @@ export class ChatComponent implements OnInit {
 
 
     async write() {
-
         const myUser = this.getUserByUrl(this.rdf.session.webId);
         const user = this.getUserByUrl(this.ruta_seleccionada);
         const messageContent = (<HTMLInputElement>document.getElementById('comment')).value;
-
-  /*      //(document.getElementById("usermsg") as HTMLInputElement).value = "";
-        console.log("MY USER:          " + myUser);
-        console.log("RECEIVER:         " + this.ruta_seleccionada);
-        console.log("MESSAGE CONTENT   " + messageContent);
-*/
-
+        (document.getElementById('comment') as HTMLInputElement).value = '';
         let senderId = this.rdf.session.webId;
         const senderPerson: Friend = {webid: senderId, name: this.getUserByUrl(senderId)};
-
         //Receiver WebId
         const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
-
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
-
          //console.log(messageToSend);
-
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/Conversation.txt';
         senderId = senderId.replace(stringToChange, path);
