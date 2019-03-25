@@ -89,10 +89,7 @@ export class ChatComponent implements OnInit {
         const urlArray = this.ruta_seleccionada.split('/');
     }
 
-    async actualizar(item) {
-        this.initSelection(item);
-        this.ruta_seleccionada = item.toString();
-        console.log(this.ruta_seleccionada);
+    async actualizar() {
         this.messages = [];
         const user = this.getUserByUrl(this.ruta_seleccionada);
         let senderId = this.rdf.session.webId;
@@ -167,6 +164,7 @@ export class ChatComponent implements OnInit {
         const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
          //console.log(messageToSend);
+
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/Conversation.txt';
         senderId = senderId.replace(stringToChange, path);
