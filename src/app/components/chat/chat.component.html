@@ -25,6 +25,37 @@
         </div>
       </div>
     </div>
+
+
+
+
+
+      <!-- AQUÍ VA EL CHAT -->
+
+      <div *ngFor="let message of messages">
+            <p> {{message.content}}</p>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
     <div>
         <div class="input-group" hidden="true" id="chat_mean_div">
@@ -33,10 +64,13 @@
                 <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..."> </textarea>
                 <button class="btn btn-primary btn-sm"  id="btn-chat" (click)="write()"><i class="fa fa-send fa-1x" aria-hidden="true"></i>Escribir</button>
                 <button class="btn btn-primary btn-sm"  id="btn-chat" (click)="actualizar()"><i class="fa fa-send fa-1x" aria-hidden="true"></i>Actualizar</button>
-
             </div>
+
         </div>
     </div>
+
+
+
 </div>
 
 
