@@ -1,12 +1,13 @@
 
 
 
-import { describe, it } from 'mocha'
-import { assert, expect } from 'chai'
+
+import { ChatService} from "../src/app/services/chat.service";
 
 const WebID = "https://test1a.solid.community/profile/card#me";
 
-const chat = require("../src/app/services/chat.service");
+const Chat = require("../src/app/services/chat.service");
+let chat = new ChatService();
 
 testCase("Obtaining Friend List", function () {
 
@@ -23,5 +24,6 @@ describe("Create new Folder", function () {
         const listOfFriends = await chat.loadFriends();
         expect(friends.length).toBe(1);
         expect(friends[friends.length -1].id).toBe("https://yagoprado.solid.community/profile/card#me");
+
     })
 })

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": [],
+    "types": ["jest"],
     "paths": {
       "zlib": ["node_modules/browserify-zlib/lib/index.js"],
       "http": ["node_modules/@angular/http"],
