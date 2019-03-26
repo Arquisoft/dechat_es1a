@@ -47,6 +47,7 @@ export class ChatComponent implements OnInit {
 
 
     initSelection(ruta) {
+        this.messages = [];
         this.ruta_seleccionada = ruta;
         const name = this.getUserByUrl(this.ruta_seleccionada);
         this.createNewFolder('dechat1a', '/public/');
@@ -101,33 +102,33 @@ export class ChatComponent implements OnInit {
         const path = '/public/dechat1a/' + user + '/Conversation.txt';
         senderId = senderId.replace(stringToChange, path);
         this.ruta = senderId;
-        console.log('SENDERID:        ' + senderId);
         let content = await this.readMessage(senderId);
-        let messageArray = content.split('\n');
-        messageArray.forEach(element => {
-            console.log(element.content);
-            if (element[0]) {
-                const messageArrayContent = element.split('###');
-                const messageToAdd: message = {
-                    content: messageArrayContent[2],
-                    date: messageArrayContent[3],
-                    sender: messageArrayContent[0],
-                    recipient: messageArrayContent[1]
-                };
-                console.log(messageToAdd);
-                messages_aux.push(messageToAdd);
-            }
-        });
+        console.log("CONTENT:   " + content);
+        if (!(content === undefined)) {
 
-
+            let messageArray = content.split('\n');
+            messageArray.forEach(element => {
+                console.log(element.content);
+                if (element[0]) {
+                    const messageArrayContent = element.split('###');
+                    const messageToAdd: message = {
+                        content: messageArrayContent[2],
+                        date: messageArrayContent[3],
+                        sender: messageArrayContent[0],
+                        recipient: messageArrayContent[1]
+                    };
+                    console.log(messageToAdd);
+                    messages_aux.push(messageToAdd);
+                }
+            });
+        }
 
         var urlArray = this.ruta_seleccionada.split("/");
-        let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + "/Conversation.txt";
+        let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + '/Conversation.txt';
         var contentReceiver = await this.readMessage(url);
 
+        console.log("CONTENT RECEIVER:                    " + contentReceiver);
         if(!(contentReceiver === undefined)) {
-
-
             var messageArrayReceiver = contentReceiver.split('\n');
             messageArrayReceiver.forEach(element => {
                 console.log(element.content);
@@ -143,17 +144,18 @@ export class ChatComponent implements OnInit {
                     messages_aux.push(messageToAdd);
                 }
             });
+        }
 
             console.log("TAMAÑO messages_AUX: " + messages_aux.length);
             console.log("TAMAÑO messages: " + this.messages.length);
 
-            if(messages_aux.length != this.messages.length)
+            if (messages_aux.length != this.messages.length)
             {
                 this.messages = [];
                 this.messages = messages_aux;
                 this.messages = this.order(this.messages);
             }
-        }
+
     }
 
 
