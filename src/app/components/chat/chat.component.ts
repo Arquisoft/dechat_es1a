@@ -21,7 +21,6 @@ export class ChatComponent implements OnInit {
     ruta_seleccionada: string;
     messages: message[] = [];
     ruta: string;
-    messages_size = 0;
 
     constructor(private rdf: RdfService, private toastr: ToastrService, private chat: ChatService) {
     }
@@ -34,15 +33,19 @@ export class ChatComponent implements OnInit {
                 document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
                 this.mi_listado_de_friends = res;
                 this.ruta_seleccionada = res[0];
-            }
 
+
+
+                const name = this.getUserByUrl(this.ruta_seleccionada);
+                this.createNewFolder('dechat1a', '/public/');
+                this.createNewFolder(name, '/public/dechat1a/');
+            }
         });
         this.fileClient = require('solid-file-client');
-
-
+        console.log(this.ruta_seleccionada);
         setInterval(() => {
             this.actualizar();
-            }, 3000);
+        }, 3000);
     }
 
 
@@ -146,15 +149,15 @@ export class ChatComponent implements OnInit {
             });
         }
 
-            console.log("TAMAÑO messages_AUX: " + messages_aux.length);
-            console.log("TAMAÑO messages: " + this.messages.length);
+        console.log("TAMAÑO messages_AUX: " + messages_aux.length);
+        console.log("TAMAÑO messages: " + this.messages.length);
 
-            if (messages_aux.length != this.messages.length)
-            {
-                this.messages = [];
-                this.messages = messages_aux;
-                this.messages = this.order(this.messages);
-            }
+        if (messages_aux.length != this.messages.length)
+        {
+            this.messages = [];
+            this.messages = messages_aux;
+            this.messages = this.order(this.messages);
+        }
 
     }
 
@@ -229,7 +232,7 @@ export class ChatComponent implements OnInit {
         //Receiver WebId
         const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
-         //console.log(messageToSend);
+        //console.log(messageToSend);
 
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/Conversation.txt';
@@ -246,6 +249,13 @@ export class ChatComponent implements OnInit {
         } else {
             this.updateTTL(senderId, new TXTPrinter().getTXTDataFromMessage(messageToSend));
         }
+    }
+
+
+    getProfilePicture(user)
+    {
+        let a = user.toString().replace("card#me", "perfil.jpeg");
+        return a;
     }
 }
 
