@@ -250,6 +250,13 @@ export class ChatComponent implements OnInit {
             this.updateTTL(senderId, new TXTPrinter().getTXTDataFromMessage(messageToSend));
         }
     }
+
+
+    getProfilePicture(user)
+    {
+        let a = user.toString().replace("card#me", "perfil.jpeg");
+        return a;
+    }
 }
 
 class TXTPrinter {
