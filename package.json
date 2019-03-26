@@ -16,6 +16,12 @@
     "puml": "./node_modules/.bin/puml",
     "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs"
   },
+
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
+  },
+
   "author": "Arquisoft/ES1A",
   "license": "MIT",
   "browser": {
