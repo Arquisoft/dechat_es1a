@@ -21,7 +21,6 @@ export class ChatComponent implements OnInit {
     ruta_seleccionada: string;
     messages: message[] = [];
     ruta: string;
-    messages_size = 0;
 
     constructor(private rdf: RdfService, private toastr: ToastrService, private chat: ChatService) {
     }
@@ -34,19 +33,24 @@ export class ChatComponent implements OnInit {
                 document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
                 this.mi_listado_de_friends = res;
                 this.ruta_seleccionada = res[0];
-            }
 
+
+
+                const name = this.getUserByUrl(this.ruta_seleccionada);
+                this.createNewFolder('dechat1a', '/public/');
+                this.createNewFolder(name, '/public/dechat1a/');
+            }
         });
         this.fileClient = require('solid-file-client');
-
-
+        console.log(this.ruta_seleccionada);
         setInterval(() => {
             this.actualizar();
-            }, 3000);
+        }, 3000);
     }
 
 
     initSelection(ruta) {
+        this.messages = [];
         this.ruta_seleccionada = ruta;
         const name = this.getUserByUrl(this.ruta_seleccionada);
         this.createNewFolder('dechat1a', '/public/');
@@ -101,33 +105,33 @@ export class ChatComponent implements OnInit {
         const path = '/public/dechat1a/' + user + '/Conversation.txt';
         senderId = senderId.replace(stringToChange, path);
         this.ruta = senderId;
-        console.log('SENDERID:        ' + senderId);
         let content = await this.readMessage(senderId);
-        let messageArray = content.split('\n');
-        messageArray.forEach(element => {
-            console.log(element.content);
-            if (element[0]) {
-                const messageArrayContent = element.split('###');
-                const messageToAdd: message = {
-                    content: messageArrayContent[2],
-                    date: messageArrayContent[3],
-                    sender: messageArrayContent[0],
-                    recipient: messageArrayContent[1]
-                };
-                console.log(messageToAdd);
-                messages_aux.push(messageToAdd);
-            }
-        });
+        console.log("CONTENT:   " + content);
+        if (!(content === undefined)) {
 
-
+            let messageArray = content.split('\n');
+            messageArray.forEach(element => {
+                console.log(element.content);
+                if (element[0]) {
+                    const messageArrayContent = element.split('###');
+                    const messageToAdd: message = {
+                        content: messageArrayContent[2],
+                        date: messageArrayContent[3],
+                        sender: messageArrayContent[0],
+                        recipient: messageArrayContent[1]
+                    };
+                    console.log(messageToAdd);
+                    messages_aux.push(messageToAdd);
+                }
+            });
+        }
 
         var urlArray = this.ruta_seleccionada.split("/");
-        let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + "/Conversation.txt";
+        let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + '/Conversation.txt';
         var contentReceiver = await this.readMessage(url);
 
+        console.log("CONTENT RECEIVER:                    " + contentReceiver);
         if(!(contentReceiver === undefined)) {
-
-
             var messageArrayReceiver = contentReceiver.split('\n');
             messageArrayReceiver.forEach(element => {
                 console.log(element.content);
@@ -143,17 +147,18 @@ export class ChatComponent implements OnInit {
                     messages_aux.push(messageToAdd);
                 }
             });
-
-            console.log("TAMAÑO messages_AUX: " + messages_aux.length);
-            console.log("TAMAÑO messages: " + this.messages.length);
-
-            if(messages_aux.length != this.messages.length)
-            {
-                this.messages = [];
-                this.messages = messages_aux;
-                this.messages = this.order(this.messages);
-            }
         }
+
+        console.log("TAMAÑO messages_AUX: " + messages_aux.length);
+        console.log("TAMAÑO messages: " + this.messages.length);
+
+        if (messages_aux.length != this.messages.length)
+        {
+            this.messages = [];
+            this.messages = messages_aux;
+            this.messages = this.order(this.messages);
+        }
+
     }
 
 
@@ -227,7 +232,7 @@ export class ChatComponent implements OnInit {
         //Receiver WebId
         const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
-         //console.log(messageToSend);
+        //console.log(messageToSend);
 
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/Conversation.txt';
