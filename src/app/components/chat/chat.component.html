@@ -101,17 +101,19 @@
                             <h3 class="panel-title" id="receiver"><span class="glyphicon glyphicon-comment"></span></h3>
                         </div>
                     </div>
-                <div *ngFor="let message of messages">
+                    <div style="overflow-y: auto; height:350px;">
+
+                    <div *ngFor="let message of messages">
                 <div class="panel-body msg_container_base">
                         <div class="row msg_container base_sent">
                             <div class="col-md-10 col-xs-10">
                                 <div class="messages msg_sent">
-                                    <p>{{message.content}}</p>
+                                    <p>  <font size="5">{{message.content}} </font></p>
                                     <time datetime="2009-11-13T20:00">{{message.sender.webid}},  {{message.date}}</time>
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-2 avatar">
-                                <img src="{{getProfilePicture(message.sender)}}"  onError="src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg'" class=" img-responsive ">
+                                <img src="{{getProfilePicture(message.sender)}}"  onError="src='https://ngaruawahia.ljhooker.co.nz/sites/all/themes/custom/ljhooker_branches/img/profile-default.png'" class=" img-responsive ">
                                 <p align="center">  <font size="3"> {{getUserByUrl(message.sender)}} </font> </p>
                             </div>
                         </div>
@@ -119,6 +121,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
@@ -129,7 +132,7 @@
 
 <div class="panel-footer">
     <div class="input-group">
-        <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..."> </textarea>
+        <textarea class="form-control" rows="5" id="comment" placeholder="Write your message here..." style="overflow-y: auto; width:500px;"> </textarea>
         <button class="btn btn-primary btn-sm"  id="btn-chat" (click)="write()"><i class="fa fa-send fa-1x" aria-hidden="true"></i></button>
         <span class="input-group-btn"></span>
     </div>
