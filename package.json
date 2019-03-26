@@ -16,12 +16,13 @@
     "puml": "./node_modules/.bin/puml",
     "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs"
   },
-
   "jest": {
     "preset": "jest-preset-angular",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
+    "testMatch": ["<rootDir>/test/*.ts"]
   },
-
   "author": "Arquisoft/ES1A",
   "license": "MIT",
   "browser": {
@@ -43,6 +44,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.1.4",
     "@ng-select/ng-select": "^2.5.1",
+    "@types/jest": "^24.0.11",
     "@types/rdflib": "^0.17.0",
     "core-js": "^2.5.4",
     "crypto-js": "^3.1.9-1",
