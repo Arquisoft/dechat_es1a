@@ -54,3 +54,15 @@
     margin-top:10px;
     cursor: pointer;
 }
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+a:active {
+  color: gray;
+}
