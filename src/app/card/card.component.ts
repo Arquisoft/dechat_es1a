@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
-import { shortChatPane } from '../chat/shortChatPane';
+//import { shortChatPane } from '../chat/shortChatPane';
 
 @Component({
   selector: 'app-card',
@@ -17,7 +17,7 @@ export class CardComponent implements OnInit  {
   friends: Array<string>;
   profileImage: string;
   loadingProfile: Boolean;
-  chat: shortChatPane;
+  //chat: shortChatPane;
 
   @ViewChild('f') cardForm: NgForm;
 

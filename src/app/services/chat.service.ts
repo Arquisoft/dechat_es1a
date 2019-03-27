@@ -7,6 +7,7 @@ import {ChatController} from '../components/chat/chatController';
 declare var require: any;
 import solid_file_client from 'solid-file-client';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -20,6 +21,7 @@ export class ChatService {
     solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA10/' + this.username + '/' + this.username);
     messageText = '';
     mi_listado_de_friends: Friend[] = [];
+
 
 
     constructor(private rdf: RdfService, private toastr: ToastrService) {

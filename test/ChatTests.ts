@@ -12,7 +12,10 @@ import {
 } from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 
+import * as $rdf from 'rdflib';
 import {ChatService} from '../src/app/services/chat.service';
+
+
 
 const mockFriends = {
     DUB: { name: 'Dublin' },
