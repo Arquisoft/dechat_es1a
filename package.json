@@ -20,7 +20,12 @@
     "preset": "jest-preset-angular",
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupJest.ts"
-    ]
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ],
+    "rootDir": "."
   },
   "author": "Arquisoft/ES1A",
   "license": "MIT",
@@ -43,7 +48,6 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.1.4",
     "@ng-select/ng-select": "^2.5.1",
-    "@types/jest": "^24.0.11",
     "@types/rdflib": "^0.17.0",
     "core-js": "^2.5.4",
     "crypto-js": "^3.1.9-1",
@@ -77,6 +81,7 @@
     "@babel/register": "^7.0.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "^21.1.10",
     "@types/node": "~8.9.4",
     "angular-mocks": "^1.7.8",
     "asciidoctor-cli": "^1.5.6-rc.1",
@@ -92,6 +97,6 @@
     "protractor": "^5.4.1",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
-    "typescript": "^2.9.2"
+    "typescript": "^2.7.2"
   }
 }

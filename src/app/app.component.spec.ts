@@ -2,6 +2,11 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {CardComponent} from './card/card.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,6 +16,8 @@ describe('AppComponent', () => {
           CardComponent,
           NavbarComponent
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [FormsModule, RouterModule, RouterTestingModule]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
