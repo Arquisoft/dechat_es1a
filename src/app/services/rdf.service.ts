@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SolidSession } from '../models/solid-session.model';
 declare let solid: any;
+declare var require: any
 // declare let $rdf: any;
 // import * as $rdf from 'rdflib'
 const $rdf = require('rdflib');
