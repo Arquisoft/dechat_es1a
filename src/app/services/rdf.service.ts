@@ -7,6 +7,7 @@ declare var require: any;
 const $rdf = require('rdflib');
 
 
+
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';

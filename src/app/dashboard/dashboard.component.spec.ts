@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
 import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {FormsModule} from '@angular/forms';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -11,7 +12,8 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ToastrModule.forRoot(), RouterModule],
+      imports: [FormsModule, ToastrModule.forRoot(),
+        RouterModule, RouterTestingModule],
       declarations: [ DashboardComponent ]
     })
     .compileComponents();

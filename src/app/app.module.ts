@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -81,9 +81,12 @@ const routes: Routes = [
         RouterModule,
         NgSelectModule,
         ToastrModule.forRoot(),
-        BrowserAnimationsModule  //required for toastr
+        BrowserAnimationsModule,  //required for toastr
+        ToastrModule,
+        RouterTestingModule
 
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     providers: [AuthService],
     bootstrap: [AppComponent]
 })

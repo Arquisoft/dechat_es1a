@@ -1,11 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import {NavbarComponent} from './navbar/navbar.component';
 import {CardComponent} from './card/card.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {BrowserModule} from '@angular/platform-browser';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 
 describe('AppComponent', () => {
@@ -13,11 +14,17 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-          CardComponent,
-          NavbarComponent
+          CardComponent
+
+
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA ],
-      imports: [FormsModule, RouterModule, RouterTestingModule]
+      imports: [BrowserModule,
+        FormsModule,
+        ToastrModule.forRoot(),
+        RouterModule,
+        RouterTestingModule],
+      providers: [ToastrService]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
@@ -29,11 +36,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('app');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to solid-app!');
   }));
 });
