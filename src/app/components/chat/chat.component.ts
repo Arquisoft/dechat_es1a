@@ -234,19 +234,19 @@ export class ChatComponent implements OnInit {
         //console.log(messageToSend);
 
         const stringToChange = '/profile/card#me';
-        const path = '/public/dechat1a/' + user + '/Conversation.txt';
+        const path = '/public/dechat1a/' + user + '/prueba.ttl';
         senderId = senderId.replace(stringToChange, path);
         const message = await this.readMessage(senderId);
         this.ruta = senderId;
 
         if (message != null) {
-            this.updateTTL(senderId, message + '\n' + new Printer().getTXTDataFromMessage(messageToSend));
+            this.updateTTL(senderId, message + '\n' + new Printer().getTTLData(messageToSend));
             if (this.messages.indexOf(message) !== -1) {
                 this.messages.push(message);
                 console.log('MESSAGES: ' + this.messages);
             }
         } else {
-            this.updateTTL(senderId, new Printer().getTXTDataFromMessage(messageToSend));
+            this.updateTTL(senderId, new Printer().writeTTL(senderId, this.ruta_seleccionada, messageToSend));
         }
     }
 
@@ -258,12 +258,12 @@ export class ChatComponent implements OnInit {
 }
 
 class Printer {
-    public writeTTL() {
+    public writeTTL(sender, recipient, newMessage) {
         return '@prefix schem: <http://schema.org/>.\n' +
             '@prefix mes: <http://schema.org/Message>.\n' +
             '@prefix mes: <http://schema.org/Person>.\n\n' +
             this.getTTLUsers(sender, recipient) +
-            this.getTTLData(messageToSend);
+            this.getTTLData(newMessage);
     }
     public  getTTLUsers (sender, recipient) {
         return '<#sender>\n' + '\twebid: ' + sender.webId + '.\n' +
