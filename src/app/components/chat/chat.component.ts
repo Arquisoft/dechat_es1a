@@ -258,7 +258,7 @@ export class ChatComponent implements OnInit {
 }
 
 class Printer {
-    public writeHeader() {
+    public writeTTL() {
         return '@prefix schem: <http://schema.org/>.\n' +
             '@prefix mes: <http://schema.org/Message>.\n' +
             '@prefix mes: <http://schema.org/Person>.\n\n' +
