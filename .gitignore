@@ -12,7 +12,6 @@
 # dependencies
 /node_modules
 /bower_components
-/test/cucumber/node_modules
 
 # IDEs and editors
 /.idea

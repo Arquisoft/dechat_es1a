@@ -16,7 +16,6 @@
       "puml": "./node_modules/.bin/puml",
       "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs",
       "pretest": "webdriver-manager update",
-      "cucumber": "./node_modules/.bin/cucumber-js ./test/cucumber/features/*.feature",
       "test": "protractor ./protractor.conf.js"
    },
    "author": "Arquisoft/ES1A",
