@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { ChatComponent } from './components/chat/chat.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 
 
@@ -76,11 +77,13 @@ const routes: Routes = [
         BrowserModule,
         FormsModule,
         RouterModule.forRoot(routes),
+        RouterModule.forRoot([]),
         RouterModule,
         NgSelectModule,
         ToastrModule.forRoot(),
         BrowserAnimationsModule, // required for toastr
-        ToastrModule
+        ToastrModule,
+        RouterTestingModule
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     providers: [AuthService],

@@ -1,19 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {CardComponent} from './card.component';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
+import {ToastrModule} from 'ngx-toastr';
 import {RouterModule} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {LoginPopupComponent} from './login-popup.component';
 
-describe('CardComponent', () => {
-    let component: CardComponent;
-    let fixture: ComponentFixture<CardComponent>;
+
+describe('LoginPopupComponent', () => {
+    let component: LoginPopupComponent;
+    let fixture: ComponentFixture<LoginPopupComponent>;
 
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ CardComponent ],
+            declarations: [ LoginPopupComponent ],
             imports: [ FormsModule, ToastrModule.forRoot(),
                 RouterModule, RouterTestingModule],
             schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -22,7 +23,7 @@ describe('CardComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(CardComponent);
+        fixture = TestBed.createComponent(LoginPopupComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

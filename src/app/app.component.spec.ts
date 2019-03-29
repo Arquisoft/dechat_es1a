@@ -5,6 +5,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {RouterModule} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -16,7 +18,9 @@ describe('AppComponent', () => {
             imports: [
                 BrowserModule,
                 FormsModule,
-                ToastrModule.forRoot()
+                ToastrModule.forRoot(),
+                RouterModule,
+                RouterTestingModule
             ],
             schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
             providers: [ToastrService]
