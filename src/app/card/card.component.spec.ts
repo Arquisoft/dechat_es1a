@@ -6,6 +6,8 @@ import {FormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
 import {RouterModule} from '@angular/router';
 import {AppComponent} from '../app.component';
+import {AuthService} from '../services/solid.auth.service';
+import {RdfService} from '../services/rdf.service';
 
 describe('CardComponent', () => {
     let component: CardComponent;
