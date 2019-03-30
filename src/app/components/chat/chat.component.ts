@@ -231,7 +231,6 @@ export class ChatComponent implements OnInit {
         //Receiver WebId
         const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
-        //console.log(messageToSend);
 
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/prueba.ttl';
@@ -243,7 +242,6 @@ export class ChatComponent implements OnInit {
             this.updateTTL(senderId, message + '\n' + new Printer().writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
             if (this.messages.indexOf(message) !== -1) {
                 this.messages.push(message);
-                console.log('MESSAGES: ' + this.messages);
             }
         } else {
             this.updateTTL(senderId, new Printer().writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
@@ -275,11 +273,5 @@ class Printer {
         const date = message.date.getFullYear() + message.date.getMonth() + message.date.getDay() + message.date.getHours() + message.date.getMinutes() +
                 message.date.getSeconds() + message.date.getMilliseconds();
         return date;
-    }
-    public getTXTDataFromMessage(message) {
-        return message.sender.webid + '###' +
-            message.recipient.webid + '###' +
-            message.content + '###' +
-            message.date + '\n';
     }
 }
