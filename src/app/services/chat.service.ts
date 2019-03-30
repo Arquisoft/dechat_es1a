@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 declare var require: any;
 import solid_file_client from 'solid-file-client';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -46,6 +47,4 @@ export class ChatService {
             console.log(`Error: ${error}`);
         }
     }
-
-
 }
