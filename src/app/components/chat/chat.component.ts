@@ -90,7 +90,7 @@ export class ChatComponent implements OnInit {
 
     crateFolder() {
         const user = this.getUserByUrl(this.ruta_seleccionada);
-        const path = '/public/dechat2a/' + user + '/Conversation.txt';
+        const path = '/public/dechat2a/' + user + '/prueba.ttl';
         let senderId = this.rdf.session.webId;
         const stringToChange = '/profile/card#me';
         senderId = senderId.replace(stringToChange, path);
@@ -102,7 +102,7 @@ export class ChatComponent implements OnInit {
         const user = this.getUserByUrl(this.ruta_seleccionada);
         let senderId = this.rdf.session.webId;
         const stringToChange = '/profile/card#me';
-        const path = '/public/dechat1a/' + user + '/Conversation.txt';
+        const path = '/public/dechat1a/' + user + '/prueba.ttl';
         senderId = senderId.replace(stringToChange, path);
         this.ruta = senderId;
         const content = await this.readMessage(senderId);
@@ -127,7 +127,7 @@ export class ChatComponent implements OnInit {
         }
 
         const urlArray = this.ruta_seleccionada.split('/');
-        const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/Conversation.txt';
+        const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
         const contentReceiver = await this.readMessage(url);
 
         console.log('CONTENT RECEIVER:                    ' + contentReceiver);
@@ -240,13 +240,13 @@ export class ChatComponent implements OnInit {
         this.ruta = senderId;
 
         if (message != null) {
-            this.updateTTL(senderId, message + '\n' + new Printer().getTTLData(messageToSend));
+            this.updateTTL(senderId, message + '\n' + new Printer().writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
             if (this.messages.indexOf(message) !== -1) {
                 this.messages.push(message);
                 console.log('MESSAGES: ' + this.messages);
             }
         } else {
-            this.updateTTL(senderId, new Printer().writeTTL(senderId, this.ruta_seleccionada, messageToSend));
+            this.updateTTL(senderId, new Printer().writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
         }
     }
 
@@ -260,21 +260,22 @@ export class ChatComponent implements OnInit {
 class Printer {
     public writeTTL(sender, recipient, newMessage) {
         return '@prefix schem: <http://schema.org/>.\n' +
-            '@prefix mes: <http://schema.org/Message>.\n' +
-            '@prefix mes: <http://schema.org/Person>.\n\n' +
-            this.getTTLUsers(sender, recipient) +
-            this.getTTLData(newMessage);
+            '@prefix : <#> .\n\n' +
+            this.writeTTLMessage(sender, recipient, newMessage);
+
     }
-    public  getTTLUsers (sender, recipient) {
-        return '<#sender>\n' + '\twebid: ' + sender.webId + '.\n' +
-            '<#recipient>\n' + '\twebid: ' + recipient.webId + '.\n\n';
+    public writeTTLMessage(sender, recipient, message) {
+        return ':message' + this.parseDate(message) + ' a schem:Message ;\n' +
+        '\tschem:dateSent "' + message.date + '";\n' +
+        '\tschem:messageAttachment "' + message.content + '";\n' +
+        '\tschem:sender "' + sender + '";\n' +
+        '\tschem:recipient "' + recipient + '".\n' ;
     }
-    public  getTTLData (message) {
-        return '<#message-' + message.date + '>\n' +
-            '\trel: sender <#sender>;\n' +
-            '\trel: recipient <#recipient>;\n' +
-            '\tdate:' + message.date + ';\n' +
-            '\tcontent:' + message.content + '.\n';
+
+    public parseDate(message) {
+        const date = message.date.getFullYear() + message.date.getMonth() + message.date.getDay() + message.date.getHours() + message.date.getMinutes() +
+                message.date.getSeconds() + message.date.getMilliseconds();
+        return date;
     }
     public getTXTDataFromMessage(message) {
         return message.sender.webid + '###' +
