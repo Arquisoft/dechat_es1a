@@ -262,7 +262,7 @@ class Printer {
 
     }
     public writeTTLMessage(sender, recipient, message) {
-        return ':message' + this.getMessageId(message) + ' a schem:Message ;\n' +
+        return ':message' + this.getMessageId(message) + ' a schem:Message ;\n\n' +
         '\tschem:dateSent "' + message.date + '";\n' +
         '\tschem:messageAttachment "' + message.content + '";\n' +
         '\tschem:sender "' + sender + '";\n' +
@@ -270,8 +270,8 @@ class Printer {
     }
 
     public getMessageId(message) {
-        const date = message.date.getFullYear() + message.date.getMonth() + message.date.getDay() + message.date.getHours() + message.date.getMinutes() +
-                message.date.getSeconds() + message.date.getMilliseconds();
+        const date = message.date.getFullYear().toString() + message.date.getMonth().toString() + message.date.getDay().toString() + message.date.getHours().toString() + message.date.getMinutes().toString() +
+                message.date.getSeconds().toString() + message.date.getMilliseconds().toString();
         return date;
     }
 }
