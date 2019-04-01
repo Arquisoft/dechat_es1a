@@ -60,9 +60,6 @@ a:visited {
 }
 
 a:hover {
-  color: hotpink;
+  color: #54504F;
 }
 
-a:active {
-  color: gray;
-}

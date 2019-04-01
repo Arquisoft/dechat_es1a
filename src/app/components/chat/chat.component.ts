@@ -6,6 +6,7 @@ import {ChatService} from '../../services/chat.service';
 import {message} from '../../models/message.model';
 
 declare var require: any;
+declare let $rdf;
 
 @Component({
     selector: 'app-chat',
@@ -90,7 +91,7 @@ export class ChatComponent implements OnInit {
 
     crateFolder() {
         const user = this.getUserByUrl(this.ruta_seleccionada);
-        const path = '/public/dechat2a/' + user + '/Conversation.txt';
+        const path = '/public/dechat2a/' + user + '/prueba.ttl';
         let senderId = this.rdf.session.webId;
         const stringToChange = '/profile/card#me';
         senderId = senderId.replace(stringToChange, path);
@@ -98,93 +99,73 @@ export class ChatComponent implements OnInit {
     }
 
     async actualizar() {
-        let messages_aux = [];
-        const user = this.getUserByUrl(this.ruta_seleccionada);
-        let senderId = this.rdf.session.webId;
-        const stringToChange = '/profile/card#me';
-        const path = '/public/dechat1a/' + user + '/Conversation.txt';
-        senderId = senderId.replace(stringToChange, path);
-        this.ruta = senderId;
-        let content = await this.readMessage(senderId);
-        console.log("CONTENT:   " + content);
-        if (!(content === undefined)) {
+        const messages: message []  = [];
+        try {
+            const user = this.getUserByUrl(this.ruta_seleccionada);
+            let senderId = this.rdf.session.webId;
+            const stringToChange = '/profile/card#me';
+            const path = '/public/dechat1a/' + user + '/prueba.ttl';
+            senderId = senderId.replace(stringToChange, path);
 
-            let messageArray = content.split('\n');
-            messageArray.forEach(element => {
-                console.log(element.content);
-                if (element[0]) {
-                    const messageArrayContent = element.split('###');
-                    const messageToAdd: message = {
-                        content: messageArrayContent[2],
-                        date: messageArrayContent[3],
-                        sender: messageArrayContent[0],
-                        recipient: messageArrayContent[1]
-                    };
-                    console.log(messageToAdd);
-                    messages_aux.push(messageToAdd);
+
+            const contentSender = await this.readMessage(senderId);
+
+            if (!(contentSender === undefined)) {
+                const doc = $rdf.sym(senderId);
+                const store = $rdf.graph();
+                const e = await this.searchMessage(doc.value);
+                const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
+                const quads = store.match(null, null, null, doc);
+                let i;
+                for (i = 0; i < quads.length; i += 5) {
+                    messages.push(this.getMessage(quads, i));
                 }
-            });
-        }
-
-        var urlArray = this.ruta_seleccionada.split("/");
-        let url = "https://" + urlArray[2] + "/public/dechat1a/" + this.getUserByUrl(this.rdf.session.webId) + '/Conversation.txt';
-        var contentReceiver = await this.readMessage(url);
-
-        console.log("CONTENT RECEIVER:                    " + contentReceiver);
-        if(!(contentReceiver === undefined)) {
-            var messageArrayReceiver = contentReceiver.split('\n');
-            messageArrayReceiver.forEach(element => {
-                console.log(element.content);
-                if (element[0]) {
-                    const messageArrayContent = element.split('###');
-                    const messageToAdd: message = {
-                        content: messageArrayContent[2],
-                        date: messageArrayContent[3],
-                        sender: messageArrayContent[0],
-                        recipient: messageArrayContent[1]
-                    };
-                    console.log(messageToAdd);
-                    messages_aux.push(messageToAdd);
-                }
-            });
-        }
-
-        console.log("TAMAÑO messages_AUX: " + messages_aux.length);
-        console.log("TAMAÑO messages: " + this.messages.length);
-
-        if (messages_aux.length != this.messages.length)
-        {
-            this.messages = [];
-            this.messages = messages_aux;
-            this.messages = this.order(this.messages);
-        }
-
-    }
-
-
-    private order(mess: message[]) {
-        let ordenado: message[] = [];
-        let aux = mess;
-        while (mess.length > 0) {
-            let idx = this.menor(aux);
-            ordenado.push(aux[idx]);
-            aux.splice(idx, 1);
-        }
-        return ordenado;
-    }
-
-
-    private menor(aux: message[]) {
-        var idx = 0;
-        var minor: message = aux[idx];
-        for (let i = 0; i < aux.length; i++) {
-            if (aux[i].date < minor.date) {
-                idx = i;
-                minor = aux[idx];
             }
+
+            const urlArray = this.ruta_seleccionada.split('/');
+            const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
+            const contentReceiver = await this.readMessage(url);
+
+
+            console.log('CONTENT RECEIVER: ' + url);
+
+            if (!(contentReceiver === undefined)) {
+                const doc2 = $rdf.sym(url);
+                const store2 = $rdf.graph();
+                const e2 = await this.searchMessage(doc2.value);
+                const par2 = $rdf.parse(e2, store2, doc2.uri, 'text/turtle');
+                const quads2 = store2.match(null, null, null, doc2);
+                let i;
+                for (i = 0; i < quads2.length; i += 5) {
+                    messages.push(this.getMessage(quads2, i));
+                }
+            }
+
+            if (messages.length != this.messages.length) {
+                this.messages = [];
+                this.messages = messages;
+                this.messages = this.order(this.messages);
+            }
+
+        } catch (err) {
+            console.log('impossible to print the message');
         }
-        return idx;
     }
+
+
+    /*
+    * Sorted methos that sorts the message array
+    */
+    public order( mess : message[] )
+    {
+        return mess.sort(function(a, b) {
+            let date1 = a.date;
+            let date2 = b.date;
+            return date2>date1 ? -1 : date2<date1 ? 1 : 0;
+        });
+    }
+
+
 
     private async readMessage(url) {
         this.ruta = url;
@@ -201,6 +182,21 @@ export class ChatComponent implements OnInit {
         }, err => console.log(err));
 
     }
+
+
+    private getMessage(quads: any[], idx: number): message {
+        return {
+            date: this.getValue(quads[idx + 1]),
+            content: this.getValue(quads[idx + 2]),
+            sender: this.getValue(quads[idx + 3]),
+            recipient: this.getValue(quads[idx + 4])
+        };
+    }
+
+    private getValue(elem: any): any {
+        return elem.object.value;
+    }
+
 
     private getUserByUrl(ruta: string): string {
         let sinhttp;
@@ -232,38 +228,47 @@ export class ChatComponent implements OnInit {
         //Receiver WebId
         const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
-        //console.log(messageToSend);
 
         const stringToChange = '/profile/card#me';
-        const path = '/public/dechat1a/' + user + '/Conversation.txt';
+        const path = '/public/dechat1a/' + user + '/prueba.ttl';
         senderId = senderId.replace(stringToChange, path);
         const message = await this.readMessage(senderId);
         this.ruta = senderId;
 
         if (message != null) {
-            this.updateTTL(senderId, message + '\n' + new TXTPrinter().getTXTDataFromMessage(messageToSend));
+            this.updateTTL(senderId, message + '\n' + new Printer().writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
             if (this.messages.indexOf(message) !== -1) {
                 this.messages.push(message);
-                console.log('MESSAGES: ' + this.messages);
             }
         } else {
-            this.updateTTL(senderId, new TXTPrinter().getTXTDataFromMessage(messageToSend));
+            this.updateTTL(senderId, new Printer().writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
         }
     }
 
-
-    getProfilePicture(user)
-    {
-        let a = user.toString().replace("card#me", "perfil.jpeg");
+    getProfilePicture(user) {
+        const a = user.toString().replace('card#me', 'perfil.jpeg');
         return a;
     }
 }
 
-class TXTPrinter {
-    public getTXTDataFromMessage(message) {
-        return message.sender.webid + '###' +
-            message.recipient.webid + '###' +
-            message.content + '###' +
-            message.date + '\n';
+class Printer {
+    public writeTTL(sender, recipient, newMessage) {
+        return '@prefix schem: <http://schema.org/> .\n' +
+            '@prefix : <#> .\n\n' +
+            this.writeTTLMessage(sender, recipient, newMessage);
+
+    }
+    public writeTTLMessage(sender, recipient, message) {
+        return ':message' + this.getMessageId(message) + ' a schem:Message ;\n\n' +
+        '\tschem:dateSent "' + message.date + '" ;\n' +
+        '\tschem:messageAttachment "' + message.content + '" ;\n' +
+        '\tschem:sender "' + sender + '" ;\n' +
+        '\tschem:recipient "' + recipient + '" .\n' ;
+    }
+
+    public getMessageId(message) {
+        const date = message.date.getFullYear().toString() + message.date.getMonth().toString() + message.date.getDay().toString() + message.date.getHours().toString() + message.date.getMinutes().toString() +
+                message.date.getSeconds().toString() + message.date.getMilliseconds().toString();
+        return date;
     }
 }
