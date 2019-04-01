@@ -16,8 +16,7 @@
     "puml": "./node_modules/.bin/puml",
     "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs",
     "test": "jest && protractor ./protractor.conf.js",
-     "ci": "ng serve -o && jest && protractor ./protractor.conf.js"
-
+    "ci": "ng serve -o && jest && protractor ./protractor.conf.js"
   },
   "jest": {
     "preset": "jest-preset-angular",
@@ -54,6 +53,7 @@
     "@types/rdflib": "^0.17.0",
     "core-js": "^2.5.4",
     "crypto-js": "^3.1.9-1",
+    "cucumber": "^5.1.0",
     "generator-angular": "^0.16.0",
     "http": "^0.0.0",
     "isomorphic-fetch": "^2.2.1",
