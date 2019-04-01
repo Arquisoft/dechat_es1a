@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "coverage": "nyc --reporter text-lcov node_modules/.bin/_mocha --require @babel/register -R spec --timeout 100 | coveralls",
+    "coverage": "jest --coverage && ./node_modules/coveralls/bin/coveralls.js",
     "test-with-coverage": "nyc --reporter text-lcov node_modules/.bin/_mocha --require @babel/register -R spec --timeout 100 && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
     "travisRepo": "./test/travisRepo.sh",
     "travis-deploy-once": "travis-deploy-once",
@@ -95,7 +95,8 @@
     "jest": "^24.5.0",
     "jsdom": "^14.0.0",
     "mocha": "^6.0.2",
-    "protractor": "^5.4.1",
+    "protractor": "^5.4.2",
+    "protractor-cucumber-framework": "^6.1.1",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "^2.7.2"
