@@ -4,7 +4,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
-import {RouterModule} from '@angular/router';
+import {ActivatedRoute, RouterModule} from '@angular/router';
 import {AppComponent} from '../app.component';
 import {AuthService} from '../services/solid.auth.service';
 import {RdfService} from '../services/rdf.service';
@@ -15,11 +15,27 @@ describe('CardComponent', () => {
 
 
     beforeEach(async(() => {
+        const rdfServiceStub = {
+            getProfile: () => ({}),
+            updateProfile: () => ({})
+        };
+        const authServiceStub = {
+            saveOldUserData: () => ({}),
+            solidSignOut: () => ({})
+        };
+
+
+
         TestBed.configureTestingModule({
             declarations: [ CardComponent ],
             imports: [ FormsModule, ToastrModule.forRoot(),
                 RouterModule, RouterTestingModule],
-            schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+            schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+            providers: [
+
+                { provide: RdfService, useValue: rdfServiceStub },
+                { provide: AuthService, useValue: authServiceStub }
+            ]
         })
             .compileComponents();
     }));

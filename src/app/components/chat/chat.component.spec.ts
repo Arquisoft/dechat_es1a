@@ -15,11 +15,19 @@ describe('ChatComponent', () => {
     let fixture: ComponentFixture<ChatComponent>;
 
 
+
     beforeEach(async(() => {
+
+
+        const chatServiceStub = {
+            loadFriends: async () => ({}),
+            createBaseFolder: () => ({})
+        };
+
         TestBed.configureTestingModule({
             declarations: [ ChatComponent ],
             imports: [ FormsModule, ToastrModule.forRoot()],
-            providers: [ChatService]
+            providers: [{ provide: ChatService, useValue: chatServiceStub }]
         })
             .compileComponents();
     }));
