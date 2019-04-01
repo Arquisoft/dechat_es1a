@@ -8,11 +8,13 @@ In the following page we are going to identify, measure and priorize the risks a
 The following, is the list of risks that we had in the project
 
 * SOLID: We haven't got any knowledge about this technology until it was presented to us for this project.
-* AngularJS: Most of the members of the team don't know a lot about this programming language
-* Ionic: This is the language for the SOLID app. We have to learn how to do it and apply this knowledge in making the app.
+* AngularJS: Most of the members of the team don't know a lot about this programming framework
 * Heroku: We are going to use this platform to host our SOLID server. We have to learn how it works and accept that the account has restrictions.
 The principal restrictions that we have to face with Heroku are related to the number of queries that it allows with the free account that are 75 queries per user, app, hour.
 * Typescript: As we researched, most SOLID apps are written using Typescript and we don't know anything about it. Adapting to it will be a risk, although it can't differ too much from Javascipt itself. 
+* Cucumber: In order to do the acceptance tests we have to learn to use Cucumber and Gherkin language to do this tests. Along with the use of JavaScript and Angular comes the difficulty to use Cucumber in this world, where we haven't a lot of experiences
+* Protractor: To run the tests of Cucumber in a more visual way we have to learn about protractor, how it works and how to make with it the cucumber tests
+* JEST & Kharma: To make the static tests to the code we decide to learn and work in parallel these two technologies to make tests in the JavaScript world. To face that, we decided to make the tests in parallel and apply those that work
 
 .Technical debt
 * Git: we have a lack of knowledge in this useful tool.
