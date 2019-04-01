@@ -18,7 +18,7 @@ describe('AppComponent', () => {
 
 
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [BrowserModule,
         FormsModule,
         ToastrModule.forRoot(),
