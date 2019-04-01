@@ -19,5 +19,5 @@
 | POD		   | Derived from "Personal Online Data". It's a simple file that contains user data. Also can be accesed by other users/apps to write or read data. 
 | RDF		   | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally. 
 | Stakeholder  | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project. 
-| Decentralized Web  | Wweb technology where services are distributed rather than localized, where users own and control their own data 
+| Decentralized Web  | Web technology where services are distributed rather than localized, where users own and control their own data
 |===

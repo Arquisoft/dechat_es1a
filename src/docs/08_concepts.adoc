@@ -58,7 +58,7 @@ _UML/ER Diagrams in progress_
 
 === Persistency
 
-As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we'll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored.
+As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we'll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored. For this purpose we are going to use the .ttl format
 
 
 === User Interface
@@ -115,7 +115,7 @@ This app will be standalone and it is going to be automatically deployed using H
 
 === Testability
 
-_In progress_
+For the testability we used JEST modules and tests for JavaScript and Angular side.
 
 === Build-Management
 
