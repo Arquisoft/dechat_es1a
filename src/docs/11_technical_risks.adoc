@@ -12,9 +12,11 @@ The following, is the list of risks that we had in the project
 * Ionic: This is the language for the SOLID app. We have to learn how to do it and apply this knowledge in making the app.
 * Heroku: We are going to use this platform to host our SOLID server. We have to learn how it works and accept that the account has restrictions.
 The principal restrictions that we have to face with Heroku are related to the number of queries that it allows with the free account that are 75 queries per user, app, hour.
-* Typescript: As we researched, most SOLID apps are written using Typescript and we don't know anything about it. Adapting to it will be a risk, although it can't differ too much from Javascipt itself. 
+* Typescript: As we researched, most SOLID apps are written using Typescript and we don't know anything about it. Adapting to it will be a risk, although it can't differ too much from Javascipt itself.
+* Jest: Team members have no experience in the development of unit tests in JavaScript. In the project, unit test will be carried out by means of the tesh framework Jest, so it will require a learning phase. 
 
 .Technical debt
 * Git: we have a lack of knowledge in this useful tool.
-* Bootstrap: none of the team members has previous experience with these libraries. It will not be such a huge risk due to the extensive guide and documentation provided online. 
+* Bootstrap: none of the team members have previous experience with these libraries. It will not be such a huge risk due to the extensive guide and documentation provided online. 
+* Cucumber: just one member of the team has used Cucumber as a tool for writing customer acceptance tests, so the rest of the team has a technical debt in this issue. Anyway we do not consider in as a severe risk.
 
