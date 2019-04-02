@@ -16,7 +16,7 @@
     "puml": "./node_modules/.bin/puml",
     "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs",
     "pretest": "webdriver-manager update",
-    "test": "protractor ./protractor.conf.js"
+    "test": "jest && protractor ./protractor.conf.js"
   },
   "jest": {
     "preset": "jest-preset-angular",
