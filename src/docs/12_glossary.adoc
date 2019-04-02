@@ -4,20 +4,25 @@
 
 [options="header"]
 |===
-| Term         | Definition
-| AngularJS    | Open source Model-View-Controller framework, developed by Google. [Official Website:](https://angular.io/) 
-| Docker       | Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](https://www.docker.com/) 
-| Heroku       | Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](https://www.heroku.com/) 
-| IDE          | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
-| Ionic        | Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](https://ionicframework.com/) 
-| JavaScript   | JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. 
-| NodeJS       | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](https://nodejs.org/) 
-| Webstorm     | IDE for JavaScript development. [Official Website:](https://www.jetbrains.com/webstorm/) 
-| npm     	   | Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](https://www.npmjs.com/) 
-| Solid        | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](https://solid.mit.edu/) 
-| Linked Data  | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks. 
-| POD		   | Derived from "Personal Online Data". It's a simple file that contains user data. Also can be accesed by other users/apps to write or read data. 
-| RDF		   | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally. 
-| Stakeholder  | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project. 
-| Decentralized Web  | Web technology where services are distributed rather than localized, where users own and control their own data
+| Term              | Definition
+| AngularJS         | Open source Model-View-Controller framework, developed by Google. [Official Website:](https://angular.io/)
+| Cucumber          | Open-Source tool to make tests in a language that can be understood by people that aren't familiarized with the computing technologies world.
+| Decentralized Web | Web technology where services are distributed rather than localized, where users own and control their own data
+| Docker            | Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](https://www.docker.com/)
+| Gherkin           | Programming language to make tests in Cucumber. It could be understood by humans and computers.
+| Heroku            | Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](https://www.heroku.com/)
+| IDE               | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
+| Ionic             | Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](https://ionicframework.com/)
+| JavaScript        | JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification.
+| Jest              | Test framework that allows between other languages JavaScript or React
+| Karma             | Is a test runner environment for the world of JavaScript
+| Linked Data       | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks.
+| NodeJS            | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](https://nodejs.org/)
+| npm     	        | Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](https://www.npmjs.com/)
+| POD		        | Derived from "Personal Online Data". It's a simple file that contains user data. Also can be accessed by other users/apps to write or read data.
+| Protractor        | Test framework for AngularJS and Angular applications that allows that your tests will run in a real browser
+| RDF		        | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally.
+| Solid             | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](https://solid.mit.edu/)
+| Stakeholder       | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project.
+| WebStorm          | IDE for JavaScript development. [Official Website:](https://www.jetbrains.com/webstorm/)
 |===
