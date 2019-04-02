@@ -24,4 +24,5 @@ install:
   - node_modules/protractor/bin/webdriver-manager update
 
 script:
-  - npm ci
+  - npm start
+  - npm test
