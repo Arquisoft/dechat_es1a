@@ -30,15 +30,19 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-=== <Runtime Scenario 1>
+=== Login
 
 
 * _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
+* The login component connects with the services from the ID provider for the POD
+* The provider, if the user inserts the right credentials, will sign in in the application and chat with friends
 
-=== <Runtime Scenario 2>
+=== Show friends
 
-=== ...
+* _<insert runtime diagram or textual description of the scenario>_
+* The application will read from the POD the friends of the user and show them in a list where he will be available to chat with them
 
-=== <Runtime Scenario n>
+=== Chat
+* _<insert runtime diagram or textual description of the scenario>_
+* In the view of friends, the user will click over a friend and start a chat with him.
+* The communication will be across the pods, writing and reading across them with the operations provided by the application

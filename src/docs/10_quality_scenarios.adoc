@@ -51,7 +51,7 @@ all the tests without errors. Code coverage is analized by means of Codecov (htt
 and coverage percent should be at least 60%.#
 
 
-|8 |[.SpellE]#Maintainability# |The application must be divided into differente modules. All public
+|8 |[.SpellE]#Maintainability# |The application must be divided into different modules. All public
 methods in the application must be well documented with JSDoc. Code quality 
 is analized by means of Codacy (https://www.codacy.com/) and must be at least "b" level #
 
