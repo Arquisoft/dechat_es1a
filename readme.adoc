@@ -11,14 +11,11 @@ image:https://img.shields.io/badge/docs-documentation-blue.svg["Docs",link="http
 
 == Collaborators
 
-- https://github.com/Pelayo-Rodriguez-Garcia[Pelayo Rodríguez García]
 - https://github.com/sofimrtn[Sofía Martín Rodríguez]
 - https://github.com/yagoprado[Yago Prado Cueto]
-- https://github.com/christianpe98[Christian Peláez Fernández]
 - https://github.com/JoniValles[Jonathan Vallés Robla]
 - https://github.com/UO204115[Daniel Bermejo Blanco]
-- https://github.com/iker2410[Ignacio Bermejo Álvarez]
-- https://github.com/samuelmorenov[Samuel Moreno Vincent]
+- https://github.com/adanvetusta[Adán Fernández Sánchez]
 
 == Requirements
 - Install node.js and npm https://nodejs.org/en/download/[here]
