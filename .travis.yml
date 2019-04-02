@@ -26,5 +26,6 @@ install:
 before_script:
  - npm start &
  - sleep 10
+ - webdriver-manager start
 script:
   - npm test
