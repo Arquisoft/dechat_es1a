@@ -11,4 +11,5 @@ App display will be carried out using Docker and Heroku, due to the experience o
 
 For new HTML views Bootstrap will be included as it provides a full CSS library, with responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
 
-For the tests we are going to use JEST and for the acceptance tests Cucumber because is a technical requirement for the project.
+Testing will be implemented using both Cucumber and Jest. Cucumber is a software tool used by computer programmers for running acceptance tests written in a BDD (Behaviour Driven Development) style. Its use is mandatory as it is a basic requirement from the project. As for Test Driven Development (TDD), Jest will be used as it is considered one of the best and most delightful JavaScript testing framework and our team has more experience with this tool.
+
