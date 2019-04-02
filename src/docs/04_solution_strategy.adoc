@@ -11,4 +11,4 @@ App display will be carried out using Docker and Heroku, due to the experience o
 
 For new HTML views Bootstrap will be included as it provides a full CSS library, with responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
 
-For the tests we are going to use JEST and for the acceptance tests Cucumber.
+For the tests we are going to use JEST and for the acceptance tests Cucumber because is a technical requirement for the project.
