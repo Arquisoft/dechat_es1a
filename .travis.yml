@@ -27,6 +27,6 @@ before_script:
  - npm start &
  - sleep 10
  - webdriver-manager update
- - webdriver-manager start
+ - webdriver-manager start &
 script:
   - npm test
