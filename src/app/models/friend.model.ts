@@ -1,4 +1,4 @@
 export interface Friend {
     name: string;
-    url: string;
+    webid: string;
 }

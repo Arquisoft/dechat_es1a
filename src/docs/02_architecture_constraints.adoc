@@ -20,6 +20,10 @@
 
 | TC5 | No databases | As TC4 explains, we won't be using any kind of traditional database. Rather so, we'll store data in private folders.
 
+| TC6 | Tests | We have to test the project using any available technology for the language that we used.
+
+| TC7 | Cucumber | We have to program acceptance tests using Cucumber and Gherkin language.
+
 |=== 
 
 === Organizational Constraints
@@ -29,7 +33,7 @@
 
 |  | *Constraint* | *Background and /or motivation*
 
-| OC1 | Team | The team is formed by Pelayo Rodríguez García, Samuel Moreno Vincent, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto, Ignacio Bermejo Álvarez.
+| OC1 | Team | The team is formed by Pelayo Rodríguez García, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto, Adán Fernández Sánchez.
 
 | OC2 | Time schedule | The project will be carried out during the Software Architecture course, lasting a total of 4 months.
 

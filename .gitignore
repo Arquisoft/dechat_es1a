@@ -16,6 +16,9 @@
 # IDEs and editors
 /.idea
 
+# nyc test coverage
+.nyc_output
+
 # misc
 /.sass-cache
 /connect.lock

@@ -11,6 +11,7 @@ All the design decisions made so far are explained and detailed in
 |IDE: WebStorm by JetBrains
 |App deploy: Docker, Heroku
 |CSS & HTML implementation: Bootstrap libraries
+|Testing: Cucumber and Jest
 |===
 
 Relating to the Chat view, it will be arranged into a separate component, with its own HTML and CSS implementations. The layout is separated

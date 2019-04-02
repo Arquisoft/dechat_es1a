@@ -4,44 +4,7 @@
 
 [role="arc42help"]
 ****
-.Content
-This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as
 
-* domain models
-* architecture patterns or design patterns
-* rules for using specific technology
-* principal, often technical decisions of overall decisions
-* implementation rules
-
-.Motivation
-Concepts form the basis for _conceptual integrity_ (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.
-
-Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.
-
-.Form
-The form can be varied:
-
-* concept papers with any kind of structure
-* cross-cutting model excerpts or scenarios using notations of the architecture views
-* sample implementations, especially for technical concepts
-* reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)
-
-.Structure
-A potential (but not mandatory) structure for this section could be:
-
-* Domain concepts
-* User Experience concepts (UX)
-* Safety and security concepts
-* Architecture and design patterns
-* "Under-the-hood"
-* development concepts
-* operational concepts
 
 Note: it might be difficult to assign individual concepts to one specific topic
 on this list.
@@ -58,7 +21,7 @@ _UML/ER Diagrams in progress_
 
 === Persistency
 
-As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we'll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored.
+As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we'll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored. For this purpose we are going to use the .ttl format
 
 
 === User Interface
@@ -71,7 +34,7 @@ _In progress_
 
 === Transaction Processing
 
-_In progress_
+The transactions realized across the application are asynchronous
 
 === Session Handling
 
@@ -115,7 +78,7 @@ This app will be standalone and it is going to be automatically deployed using H
 
 === Testability
 
-_In progress_
+For the testability we used JEST modules to test the JavaScript code and Angular side.
 
 === Build-Management
 

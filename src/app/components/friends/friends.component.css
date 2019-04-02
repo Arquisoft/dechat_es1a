@@ -3,7 +3,7 @@
 }
 h1 {
     font-size: 24px;
-    color: #7C55FB;
+    color: #7C4DFF;
     font-weight: bold;
     line-height: 32px;
     letter-spacing: 1.2px;
@@ -29,5 +29,5 @@ h1 {
 }
 .list-group-item{
     background-color: #F0EEEB;
-    color: #7C55FB;
+    color: #7C4DFF;
 }

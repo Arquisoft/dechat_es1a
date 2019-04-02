@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { RdfService } from '../../services/rdf.service';
-import { Friend } from '../../models/friend.model';
-import { ChatController } from './chatController';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {RdfService} from '../../services/rdf.service';
+import {Friend} from '../../models/friend.model';
+import {ToastrService} from 'ngx-toastr';
+import {ChatService} from '../../services/chat.service';
+import {message} from '../../models/message.model';
 
 declare var require: any;
+declare let $rdf;
 
 @Component({
     selector: 'app-chat',
@@ -13,97 +15,260 @@ declare var require: any;
 })
 export class ChatComponent implements OnInit {
 
-  mi_listado_de_friends: Friend[] = [];
-  solidFileClient: any;
-  username = '';
-  isHidden = false;
-  chatController: any;
 
-  constructor(private rdf: RdfService, private toastr: ToastrService) { }
+    mi_listado_de_friends: string[] = [];
+    username = '';
+    fileClient: any;
+    ruta_seleccionada: string;
+    messages: message[] = [];
+    ruta: string;
+
+    constructor(private rdf: RdfService, private toastr: ToastrService, private chat: ChatService) {
+    }
 
     ngOnInit() {
-        this.loadFriends();
-        this.solidFileClient = require('solid-file-client');
-        this.chatController = new ChatController(this.solidFileClient);
+        this.chat.loadFriends().then(res => {
+            if (res.length ==  0) {
+                document.write('You don\'t have friends to chat');
+            } else {
+                document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
+                this.mi_listado_de_friends = res;
+                this.ruta_seleccionada = res[0];
+
+
+
+                const name = this.getUserByUrl(this.ruta_seleccionada);
+                this.createNewFolder('dechat1a', '/public/');
+                this.createNewFolder(name, '/public/dechat1a/');
+            }
+        });
+        this.fileClient = require('solid-file-client');
+        console.log(this.ruta_seleccionada);
+        setInterval(() => {
+            this.actualizar();
+        }, 3000);
+    }
+
+
+    initSelection(ruta) {
+        this.messages = [];
+        this.ruta_seleccionada = ruta;
+        const name = this.getUserByUrl(this.ruta_seleccionada);
+        this.createNewFolder('dechat1a', '/public/');
+        this.createNewFolder(name, '/public/dechat1a/');
+        document.getElementById('receiver').innerHTML = name;
     }
 
     /**
-     * get user's friends from rdf
+     * Crear carpeta
+     * @param name
+     * @param ruta
      */
-    async loadFriends() {
-        let list_friends;
+    private createNewFolder(name: string, ruta: string) {
+        //Para crear la carpeta necesito una ruta que incluya el nombre de la misma.
+        //Obtengo el ID del usuario y sustituyo  lo irrelevante por la ruta de public/NombreCarpeta
+        let solidId = this.rdf.session.webId;
+        const stringToChange = '/profile/card#me';
+        const path = ruta + name;
+        solidId = solidId.replace(stringToChange, path);
+        //Necesito logearme en el cliente para que me de permiso, sino me dara un error al intentar
+        //crear la carpeta. Como ya estoy en sesion no abre nada pero si se abre la consola se ve
+        // que se ejecuta correctamente.
+        this.buildFolder(solidId);
+    }
+
+    //method that creates the folder using the solid-file-client lib
+    private buildFolder(solidId) {
+        this.fileClient.readFolder(solidId).then(folder => {
+            console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
+        }, err => {
+            //Le paso la URL de la carpeta y se crea en el pod. SI ya esta creada no se si la sustituye o no hace nada
+            this.fileClient.createFolder(solidId).then(success => {
+                console.log(`Created folder ${solidId}.`);
+            }, err1 => console.log(err1));
+        });
+    }
+
+    crateFolder() {
+        const user = this.getUserByUrl(this.ruta_seleccionada);
+        const path = '/public/dechat2a/' + user + '/prueba.ttl';
+        let senderId = this.rdf.session.webId;
+        const stringToChange = '/profile/card#me';
+        senderId = senderId.replace(stringToChange, path);
+        const urlArray = this.ruta_seleccionada.split('/');
+    }
+
+    async actualizar() {
+        const messages: message []  = [];
         try {
-            list_friends = await this.rdf.getFriends(); // returns an array of urls
-            console.log(list_friends);
-            if (list_friends) {
-                for (let i = 0; i < list_friends.length; i++) {
-                    const names = this.parseURL(list_friends[i]);
-                    const amigo: Friend = {name: names, url: list_friends[i]};
-                    this.mi_listado_de_friends.push(amigo);
+            const user = this.getUserByUrl(this.ruta_seleccionada);
+            let senderId = this.rdf.session.webId;
+            const stringToChange = '/profile/card#me';
+            const path = '/public/dechat1a/' + user + '/prueba.ttl';
+            senderId = senderId.replace(stringToChange, path);
+
+
+            const contentSender = await this.readMessage(senderId);
+
+            if (!(contentSender === undefined)) {
+                const doc = $rdf.sym(senderId);
+                const store = $rdf.graph();
+                const e = await this.searchMessage(doc.value);
+                const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
+                const quads = store.match(null, null, null, doc);
+                let i;
+                for (i = 0; i < quads.length; i += 5) {
+                    messages.push(this.getMessage(quads, i));
                 }
             }
-        } catch (error) {
-            console.log(`Error: ${error}`);
+
+            const urlArray = this.ruta_seleccionada.split('/');
+            const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
+            const contentReceiver = await this.readMessage(url);
+
+
+            console.log('CONTENT RECEIVER: ' + url);
+
+            if (!(contentReceiver === undefined)) {
+                const doc2 = $rdf.sym(url);
+                const store2 = $rdf.graph();
+                const e2 = await this.searchMessage(doc2.value);
+                const par2 = $rdf.parse(e2, store2, doc2.uri, 'text/turtle');
+                const quads2 = store2.match(null, null, null, doc2);
+                let i;
+                for (i = 0; i < quads2.length; i += 5) {
+                    messages.push(this.getMessage(quads2, i));
+                }
+            }
+
+            if (messages.length != this.messages.length) {
+                this.messages = [];
+                this.messages = messages;
+                this.messages = this.order(this.messages);
+            }
+
+        } catch (err) {
+            console.log('impossible to print the message');
         }
     }
 
-    /**
-     * get names from friend's url
-     * @param url
-     */
-    parseURL(url: string): string {
-        const sinHttps = url.replace('https://', '');
-        const name = sinHttps.split('.')[0];
-        return name;
+
+    /*
+    * Sorted methos that sorts the message array
+    */
+    public order( mess : message[] )
+    {
+        return mess.sort(function(a, b) {
+            let date1 = a.date;
+            let date2 = b.date;
+            return date2>date1 ? -1 : date2<date1 ? 1 : 0;
+        });
     }
 
-    /*async createChat() {
-      const id = this.rdf.getSession();
-      this.chat.newChat(id);
-    }*/
 
-    /**
-     * Method that creates a folder where our app will write our persistence
-     */
-    private createNewFolder() {
 
-        let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A');
+    private async readMessage(url) {
+        this.ruta = url;
+        const message = await this.searchMessage(url);
+        return message;
+    }
 
-        this.solidFileClient.popupLogin().then(webId => {
-            console.log(`Logged in as ${webId}.`);
+    //method that search for a message in a pod
+    private async searchMessage(url) {
+        console.log('URL: ' + url);
+        return await this.fileClient.readFile(url).then(body => {
+            console.log(`File	content is : ${body}.`);
+            return body;
         }, err => console.log(err));
 
-        // We must check that the folder not exists before create it
-        this.solidFileClient.createFolder(solidId).then(success => {
-            console.log(`Created folder ${solidId}.`);
-            this.toastr.success('Folder created!', 'Success!');
-        }, err => console.log(err) );
-
     }
 
-    /**
-     * This method creates a new file if it doesn't exist, in other case it lets as it is
-     * This method creates undefined files with a different number
-     * @param name
-     */
-    protected createFile(name: string) {
 
-        let solidId = this.rdf.session.webId;
-        solidId = solidId.replace('/profile/card#me', '/public/deChatES1A/' + name);
+    private getMessage(quads: any[], idx: number): message {
+        return {
+            date: this.getValue(quads[idx + 1]),
+            content: this.getValue(quads[idx + 2]),
+            sender: this.getValue(quads[idx + 3]),
+            recipient: this.getValue(quads[idx + 4])
+        };
+    }
 
-        this.solidFileClient.popupLogin().then( webId => {
-            console.log( `Logged in as ${webId}.`);
-        }, err => console.log(err) );
+    private getValue(elem: any): any {
+        return elem.object.value;
+    }
 
-        this.isHidden = true;
-        this.username = name;
-        // Es necesario que este la carpeta creada antes de ejecutarse sino dara un error
-        this.createNewFolder();
-        this.solidFileClient.updateFile(solidId).then(success => {
-            console.log(`Created file ${solidId}.`);
-            this.toastr.success('File created!', 'Success!');
-        }, err => console.log(err) );
-        this.chatController.grantPermissions(solidId, name);
+
+    private getUserByUrl(ruta: string): string {
+        let sinhttp;
+        sinhttp = ruta.replace('https://', '');
+        const user = sinhttp.split('.')[0];
+        return user;
+    }
+
+    private updateTTL(url, newContent, contentType?) {
+        if (contentType) {
+            this.fileClient.updateFile(url, newContent, contentType).then(success => {
+                console.log(`Updated ${url}.`);
+            }, err => console.log(err));
+        } else {
+            this.fileClient.updateFile(url, newContent).then(success => {
+                console.log(`Updated ${url}.`);
+            }, err => console.log(err));
+        }
+    }
+
+
+    async write() {
+        const myUser = this.getUserByUrl(this.rdf.session.webId);
+        const user = this.getUserByUrl(this.ruta_seleccionada);
+        const messageContent = (<HTMLInputElement>document.getElementById('comment')).value;
+        (document.getElementById('comment') as HTMLInputElement).value = '';
+        let senderId = this.rdf.session.webId;
+        const senderPerson: Friend = {webid: senderId, name: this.getUserByUrl(senderId)};
+        //Receiver WebId
+        const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
+        const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
+
+        const stringToChange = '/profile/card#me';
+        const path = '/public/dechat1a/' + user + '/prueba.ttl';
+        senderId = senderId.replace(stringToChange, path);
+        const message = await this.readMessage(senderId);
+        this.ruta = senderId;
+
+        if (message != null) {
+            this.updateTTL(senderId, message + '\n' + new Printer().writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
+            if (this.messages.indexOf(message) !== -1) {
+                this.messages.push(message);
+            }
+        } else {
+            this.updateTTL(senderId, new Printer().writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
+        }
+    }
+
+    getProfilePicture(user) {
+        const a = user.toString().replace('card#me', 'perfil.jpeg');
+        return a;
+    }
+}
+
+class Printer {
+    public writeTTL(sender, recipient, newMessage) {
+        return '@prefix schem: <http://schema.org/> .\n' +
+            '@prefix : <#> .\n\n' +
+            this.writeTTLMessage(sender, recipient, newMessage);
+
+    }
+    public writeTTLMessage(sender, recipient, message) {
+        return ':message' + this.getMessageId(message) + ' a schem:Message ;\n\n' +
+        '\tschem:dateSent "' + message.date + '" ;\n' +
+        '\tschem:messageAttachment "' + message.content + '" ;\n' +
+        '\tschem:sender "' + sender + '" ;\n' +
+        '\tschem:recipient "' + recipient + '" .\n' ;
+    }
+
+    public getMessageId(message) {
+        const date = message.date.getFullYear().toString() + message.date.getMonth().toString() + message.date.getDay().toString() + message.date.getHours().toString() + message.date.getMinutes().toString() +
+                message.date.getSeconds().toString() + message.date.getMilliseconds().toString();
+        return date;
     }
 }

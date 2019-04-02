@@ -1,26 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
 import {ToastrModule} from 'ngx-toastr';
 import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {FormsModule} from '@angular/forms';
+import {FriendsComponent} from './friends.component';
+import {RdfService} from '../../services/rdf.service';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('FriendsComponent', () => {
+  let component: FriendsComponent;
+  let fixture: ComponentFixture<FriendsComponent>;
 
   beforeEach(async(() => {
+    const rdfServiceStub = {
+      getProfile: () => ({}),
+      updateProfile: () => ({})
+    };
     TestBed.configureTestingModule({
       imports: [FormsModule, ToastrModule.forRoot(),
         RouterModule, RouterTestingModule],
-      declarations: [ DashboardComponent ]
+      declarations: [ FriendsComponent ],
+      providers: [
+
+        { provide: RdfService, useValue: rdfServiceStub }
+      ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(FriendsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

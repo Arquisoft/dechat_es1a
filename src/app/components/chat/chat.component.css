@@ -1,5 +1,5 @@
 .nav_space{
-    margin-top:100px;
+    margin-top:80px;
     margin-left:20px;
     margin-right:20px;
 }
@@ -27,6 +27,7 @@
     height: 40px;
     background-image: url('http://i.imgur.com/JqEuJ6t.png');
 }
+
 .chatperson .pname{
     font-size: 18px;
     padding-left: 5px;

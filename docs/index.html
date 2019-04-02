@@ -466,10 +466,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
 <ul class="sectlevel2">
-<li><a href="#_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</a></li>
-<li><a href="#_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</a></li>
-<li><a href="#">6.3. &#8230;&#8203;</a></li>
-<li><a href="#_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</a></li>
+<li><a href="#_login">6.1. Login</a></li>
+<li><a href="#_show_friends">6.2. Show friends</a></li>
+<li><a href="#_chat">6.3. Chat</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a>
@@ -658,6 +657,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">No databases</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">As TC4 explains, we won&#8217;t be using any kind of traditional database. Rather so, we&#8217;ll store data in private folders.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to test the project using any available technology for the language that we used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We have to program acceptance tests using Cucumber and Gherkin language.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -679,7 +688,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OC1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Team</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The team is formed by Pelayo Rodríguez García, Samuel Moreno Vincent, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto, Ignacio Bermejo Álvarez.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The team is formed by Pelayo Rodríguez García, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto, Adán Fernández Sánchez.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OC2</p></td>
@@ -803,6 +812,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph">
 <p>For new HTML views Bootstrap will be included as it provides a full CSS library, with responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
+</div>
+<div class="paragraph">
+<p>For the tests we are going to use JEST and for the acceptance tests Cucumber because is a technical requirement for the project.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1170,29 +1182,49 @@ You will mainly capture scenarios in your documentation to communicate your arch
 </div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</h3>
+<h3 id="_login">6.1. Login</h3>
 <div class="ulist">
 <ul>
 <li>
 <p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
 </li>
 <li>
-<p><em>&lt;insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.&gt;</em></p>
+<p>The login component connects with the services from the ID provider for the POD</p>
+</li>
+<li>
+<p>The provider, if the user inserts the right credentials, will sign in in the application and chat with friends</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</h3>
-
+<h3 id="_show_friends">6.2. Show friends</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
+</li>
+<li>
+<p>The application will read from the POD the friends of the user and show them in a list where he will be available to chat with them</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="">6.3. &#8230;&#8203;</h3>
-
+<h3 id="_chat">6.3. Chat</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
+</li>
+<li>
+<p>In the view of friends, the user will click over a friend and start a chat with him.</p>
+</li>
+<li>
+<p>The communication will be across the pods, writing and reading across them with the operations provided by the application</p>
+</li>
+</ul>
 </div>
-<div class="sect2">
-<h3 id="_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1341,91 +1373,6 @@ when your infrastructure is more complex.</p>
 <div class="sidebarblock arc42help">
 <div class="content">
 <div class="paragraph">
-<div class="title">Content</div>
-<p>This section describes overall, principal regulations and solution ideas that are
-relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks.
-They can include many different topics, such as</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>domain models</p>
-</li>
-<li>
-<p>architecture patterns or design patterns</p>
-</li>
-<li>
-<p>rules for using specific technology</p>
-</li>
-<li>
-<p>principal, often technical decisions of overall decisions</p>
-</li>
-<li>
-<p>implementation rules</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>Concepts form the basis for <em>conceptual integrity</em> (consistency, homogeneity)
-of the architecture. Thus, they are an important contribution to achieve inner qualities of your system.</p>
-</div>
-<div class="paragraph">
-<p>Some of these concepts cannot be assigned to individual building blocks
-(e.g. security or safety). This is the place in the template that we provided for a
-cohesive specification of such concepts.</p>
-</div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>The form can be varied:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>concept papers with any kind of structure</p>
-</li>
-<li>
-<p>cross-cutting model excerpts or scenarios using notations of the architecture views</p>
-</li>
-<li>
-<p>sample implementations, especially for technical concepts</p>
-</li>
-<li>
-<p>reference to typical usage of standard frameworks (e.g. using Hibernate for object/relational mapping)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<div class="title">Structure</div>
-<p>A potential (but not mandatory) structure for this section could be:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Domain concepts</p>
-</li>
-<li>
-<p>User Experience concepts (UX)</p>
-</li>
-<li>
-<p>Safety and security concepts</p>
-</li>
-<li>
-<p>Architecture and design patterns</p>
-</li>
-<li>
-<p>"Under-the-hood"</p>
-</li>
-<li>
-<p>development concepts</p>
-</li>
-<li>
-<p>operational concepts</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
 <p>Note: it might be difficult to assign individual concepts to one specific topic
 on this list.</p>
 </div>
@@ -1445,7 +1392,7 @@ on this list.</p>
 <div class="sect2">
 <h3 id="_persistency">8.2. Persistency</h3>
 <div class="paragraph">
-<p>As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we&#8217;ll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored.</p>
+<p>As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we&#8217;ll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored. For this purpose we are going to use the .ttl format</p>
 </div>
 </div>
 <div class="sect2">
@@ -1463,7 +1410,7 @@ on this list.</p>
 <div class="sect2">
 <h3 id="_transaction_processing">8.5. Transaction Processing</h3>
 <div class="paragraph">
-<p><em>In progress</em></p>
+<p>The transactions realized across the application are asynchronous</p>
 </div>
 </div>
 <div class="sect2">
@@ -1529,7 +1476,7 @@ on this list.</p>
 <div class="sect2">
 <h3 id="_testability">8.16. Testability</h3>
 <div class="paragraph">
-<p><em>In progress</em></p>
+<p>For the testability we used JEST modules to test the JavaScript code and Angular side.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1568,6 +1515,9 @@ on this list.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CSS &amp; HTML implementation: Bootstrap libraries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber for acceptance tests</p></td>
 </tr>
 </tbody>
 </table>
@@ -1662,7 +1612,7 @@ and coverage percent should be at least 60%.#</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Maintainability</span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The application must be divided into differente modules. All public
+<td class="tableblock halign-left valign-top"><p class="tableblock">The application must be divided into different modules. All public
 methods in the application must be well documented with JSDoc. Code quality
 is analized by means of Codacy (<a href="https://www.codacy.com/" class="bare">https://www.codacy.com/</a>) and must be at least "b" level #</p></td>
 </tr>
@@ -1674,22 +1624,27 @@ is analized by means of Codacy (<a href="https://www.codacy.com/" class="bare">h
 </tbody>
 </table>
 <div class="paragraph">
-<p>| Term         | Definition
-| AngularJS    | Open source Model-View-Controller framework, developed by Google. [Official Website:](<a href="https://angular.io/" class="bare">https://angular.io/</a>)
-| Docker       | Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](<a href="https://www.docker.com/" class="bare">https://www.docker.com/</a>)
-| Heroku       | Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](<a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a>)
-| IDE          | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
-| Ionic        | Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](<a href="https://ionicframework.com/" class="bare">https://ionicframework.com/</a>)
-| JavaScript   | JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification.
-| NodeJS       | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](<a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>)
-| Webstorm     | IDE for JavaScript development. [Official Website:](<a href="https://www.jetbrains.com/webstorm/" class="bare">https://www.jetbrains.com/webstorm/</a>)
-| npm     	   | Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](<a href="https://www.npmjs.com/" class="bare">https://www.npmjs.com/</a>)
-| Solid        | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](<a href="https://solid.mit.edu/" class="bare">https://solid.mit.edu/</a>)
-| Linked Data  | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks.
-| POD		   | Derived from "Personal Online Data". It&#8217;s a simple file that contains user data. Also can be accesed by other users/apps to write or read data.
-| RDF		   | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally.
-| Stakeholder  | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project.
-| Decentralized Web  | Wweb technology where services are distributed rather than localized, where users own and control their own data</p>
+<p>| Term              | Definition
+| AngularJS         | Open source Model-View-Controller framework, developed by Google. [Official Website:](<a href="https://angular.io/" class="bare">https://angular.io/</a>)
+| Cucumber          | Open-Source tool to make tests in a language that can be understood by people that aren&#8217;t familiarized with the computing technologies world.
+| Decentralized Web | Web technology where services are distributed rather than localized, where users own and control their own data
+| Docker            | Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](<a href="https://www.docker.com/" class="bare">https://www.docker.com/</a>)
+| Gherkin           | Programming language to make tests in Cucumber. It could be understood by humans and computers.
+| Heroku            | Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](<a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a>)
+| IDE               | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
+| Ionic             | Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](<a href="https://ionicframework.com/" class="bare">https://ionicframework.com/</a>)
+| JavaScript        | JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification.
+| Jest              | Test framework that allows between other languages JavaScript or React
+| Karma             | Is a test runner environment for the world of JavaScript
+| Linked Data       | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks.
+| NodeJS            | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](<a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>)
+| npm     	        | Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](<a href="https://www.npmjs.com/" class="bare">https://www.npmjs.com/</a>)
+| POD		        | Derived from "Personal Online Data". It&#8217;s a simple file that contains user data. Also can be accessed by other users/apps to write or read data.
+| Protractor        | Test framework for AngularJS and Angular applications that allows that your tests will run in a real browser
+| RDF		        | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally.
+| Solid             | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](<a href="https://solid.mit.edu/" class="bare">https://solid.mit.edu/</a>)
+| Stakeholder       | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project.
+| WebStorm          | IDE for JavaScript development. [Official Website:](<a href="https://www.jetbrains.com/webstorm/" class="bare">https://www.jetbrains.com/webstorm/</a>)</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1720,7 +1675,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-12 09:23:12 +0100
+Last updated 2019-04-02 04:04:51 +0200
 </div>
 </div>
 </body>
