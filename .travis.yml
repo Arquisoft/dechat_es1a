@@ -32,11 +32,10 @@ before_script:
 script:
   - npm test
   
-after_success:
-        deploy:
-            provider: pages
-            skip_cleanup: true
-            github_token: $GH-KEY
-            keep_history: true
-            on:
-                branch: master
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GH-KEY
+    keep_history: true
+    on:
+        branch: master
