@@ -35,7 +35,7 @@ script:
 deploy:
     provider: pages
     skip_cleanup: true
-    github_token: $GH-KEY
+    github_token: $GH_KEY
     keep_history: true
     on:
         branch: master
