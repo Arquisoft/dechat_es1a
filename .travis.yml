@@ -21,7 +21,7 @@ before_install:
 
 install:
   - npm install
-  - node_modules/protractor/bin/webdriver-manager update
+  - node_modules/protractor/bin/webdriver-manager update --gecko=false
 
 before_script:
  - npm start &
