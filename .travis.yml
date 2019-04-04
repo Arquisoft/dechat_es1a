@@ -30,3 +30,11 @@ before_script:
  - webdriver-manager start &
 script:
   - npm test
+after_success:
+  deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH-KEY
+  keep_history: true
+  on:
+    branch: master
