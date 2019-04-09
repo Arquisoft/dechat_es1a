@@ -1,7 +1,6 @@
 = dechat_es1a
 
 image:https://travis-ci.org/Arquisoft/dechat_es1a.svg?branch=master["Build Status", link="https://travis-ci.org/Arquisoft/dechat_es1a"]
-image:https://codecov.io/gh/Arquisoft/dechat_es1a/branch/master/graph/badge.svg["Codecov",link="https://codecov.io/gh/Arquisoft/dechat_es1a"]
 image:https://coveralls.io/repos/github/Arquisoft/dechat_es1a/badge.svg["Coverage",link="https://coveralls.io/github/Arquisoft/dechat_es1a"]
 image:https://api.codacy.com/project/badge/Grade/fc7dc1da60ee4e9fb67ccff782625794["Codacy code quality", link="https://www.codacy.com/app/jelabra/dechat_es1a?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/dechat_es1a&utm_campaign=Badge_Grade"]
 image:https://img.shields.io/github/downloads/Arquisoft/dechat_es1a/total.svg["Downloads"]
