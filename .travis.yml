@@ -1,4 +1,44 @@
+sudo: required
+dist: trusty
+
 language: node_js
 node_js:
   - "stable"
+
+before_install:
+ - export CHROME_BIN=/usr/bin/google-chrome
+ # start xvbfb for e2e tests with screen resolution 1280x1024x16
+ - "export DISPLAY=:99.0"
+ - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+ # give xvfb some time to start
+ - sleep 3
+ - sudo apt-get update
+ - sudo apt-get install -y libappindicator1 fonts-liberation
+ - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+ - sudo dpkg -i google-chrome*.deb
+ - google-chrome --version
+ 
+
+install:
+  - npm install
+  - node_modules/protractor/bin/webdriver-manager update --gecko=false
+
+before_script:
+ - npm start &
+ - sleep 10
+ - webdriver-manager update
+ - webdriver-manager start &
+ 
+script:
+  - npm test
+  
 after_success: npm run coverage
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GH_KEY
+    keep_history: true
+    on:
+        branch: master
+
