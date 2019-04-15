@@ -24,10 +24,14 @@ describe('ChatComponent', () => {
             createBaseFolder: () => ({})
         };
 
+
+
+
         TestBed.configureTestingModule({
             declarations: [ ChatComponent ],
             imports: [ FormsModule, ToastrModule.forRoot()],
-            providers: [{ provide: ChatService, useValue: chatServiceStub }]
+            providers: [{ provide: ChatService, useValue: chatServiceStub },
+               ]
         })
             .compileComponents();
     }));
@@ -41,4 +45,5 @@ describe('ChatComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
 });
