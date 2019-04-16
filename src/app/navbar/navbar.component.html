@@ -1,0 +1,26 @@
+<nav class="topnav">
+  <div class="logo">DeChat
+    <i class="fab fa-earlybirds"></i>
+  </div>
+  <div class="menu-item">
+    <div>
+      <a [routerLink]="['../card']">
+        <i class="fas fa-user-circle"></i>
+      </a>
+    </div>
+    PROFILE
+  </div>
+    <div class="menu-item">
+        <div>
+            <a [routerLink]="['../components/chat']">
+                <i id="chat_link" class="fas fa-user-friends"></i>
+            </a>
+        </div>
+        CHAT
+    </div>
+  <div class="profile-menu">
+    <div>
+      <i class="fas fa-sign-out-alt" (click)="logout()"></i>
+    </div>
+  </div>
+</nav>

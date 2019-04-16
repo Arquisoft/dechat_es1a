@@ -1,0 +1,19 @@
+[[section-design-decisions]]
+== Design Decisions
+
+All the design decisions made so far are explained and detailed in
+ link:https://github.com/Arquisoft/dechat_es1a/blob/master/src/docs/04_solution_strategy.adoc[section 4 - "Solution Strategy"]. Here are all the
+ important choices arranged in a table:
+[cols="1"]
+|===
+|Programming Language: JavaScript - Angular 6, TypeScript
+|Base project: Solid Auth Client
+|IDE: WebStorm by JetBrains
+|App deploy: Docker, Heroku
+|CSS & HTML implementation: Bootstrap libraries
+|Testing: Cucumber and Jest
+|===
+
+Relating to the Chat view, it will be arranged into a separate component, with its own HTML and CSS implementations. The layout is separated
+in two columns. On the left, a list of the user's friends wil be displayed, and on the right, once you choose the
+friend you want to talk to, the chat view will pop up.

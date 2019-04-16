@@ -1,0 +1,42 @@
+[[section-introduction-and-goals]]
+== Introduction and Goals
+
+This software project aims to be a SOLID chat, helping people communicate with each other in a decentralized way. 
+
+
+=== Requirements Overview
+
+.What is dechat_es1a?
+The main purpose of our app is to let people communicate with each other while storing their own data, letting them decide who shall view their information rather than storing it in a traditional centralized server, where you are not completely sure who has access to it.
+
+.Main features/requirements
+App requirements are written down in the  https://labra.solid.community/public/SoftwareArchitecture/EnunciadoPractica/#requirements[requirements document].
+
+This requirements revolve around a decentralized app, which is all https://github.com/solid/solid#about-solid[SOLID is about]. Other than that, the app has to be a classic chat where you can talk to friends (individually or in groups), receive notifications and share multimedia. 
+
+=== Quality Goals
+
+.Quality goals
+|===
+|*Quality*|*Motivation*
+|Q1. Usability| The app has to be easy to use for non-technical people.
+|Q2. Responsiveness | The app has to be an instant messaging app, so it can be used near real-time.
+|Q3. Privacy| As this is based on SOLID, decentralized means private.
+|Q4. Security| The chat has to be secure so the users know who are they talking to and who has access to the chat.
+|===
+
+=== Stakeholders
+
+.Stakeholders
+|===
+|*Role/Name*|*Expectations*
+| ST1. Developers | A good working project so their reputation and skills (also their mark) improve.
+| ST2. Labra | A good workflow and functional project so he sees we have learned the fundamentals of software architecture.
+| ST3. Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
+| ST4. Users | An app you can use if you feel your privacy is being invaded using other similar apps.
+| ST5. Technologies used | A new useful app so they can brand their technology with a relevant and innovative release.
+|===
+
+
+[options="header",cols="1,2,2"]
+
