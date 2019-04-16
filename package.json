@@ -14,7 +14,7 @@
     "travisRepo": "./test/travisRepo.sh",
     "travis-deploy-once": "travis-deploy-once",
     "puml": "./node_modules/.bin/puml",
-    "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs",
+    "doc": "./node_modules/.bin/asciidoctorjs  src/docs/index.adoc  --attributes data-uri --destination-dir docs/doc",
     "test": "jest && protractor ./protractor.conf.js",
      "ci": "ng serve -o && jest && protractor ./protractor.conf.js"
 
