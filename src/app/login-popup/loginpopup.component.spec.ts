@@ -14,9 +14,9 @@ describe('LoginPopupComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ToastrModule.forRoot(),
         RouterModule, RouterTestingModule],
-      declarations: [ LoginPopupComponent ]
+      declarations: [LoginPopupComponent]
     })
-    .compileComponents();
+        .compileComponents();
   }));
 
   beforeEach(() => {
@@ -28,4 +28,5 @@ describe('LoginPopupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

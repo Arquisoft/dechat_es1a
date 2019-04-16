@@ -85,6 +85,7 @@
     "@babel/register": "^7.0.0",
     "@types/jest": "^21.1.10",
     "@types/node": "~8.9.4",
+    "angular-cli-ghpages": "^0.5.3",
     "angular-mocks": "^1.7.8",
     "asciidoctor-cli": "^1.5.6-rc.1",
     "asciidoctor.js": "^1.5.9",
