@@ -70,4 +70,35 @@ export class ChatService {
             }, err1 => console.log(err1));
         });
     }
+    public writeTTL(sender, recipient, newMessage) {
+        return '@prefix schem: <http://schema.org/> .\n' +
+            '@prefix : <#> .\n\n' +
+            this.writeTTLMessage(sender, recipient, newMessage);
+
+    }
+    public writeTTLMessage(sender, recipient, message) {
+        return ':message' + this.getMessageId(message) + ' a schem:Message ;\n\n' +
+            '\tschem:dateSent "' + message.date + '" ;\n' +
+            '\tschem:messageAttachment "' + message.content + '" ;\n' +
+            '\tschem:sender "' + sender + '" ;\n' +
+            '\tschem:recipient "' + recipient + '" .\n' ;
+    }
+
+    public getMessageId(message) {
+        const date = message.date.getFullYear().toString() + message.date.getMonth().toString() + message.date.getDay().toString() + message.date.getHours().toString() + message.date.getMinutes().toString() +
+            message.date.getSeconds().toString() + message.date.getMilliseconds().toString();
+        return date;
+    }
+
+    private updateTTL(url, newContent, contentType?) {
+        if (contentType) {
+            this.fileClient.updateFile(url, newContent, contentType).then(success => {
+                console.log(`Updated ${url}.`);
+            }, err => console.log(err));
+        } else {
+            this.fileClient.updateFile(url, newContent).then(success => {
+                console.log(`Updated ${url}.`);
+            }, err => console.log(err));
+        }
+    }
 }

@@ -39,7 +39,6 @@ export class ChatComponent implements OnInit {
             }
         });
         this.fileClient = require('solid-file-client');
-        console.log(this.ruta_seleccionada);
         setInterval(() => {
             this.actualizar();
         }, 3000);
@@ -53,19 +52,6 @@ export class ChatComponent implements OnInit {
         this.chat.createNewFolder('dechat1a', '/public/');
         this.chat.createNewFolder(name, '/public/dechat1a/');
         document.getElementById('receiver').innerHTML = name;
-    }
-
-
-
-
-
-    crateFolder() {
-        const user = this.getUserByUrl(this.ruta_seleccionada);
-        const path = '/public/dechat2a/' + user + '/prueba.ttl';
-        let senderId = this.rdf.session.webId;
-        const stringToChange = '/profile/card#me';
-        senderId = senderId.replace(stringToChange, path);
-        const urlArray = this.ruta_seleccionada.split('/');
     }
 
     async actualizar() {
@@ -126,21 +112,17 @@ export class ChatComponent implements OnInit {
     /*
     * Sorted methos that sorts the message array
     */
-    public order( mess : message[] )
-    {
+    public order( mess: message[] ) {
         return mess.sort(function(a, b) {
-            let date1 = a.date;
-            let date2 = b.date;
-            return date2>date1 ? -1 : date2<date1 ? 1 : 0;
+            const date1 = a.date;
+            const date2 = b.date;
+            return date2 > date1 ? -1 : date2 < date1 ? 1 : 0;
         });
     }
 
-
-
     private async readMessage(url) {
         this.ruta = url;
-        const message = await this.searchMessage(url);
-        return message;
+        return await this.searchMessage(url);
     }
 
     //method that search for a message in a pod
@@ -174,17 +156,7 @@ export class ChatComponent implements OnInit {
         return user;
     }
 
-    private updateTTL(url, newContent, contentType?) {
-        if (contentType) {
-            this.fileClient.updateFile(url, newContent, contentType).then(success => {
-                console.log(`Updated ${url}.`);
-            }, err => console.log(err));
-        } else {
-            this.fileClient.updateFile(url, newContent).then(success => {
-                console.log(`Updated ${url}.`);
-            }, err => console.log(err));
-        }
-    }
+
 
     async write() {
         const user = this.getUserByUrl(this.ruta_seleccionada);
@@ -201,39 +173,17 @@ export class ChatComponent implements OnInit {
         const message = await this.readMessage(senderId);
         this.ruta = senderId;
         if (message != null) {
-            this.updateTTL(senderId, message + '\n' + new Printer().writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
+            this.chat.updateTTL(senderId, message + '\n' + this.chat.writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
             if (this.messages.indexOf(message) !== -1) {
                 this.messages.push(message);
             }
         } else {
-            this.updateTTL(senderId, new Printer().writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
+            this.updateTTL(senderId, this.chat.writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
         }
     }
 
     getProfilePicture(user) {
         const a = user.toString().replace('card#me', 'perfil.jpeg');
         return a;
-    }
-}
-
-class Printer {
-    public writeTTL(sender, recipient, newMessage) {
-        return '@prefix schem: <http://schema.org/> .\n' +
-            '@prefix : <#> .\n\n' +
-            this.writeTTLMessage(sender, recipient, newMessage);
-
-    }
-    public writeTTLMessage(sender, recipient, message) {
-        return ':message' + this.getMessageId(message) + ' a schem:Message ;\n\n' +
-        '\tschem:dateSent "' + message.date + '" ;\n' +
-        '\tschem:messageAttachment "' + message.content + '" ;\n' +
-        '\tschem:sender "' + sender + '" ;\n' +
-        '\tschem:recipient "' + recipient + '" .\n' ;
-    }
-
-    public getMessageId(message) {
-        const date = message.date.getFullYear().toString() + message.date.getMonth().toString() + message.date.getDay().toString() + message.date.getHours().toString() + message.date.getMinutes().toString() +
-                message.date.getSeconds().toString() + message.date.getMilliseconds().toString();
-        return date;
     }
 }
