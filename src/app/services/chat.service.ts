@@ -90,7 +90,7 @@ export class ChatService {
         return date;
     }
 
-    private updateTTL(url, newContent, contentType?) {
+    updateTTL(url, newContent, contentType?) {
         if (contentType) {
             this.fileClient.updateFile(url, newContent, contentType).then(success => {
                 console.log(`Updated ${url}.`);
