@@ -39,6 +39,7 @@ export class CardComponent implements OnInit  {
       /* set reload locally and then reload the page */
       localStorage.setItem('reload', 'true');
       location.reload();
+      location.reload();
     } else {
       localStorage.removeItem('reload');
       // localStorage.clear(); // an option
