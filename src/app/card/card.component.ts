@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { SolidProfile } from '../models/solid-profile.model';
 import { RdfService } from '../services/rdf.service';
 import { AuthService } from '../services/solid.auth.service';
+import {breakStatement} from '@babel/types';
 
 @Component({
   selector: 'app-card',
@@ -16,6 +17,7 @@ export class CardComponent implements OnInit  {
   friends: Array<string>;
   profileImage: string;
   loadingProfile: Boolean;
+  i = 0;
 
   @ViewChild('f') cardForm: NgForm;
 
@@ -23,14 +25,19 @@ export class CardComponent implements OnInit  {
     private route: ActivatedRoute, private auth: AuthService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loadingProfile = true;
-    this.loadProfile();
-
+    await this.loadProfile();
     // Clear cached profile data
     // TODO: Remove this code and find a better way to get the old data
     localStorage.removeItem('oldProfileData');
+    window.onload = function() {
+      if (!window.location.hash) {
+        window.location.reload();
+      }
+    };
   }
+
 
   async loadFriends() {
     try {
@@ -56,13 +63,11 @@ export class CardComponent implements OnInit  {
         this.profile = profile;
         this.auth.saveOldUserData(profile);
       }
-
       this.loadingProfile = false;
       this.setupProfileData();
     } catch (error) {
       console.log(`Error: ${error}`);
     }
-
   }
 
   // Submits the form, and saves the profile data using the auth/rdf service
@@ -87,7 +92,9 @@ export class CardComponent implements OnInit  {
     }
   }
 
-  loadChat() {
-    return '';
+  private activo()
+  {
+    console.log(this.rdf.session);
   }
+
 }

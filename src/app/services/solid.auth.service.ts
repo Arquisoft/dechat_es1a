@@ -80,6 +80,8 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('oldProfileData'));
   }
 
+
+
   /*
   *  Make a call to the solid auth endpoint. It requires an identity provider url, which here is coming from the dropdown, which
   *  is populated by the getIdentityProviders() function call. It currently requires a callback url and a storage option or else

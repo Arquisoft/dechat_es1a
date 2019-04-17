@@ -7,7 +7,9 @@ import { AuthService } from '../services/solid.auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {
+
+  }
 
   ngOnInit() {
   }
@@ -16,6 +18,4 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.auth.solidSignOut();
   }
-
-
 }

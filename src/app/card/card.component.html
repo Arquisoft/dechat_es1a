@@ -1,8 +1,10 @@
 <div class="profile-container" xmlns="http://www.w3.org/1999/html">
   <!-- EXAMPLE TOP NAV -->
- <app-navbar></app-navbar>
-  <h1>Profile</h1>
+  <div ng-if="isActive()">
+      <app-navbar></app-navbar>
+  </div>
 
+  <h1>Profile</h1>
   <!-- LOADING IMAGE -->
   <div class="loading-image" *ngIf="loadingProfile">
     <i class="fas fa-circle-notch fa-4x fa-spin"></i>
@@ -61,5 +63,7 @@
         <h2><script src="../card/card.component.ts"></script></h2>
       </div>
     </form>
+
+    <button type="submit" (click)="activo()">mongol</button>
   </div>
 </div>

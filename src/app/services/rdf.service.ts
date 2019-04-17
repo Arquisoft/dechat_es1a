@@ -291,7 +291,7 @@ export class RdfService {
     if (linkedUri) {
       return this.getValueFromVcard('value', linkedUri).split('tel:+')[1];
     }
-  }
+  };
 
   getFriends = async () => {
     const person = this.session.webId;
@@ -305,7 +305,7 @@ export class RdfService {
     } catch (error) {
       console.log(`Error fetching data: ${error}`);
     }
-  }
+  };
 
   getFriendsNames = async () => {
     const person = this.session.webId;
