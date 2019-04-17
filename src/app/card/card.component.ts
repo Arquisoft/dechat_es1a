@@ -23,13 +23,27 @@ export class CardComponent implements OnInit  {
     private route: ActivatedRoute, private auth: AuthService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loadingProfile = true;
-    this.loadProfile();
+    await this.loadProfile();
 
     // Clear cached profile data
     // TODO: Remove this code and find a better way to get the old data
     localStorage.removeItem('oldProfileData');
+
+
+
+
+    //RELOAD PAGE
+    if (!localStorage.getItem('reload')) {
+      /* set reload locally and then reload the page */
+      localStorage.setItem('reload', 'true');
+      location.reload();
+      location.reload();
+    } else {
+      localStorage.removeItem('reload');
+      // localStorage.clear(); // an option
+    }
   }
 
   async loadFriends() {
@@ -85,9 +99,5 @@ export class CardComponent implements OnInit  {
     } else {
       this.profileImage = '/assets/images/profile.png';
     }
-  }
-
-  loadChat() {
-    return '';
   }
 }
