@@ -47,4 +47,27 @@ export class ChatService {
             console.log(`Error: ${error}`);
         }
     }
+    /**
+     * Crear carpeta
+     * @param name
+     * @param ruta
+     */
+    createNewFolder(name: string, ruta: string) {
+        let solidId = this.rdf.session.webId;
+        const stringToChange = '/profile/card#me';
+        const path = ruta + name;
+        solidId = solidId.replace(stringToChange, path);
+        this.buildFolder(solidId);
+    }
+    //method that creates the folder using the solid-file-client lib
+    private buildFolder(solidId) {
+        this.solidFileClient.readFolder(solidId).then(folder => {
+            console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
+        }, err => {
+            //Le paso la URL de la carpeta y se crea en el pod. SI ya esta creada no se si la sustituye o no hace nada
+            this.solidFileClient.createFolder(solidId).then(success => {
+                console.log(`Created folder ${solidId}.`);
+            }, err1 => console.log(err1));
+        });
+    }
 }
