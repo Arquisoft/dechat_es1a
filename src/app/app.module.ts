@@ -18,7 +18,6 @@ import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FriendsComponent } from './components/friends/friends.component';
 import { ChatComponent } from './components/chat/chat.component';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -52,10 +51,8 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent
     },
-    {
-        path: 'components/friends',
-        component: FriendsComponent
-    },
+
+
     {
         path: 'components/chat',
         component: ChatComponent
@@ -71,7 +68,6 @@ const routes: Routes = [
         CardComponent,
         RegisterComponent,
         NavbarComponent,
-        FriendsComponent,
         ChatComponent
     ],
     imports: [
