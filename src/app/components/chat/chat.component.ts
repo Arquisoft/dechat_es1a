@@ -178,7 +178,7 @@ export class ChatComponent implements OnInit {
                 this.messages.push(message);
             }
         } else {
-            this.updateTTL(senderId, this.chat.writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
+            this.chat.updateTTL(senderId, this.chat.writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
         }
     }
 

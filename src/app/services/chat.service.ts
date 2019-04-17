@@ -92,11 +92,11 @@ export class ChatService {
 
     updateTTL(url, newContent, contentType?) {
         if (contentType) {
-            this.fileClient.updateFile(url, newContent, contentType).then(success => {
+            this.solidFileClient.updateFile(url, newContent, contentType).then(success => {
                 console.log(`Updated ${url}.`);
             }, err => console.log(err));
         } else {
-            this.fileClient.updateFile(url, newContent).then(success => {
+            this.solidFileClient.updateFile(url, newContent).then(success => {
                 console.log(`Updated ${url}.`);
             }, err => console.log(err));
         }
