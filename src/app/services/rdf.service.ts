@@ -11,8 +11,6 @@ const $rdf = require('rdflib');
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import {T} from '@angular/core/src/render3';
-import {listener} from '@angular/core/src/render3/instructions';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -275,7 +273,14 @@ export class RdfService {
     return '';
   }
 
+  //Function to get phone number. This returns only the first phone number, which is temporary. It also ignores the type.
+  getPhone = () => {
+    const linkedUri = this.getValueFromVcard('hasTelephone');
 
+    if (linkedUri) {
+      return this.getValueFromVcard('value', linkedUri).split('tel:+')[1];
+    }
+  }
 
   getFriends = async () => {
     const person = this.session.webId;
@@ -291,20 +296,6 @@ export class RdfService {
     }
   }
 
-  getFriendsNames = async () => {
-    const person = this.session.webId;
-    const friends = this.store.each($rdf.sym(person), FOAF('knows'));
-    const list_friends = Array<string>();
-    try {
-      for ( let i = 0; i < friends.length; i++) {
-        const fullName = this.store.any(friends[i], FOAF('name'));
-        list_friends.push(fullName);
-      }
-      return list_friends;
-    } catch (error) {
-      console.log(`Error fetching data: ${error}`);
-    }
-  }
   getProfile = async () => {
 
     if (!this.session) {
@@ -317,6 +308,7 @@ export class RdfService {
       return {
         fn : this.getValueFromVcard('fn'),
         company : this.getValueFromVcard('organization-name'),
+        phone: this.getPhone(),
         role: this.getValueFromVcard('role'),
         image: this.getValueFromVcard('hasPhoto'),
         address: this.getAddress(),
