@@ -7,29 +7,20 @@ declare var require: any;
 import solid_file_client from 'solid-file-client';
 import {message} from '../models/message.model';
 
+declare let $rdf;
 
 @Injectable({
     providedIn: 'root'
 })
 export class ChatService {
-    chatController: any;
     solidFileClient: any;
-    username = '';
-    // https://jonivalles.solid.community/public/deChatES1A/sofimrtn.
-    solidId = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA11/' + this.username);
-    // https://jonivalles.solid.community/public/deChatES1A/sofimrtn/XXXXXX (Inside folder)
-    solidIdFolder = this.rdf.session.webId.replace('/profile/card#me', '/public/PRUEBA11/' + this.username + '/' + this.username);
-    messageText = '';
     mi_listado_de_friends: string[] = [];
+    ruta_seleccionada: string;
 
 
     constructor(private rdf: RdfService, private toastr: ToastrService) {
         this.solidFileClient = require('solid-file-client');
     }
-
-    /**
-     * get user's friends from rdf
-     */
 
     async loadFriends(): Promise<string[]> {
         this.mi_listado_de_friends = [];
@@ -48,11 +39,8 @@ export class ChatService {
             console.log(`Error: ${error}`);
         }
     }
-    /**
-     * Crear carpeta
-     * @param name
-     * @param ruta
-     */
+
+
     createNewFolder(name: string, ruta: string) {
         let solidId = this.rdf.session.webId;
         const stringToChange = '/profile/card#me';
@@ -60,12 +48,11 @@ export class ChatService {
         solidId = solidId.replace(stringToChange, path);
         this.buildFolder(solidId);
     }
-    //method that creates the folder using the solid-file-client lib
+
     private buildFolder(solidId) {
         this.solidFileClient.readFolder(solidId).then(folder => {
             console.log(`Read ${folder.name}, it has ${folder.files.length} files.`);
         }, err => {
-            //Le paso la URL de la carpeta y se crea en el pod. SI ya esta creada no se si la sustituye o no hace nada
             this.solidFileClient.createFolder(solidId).then(success => {
                 console.log(`Created folder ${solidId}.`);
             }, err1 => console.log(err1));
@@ -122,20 +109,6 @@ export class ChatService {
         }, err => console.log(err));
     }
 
-    async getOtherMessages(messages, ruta, rdf)  {
-        const content = await this.readMessage(ruta);
-        if (!(content === undefined)) {
-            const doc = rdf.sym(ruta);
-            const store = rdf.graph();
-            const quads = store.match(null, null, null, doc);
-            let i;
-            for (i = 0; i < quads.length; i += 5) {
-                messages.push(this.getMessage(quads, i));
-            }
-        }
-        return messages;
-    }
-
     private getMessage(quads: any[], idx: number): message {
         return {
             date: this.getValue(quads[idx + 1]),
@@ -149,5 +122,53 @@ export class ChatService {
         return elem.object.value;
     }
 
+    async actualizar(ruta) {
+        this.ruta_seleccionada = ruta;
+        const messages: message []  = [];
+        try {
+            const user = this.getUserByUrl(this.ruta_seleccionada);
+            let senderId = this.rdf.session.webId;
+            const stringToChange = '/profile/card#me';
+            const path = '/public/dechat1a/' + user + '/prueba.ttl';
+            senderId = senderId.replace(stringToChange, path);
+
+
+            const contentSender = await this.readMessage(senderId);
+
+            if (!(contentSender === undefined)) {
+                const doc = $rdf.sym(senderId);
+                const store = $rdf.graph();
+                const e = await this.searchMessage(doc.value);
+                const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
+                const quads = store.match(null, null, null, doc);
+                let i;
+                for (i = 0; i < quads.length; i += 5) {
+                    messages.push(this.getMessage(quads, i));
+                }
+            }
+
+            const urlArray = this.ruta_seleccionada.split('/');
+            const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
+            const contentReceiver = await this.readMessage(url);
+
+
+            console.log('CONTENT RECEIVER: ' + url);
+
+            if (!(contentReceiver === undefined)) {
+                const doc2 = $rdf.sym(url);
+                const store2 = $rdf.graph();
+                const e2 = await this.searchMessage(doc2.value);
+                const par2 = $rdf.parse(e2, store2, doc2.uri, 'text/turtle');
+                const quads2 = store2.match(null, null, null, doc2);
+                let i;
+                for (i = 0; i < quads2.length; i += 5) {
+                    messages.push(this.getMessage(quads2, i));
+                }
+            }
+            return messages;
+        } catch (err) {
+            console.log('impossible to print the message');
+        }
+    }
 
 }
