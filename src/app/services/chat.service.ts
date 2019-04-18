@@ -104,4 +104,9 @@ export class ChatService {
     getUserByUrl(ruta: string): string {
         return ruta.replace('https://', '').split('.')[0];
     }
+
+    initChat(name) {
+        this.createNewFolder('dechat1a', '/public/');
+        this.createNewFolder(name, '/public/dechat1a/');
+    }
 }

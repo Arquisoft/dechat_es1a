@@ -33,9 +33,7 @@ export class ChatComponent implements OnInit {
                 document.getElementById('receiver').innerHTML = this.chat.getUserByUrl(res[0]);
                 this.mi_listado_de_friends = res;
                 this.ruta_seleccionada = res[0];
-                const name = this.chat.getUserByUrl(this.ruta_seleccionada);
-                this.chat.createNewFolder('dechat1a', '/public/');
-                this.chat.createNewFolder(name, '/public/dechat1a/');
+                this.chat.initChat(this.chat.getUserByUrl(this.ruta_seleccionada));
             }
         });
         this.fileClient = require('solid-file-client');
@@ -44,13 +42,10 @@ export class ChatComponent implements OnInit {
         }, 3000);
     }
 
-
     initSelection(ruta) {
         this.messages = [];
         this.ruta_seleccionada = ruta;
-        const name = this.chat.getUserByUrl(this.ruta_seleccionada);
-        this.chat.createNewFolder('dechat1a', '/public/');
-        this.chat.createNewFolder(name, '/public/dechat1a/');
+        this.chat.initChat(this.chat.getUserByUrl(this.ruta_seleccionada));
         document.getElementById('receiver').innerHTML = name;
     }
 
@@ -62,10 +57,7 @@ export class ChatComponent implements OnInit {
             const stringToChange = '/profile/card#me';
             const path = '/public/dechat1a/' + user + '/prueba.ttl';
             senderId = senderId.replace(stringToChange, path);
-
-
             const contentSender = await this.readMessage(senderId);
-
             if (!(contentSender === undefined)) {
                 const doc = $rdf.sym(senderId);
                 const store = $rdf.graph();
@@ -77,14 +69,9 @@ export class ChatComponent implements OnInit {
                     messages.push(this.getMessage(quads, i));
                 }
             }
-
             const urlArray = this.ruta_seleccionada.split('/');
             const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.chat.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
             const contentReceiver = await this.readMessage(url);
-
-
-            console.log('CONTENT RECEIVER: ' + url);
-
             if (!(contentReceiver === undefined)) {
                 const doc2 = $rdf.sym(url);
                 const store2 = $rdf.graph();
@@ -96,22 +83,16 @@ export class ChatComponent implements OnInit {
                     messages.push(this.getMessage(quads2, i));
                 }
             }
-
             if (messages.length != this.messages.length) {
                 this.messages = [];
                 this.messages = messages;
                 this.messages = this.order(this.messages);
             }
-
         } catch (err) {
             console.log('impossible to print the message');
         }
     }
 
-
-    /*
-    * Sorted methos that sorts the message array
-    */
     public order( mess: message[] ) {
         return mess.sort(function(a, b) {
             const date1 = a.date;
@@ -125,9 +106,7 @@ export class ChatComponent implements OnInit {
         return await this.searchMessage(url);
     }
 
-    //method that search for a message in a pod
     private async searchMessage(url) {
-        console.log('URL: ' + url);
         return await this.fileClient.readFile(url).then(body => {
             console.log(`File	content is : ${body}.`);
             return body;
@@ -172,8 +151,7 @@ export class ChatComponent implements OnInit {
         }
     }
 
-    getProfilePicture(user) {
-        const a = user.toString().replace('card#me', 'perfil.jpeg');
-        return a;
+    getUserByUrl(ruta: string): string {
+        return this.chat.getUserByUrl(ruta);
     }
 }
