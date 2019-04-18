@@ -74,6 +74,7 @@ export class RdfService {
   getValueFromVcard = (node: string, webId?: string): string | any => {
     return this.getValueFromNamespace(node, VCARD, webId);
   }
+  
 
   transformDataForm = (form: NgForm, me: any, doc: any) => {
     const insertions = [];
@@ -222,8 +223,8 @@ export class RdfService {
       case 'phone':
       case 'email':
         return 'value';
-      /*case 'note':
-        return 'hasNote';*/
+        /*case 'note':
+          return 'hasNote';*/
       default:
         return field;
     }
@@ -248,6 +249,41 @@ export class RdfService {
     }
   }
 
+  getAddress = () => {
+    const linkedUri = this.getValueFromVcard('hasAddress');
+
+    if (linkedUri) {
+      return {
+        locality: this.getValueFromVcard('locality', linkedUri),
+        country_name: this.getValueFromVcard('country-name', linkedUri),
+        region: this.getValueFromVcard('region', linkedUri),
+        street: this.getValueFromVcard('street-address', linkedUri),
+      };
+    }
+
+    return {};
+  }
+
+  //Function to get email. This returns only the first email, which is temporary
+  getEmail = () => {
+    const linkedUri = this.getValueFromVcard('hasEmail');
+
+    if (linkedUri) {
+      return this.getValueFromVcard('value', linkedUri).split('mailto:')[1];
+    }
+
+    return '';
+  }
+
+  //Function to get phone number. This returns only the first phone number, which is temporary. It also ignores the type.
+  getPhone = () => {
+    const linkedUri = this.getValueFromVcard('hasTelephone');
+
+    if (linkedUri) {
+      return this.getValueFromVcard('value', linkedUri).split('tel:+')[1];
+    }
+  }
+
   getFriends = async () => {
     const person = this.session.webId;
     const friends = this.store.each($rdf.sym(person), FOAF('knows'));
@@ -262,7 +298,20 @@ export class RdfService {
     }
   }
 
-
+  getFriendsNames = async () => {
+    const person = this.session.webId;
+    const friends = this.store.each($rdf.sym(person), FOAF('knows'));
+    const list_friends = Array<string>();
+    try {
+      for ( let i = 0; i < friends.length; i++) {
+        const fullName = this.store.any(friends[i], FOAF('name'));
+        list_friends.push(fullName);
+      }
+      return list_friends;
+    } catch (error) {
+      console.log(`Error fetching data: ${error}`);
+    }
+  }
   getProfile = async () => {
 
     if (!this.session) {
@@ -275,8 +324,11 @@ export class RdfService {
       return {
         fn : this.getValueFromVcard('fn'),
         company : this.getValueFromVcard('organization-name'),
+        phone: this.getPhone(),
         role: this.getValueFromVcard('role'),
         image: this.getValueFromVcard('hasPhoto'),
+        address: this.getAddress(),
+        email: this.getEmail(),
         note: this.getValueFromVcard('note'),
       };
     } catch (error) {
