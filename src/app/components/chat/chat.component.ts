@@ -52,19 +52,15 @@ export class ChatComponent implements OnInit {
     async actualizar() {
         let messages: message []  = [];
         try {
-            messages = await this.chat.getOtherMessages(this.ruta_seleccionada, this.rdf.session.webId, this.rdf);
-            const urlArray = this.ruta_seleccionada.split('/');
-            const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.chat.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
-            const contentReceiver = await this.chat.readMessage(url);
-            if (!(contentReceiver === undefined)) {
-                const doc2 = $rdf.sym(url);
-                const store2 = $rdf.graph();
-                const quads2 = store2.match(null, null, null, doc2);
-                let i;
-                for (i = 0; i < quads2.length; i += 5) {
-                    messages.push(this.getMessage(quads2, i));
-                }
-            }
+
+            const user =  this.chat.getUserByUrl(this.ruta_seleccionada);;
+            let senderId = this.rdf.session.webId;
+            const stringToChange = '/profile/card#me';
+            const path = '/public/dechat1a/' + user + '/prueba.ttl';
+            senderId = senderId.replace(stringToChange, path);
+            messages = await this.chat.getOtherMessages(messages, senderId, this.rdf);
+            const url = 'https://' + this.ruta_seleccionada.split('/')[2] + '/public/dechat1a/' + this.chat.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
+            messages = await this.chat.getOtherMessages(messages, url, this.rdf);
             if (messages.length != this.messages.length) {
                 this.messages = [];
                 this.messages = messages;

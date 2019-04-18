@@ -122,20 +122,11 @@ export class ChatService {
         }, err => console.log(err));
     }
 
-    async getOtherMessages(ruta, webId, rdf)
-    {
-        const messages: message []  = [];
-        const user = this.getUserByUrl(ruta);
-        let senderId = webId;
-        const stringToChange = '/profile/card#me';
-        const path = '/public/dechat1a/' + user + '/prueba.ttl';
-        senderId = senderId.replace(stringToChange, path);
-        const contentSender = await this.readMessage(senderId);
-        if (!(contentSender === undefined)) {
-            const doc = rdf.sym(senderId);
+    async getOtherMessages(messages, ruta, rdf)  {
+        const content = await this.readMessage(ruta);
+        if (!(content === undefined)) {
+            const doc = rdf.sym(ruta);
             const store = rdf.graph();
-            const e = await this.searchMessage(doc.value);
-            const par = rdf.parse(e, store, doc.uri, 'text/turtle');
             const quads = store.match(null, null, null, doc);
             let i;
             for (i = 0; i < quads.length; i += 5) {
@@ -157,4 +148,6 @@ export class ChatService {
     private getValue(elem: any): any {
         return elem.object.value;
     }
+
+
 }
