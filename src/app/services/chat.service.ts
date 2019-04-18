@@ -109,4 +109,15 @@ export class ChatService {
         this.createNewFolder('dechat1a', '/public/');
         this.createNewFolder(name, '/public/dechat1a/');
     }
+
+    async readMessage(url) {
+        return await this.searchMessage(url);
+    }
+
+    async searchMessage(url) {
+        return await this.solidFileClient.readFile(url).then(body => {
+            console.log(`File	content is : ${body}.`);
+            return body;
+        }, err => console.log(err));
+    }
 }

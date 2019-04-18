@@ -57,11 +57,11 @@ export class ChatComponent implements OnInit {
             const stringToChange = '/profile/card#me';
             const path = '/public/dechat1a/' + user + '/prueba.ttl';
             senderId = senderId.replace(stringToChange, path);
-            const contentSender = await this.readMessage(senderId);
+            const contentSender = await this.chat.readMessage(senderId);
             if (!(contentSender === undefined)) {
                 const doc = $rdf.sym(senderId);
                 const store = $rdf.graph();
-                const e = await this.searchMessage(doc.value);
+                const e = await this.chat.searchMessage(doc.value);
                 const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
                 const quads = store.match(null, null, null, doc);
                 let i;
@@ -71,11 +71,11 @@ export class ChatComponent implements OnInit {
             }
             const urlArray = this.ruta_seleccionada.split('/');
             const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.chat.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
-            const contentReceiver = await this.readMessage(url);
+            const contentReceiver = await this.chat.readMessage(url);
             if (!(contentReceiver === undefined)) {
                 const doc2 = $rdf.sym(url);
                 const store2 = $rdf.graph();
-                const e2 = await this.searchMessage(doc2.value);
+                const e2 = await this.chat.searchMessage(doc2.value);
                 const par2 = $rdf.parse(e2, store2, doc2.uri, 'text/turtle');
                 const quads2 = store2.match(null, null, null, doc2);
                 let i;
@@ -101,20 +101,6 @@ export class ChatComponent implements OnInit {
         });
     }
 
-    private async readMessage(url) {
-        this.ruta = url;
-        return await this.searchMessage(url);
-    }
-
-    private async searchMessage(url) {
-        return await this.fileClient.readFile(url).then(body => {
-            console.log(`File	content is : ${body}.`);
-            return body;
-        }, err => console.log(err));
-
-    }
-
-
     private getMessage(quads: any[], idx: number): message {
         return {
             date: this.getValue(quads[idx + 1]),
@@ -139,7 +125,7 @@ export class ChatComponent implements OnInit {
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/prueba.ttl';
         senderId = senderId.replace(stringToChange, path);
-        const message = await this.readMessage(senderId);
+        const message = await this.chat.readMessage(senderId);
         this.ruta = senderId;
         if (message != null) {
             this.chat.updateTTL(senderId, message + '\n' + this.chat.writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
