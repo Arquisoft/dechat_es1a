@@ -5,6 +5,7 @@ import {ToastrService} from 'ngx-toastr';
 
 declare var require: any;
 import solid_file_client from 'solid-file-client';
+import {message} from '../models/message.model';
 
 
 @Injectable({
@@ -119,5 +120,41 @@ export class ChatService {
             console.log(`File	content is : ${body}.`);
             return body;
         }, err => console.log(err));
+    }
+
+    async getOtherMessages(ruta, webId, rdf)
+    {
+        const messages: message []  = [];
+        const user = this.getUserByUrl(ruta);
+        let senderId = webId;
+        const stringToChange = '/profile/card#me';
+        const path = '/public/dechat1a/' + user + '/prueba.ttl';
+        senderId = senderId.replace(stringToChange, path);
+        const contentSender = await this.readMessage(senderId);
+        if (!(contentSender === undefined)) {
+            const doc = rdf.sym(senderId);
+            const store = rdf.graph();
+            const e = await this.searchMessage(doc.value);
+            const par = rdf.parse(e, store, doc.uri, 'text/turtle');
+            const quads = store.match(null, null, null, doc);
+            let i;
+            for (i = 0; i < quads.length; i += 5) {
+                messages.push(this.getMessage(quads, i));
+            }
+        }
+        return messages;
+    }
+
+    private getMessage(quads: any[], idx: number): message {
+        return {
+            date: this.getValue(quads[idx + 1]),
+            content: this.getValue(quads[idx + 2]),
+            sender: this.getValue(quads[idx + 3]),
+            recipient: this.getValue(quads[idx + 4])
+        };
+    }
+
+    private getValue(elem: any): any {
+        return elem.object.value;
     }
 }

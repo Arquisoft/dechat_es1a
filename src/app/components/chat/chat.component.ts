@@ -50,33 +50,15 @@ export class ChatComponent implements OnInit {
     }
 
     async actualizar() {
-        const messages: message []  = [];
+        let messages: message []  = [];
         try {
-            const user = this.chat.getUserByUrl(this.ruta_seleccionada);
-            let senderId = this.rdf.session.webId;
-            const stringToChange = '/profile/card#me';
-            const path = '/public/dechat1a/' + user + '/prueba.ttl';
-            senderId = senderId.replace(stringToChange, path);
-            const contentSender = await this.chat.readMessage(senderId);
-            if (!(contentSender === undefined)) {
-                const doc = $rdf.sym(senderId);
-                const store = $rdf.graph();
-                const e = await this.chat.searchMessage(doc.value);
-                const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
-                const quads = store.match(null, null, null, doc);
-                let i;
-                for (i = 0; i < quads.length; i += 5) {
-                    messages.push(this.getMessage(quads, i));
-                }
-            }
+            messages = await this.chat.getOtherMessages(this.ruta_seleccionada, this.rdf.session.webId, this.rdf);
             const urlArray = this.ruta_seleccionada.split('/');
             const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.chat.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
             const contentReceiver = await this.chat.readMessage(url);
             if (!(contentReceiver === undefined)) {
                 const doc2 = $rdf.sym(url);
                 const store2 = $rdf.graph();
-                const e2 = await this.chat.searchMessage(doc2.value);
-                const par2 = $rdf.parse(e2, store2, doc2.uri, 'text/turtle');
                 const quads2 = store2.match(null, null, null, doc2);
                 let i;
                 for (i = 0; i < quads2.length; i += 5) {
