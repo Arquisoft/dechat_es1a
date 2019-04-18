@@ -124,51 +124,39 @@ export class ChatService {
 
     async actualizar(ruta) {
         this.ruta_seleccionada = ruta;
-        const messages: message []  = [];
+        let messages: message []  = [];
         try {
             const user = this.getUserByUrl(this.ruta_seleccionada);
             let senderId = this.rdf.session.webId;
             const stringToChange = '/profile/card#me';
             const path = '/public/dechat1a/' + user + '/prueba.ttl';
             senderId = senderId.replace(stringToChange, path);
-
-
             const contentSender = await this.readMessage(senderId);
-
-            if (!(contentSender === undefined)) {
-                const doc = $rdf.sym(senderId);
-                const store = $rdf.graph();
-                const e = await this.searchMessage(doc.value);
-                const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
-                const quads = store.match(null, null, null, doc);
-                let i;
-                for (i = 0; i < quads.length; i += 5) {
-                    messages.push(this.getMessage(quads, i));
-                }
-            }
-
+            messages = await this.actualizar_aux(messages, contentSender, senderId);
             const urlArray = this.ruta_seleccionada.split('/');
             const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
             const contentReceiver = await this.readMessage(url);
-
-
-            console.log('CONTENT RECEIVER: ' + url);
-
-            if (!(contentReceiver === undefined)) {
-                const doc2 = $rdf.sym(url);
-                const store2 = $rdf.graph();
-                const e2 = await this.searchMessage(doc2.value);
-                const par2 = $rdf.parse(e2, store2, doc2.uri, 'text/turtle');
-                const quads2 = store2.match(null, null, null, doc2);
-                let i;
-                for (i = 0; i < quads2.length; i += 5) {
-                    messages.push(this.getMessage(quads2, i));
-                }
-            }
+            messages = await this.actualizar_aux(messages, contentReceiver, url);
             return messages;
         } catch (err) {
             console.log('impossible to print the message');
         }
+    }
+
+
+    async actualizar_aux(messages, content, url) {
+        if (!(content === undefined)) {
+            const doc = $rdf.sym(url);
+            const store = $rdf.graph();
+            const e = await this.searchMessage(doc.value);
+            const par = $rdf.parse(e, store, doc.uri, 'text/turtle');
+            const quads = store.match(null, null, null, doc);
+            let i;
+            for (i = 0; i < quads.length; i += 5) {
+                messages.push(this.getMessage(quads, i));
+            }
+        }
+        return messages;
     }
 
 }

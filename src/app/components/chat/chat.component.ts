@@ -59,7 +59,7 @@ export class ChatComponent implements OnInit {
         }
     }
 
- 
+
     /*
     * Sorted methos that sorts the message array
     */
