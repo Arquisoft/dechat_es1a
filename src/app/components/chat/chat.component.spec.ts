@@ -45,5 +45,13 @@ describe('ChatComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+    describe('initSelection', () => {
+        it('inicia', () => {
+            spyOn(component, 'initSelection');
+            component.initSelection('ruta');
+            expect(component.initSelection).toHaveBeenCalledTimes(1);
+
+        });
+    });
 
 });
