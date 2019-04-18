@@ -4,7 +4,6 @@ import {RdfService} from './rdf.service';
 import {ToastrService} from 'ngx-toastr';
 
 declare var require: any;
-import solid_file_client from 'solid-file-client';
 import {message} from '../models/message.model';
 
 declare let $rdf;
@@ -16,12 +15,9 @@ export class ChatService {
     solidFileClient: any;
     mi_listado_de_friends: string[] = [];
     ruta_seleccionada: string;
-
-
     constructor(private rdf: RdfService, private toastr: ToastrService) {
         this.solidFileClient = require('solid-file-client');
     }
-
     async loadFriends(): Promise<string[]> {
         this.mi_listado_de_friends = [];
         let list_friends = this.mi_listado_de_friends;
@@ -39,8 +35,6 @@ export class ChatService {
             console.log(`Error: ${error}`);
         }
     }
-
-
     createNewFolder(name: string, ruta: string) {
         let solidId = this.rdf.session.webId;
         const stringToChange = '/profile/card#me';
@@ -71,13 +65,11 @@ export class ChatService {
             '\tschem:sender "' + sender + '" ;\n' +
             '\tschem:recipient "' + recipient + '" .\n' ;
     }
-
     public getMessageId(message) {
         const date = message.date.getFullYear().toString() + message.date.getMonth().toString() + message.date.getDay().toString() + message.date.getHours().toString() + message.date.getMinutes().toString() +
             message.date.getSeconds().toString() + message.date.getMilliseconds().toString();
         return date;
     }
-
     updateTTL(url, newContent, contentType?) {
         if (contentType) {
             this.solidFileClient.updateFile(url, newContent, contentType).then(success => {
@@ -92,23 +84,19 @@ export class ChatService {
     getUserByUrl(ruta: string): string {
         return ruta.replace('https://', '').split('.')[0];
     }
-
     initChat(name) {
         this.createNewFolder('dechat1a', '/public/');
         this.createNewFolder(name, '/public/dechat1a/');
     }
-
     async readMessage(url) {
         return await this.searchMessage(url);
     }
-
     async searchMessage(url) {
         return await this.solidFileClient.readFile(url).then(body => {
             console.log(`File	content is : ${body}.`);
             return body;
         }, err => console.log(err));
     }
-
     private getMessage(quads: any[], idx: number): message {
         return {
             date: this.getValue(quads[idx + 1]),
@@ -117,11 +105,9 @@ export class ChatService {
             recipient: this.getValue(quads[idx + 4])
         };
     }
-
     private getValue(elem: any): any {
         return elem.object.value;
     }
-
     async actualizar(ruta) {
         this.ruta_seleccionada = ruta;
         let messages: message []  = [];
@@ -142,8 +128,6 @@ export class ChatService {
             console.log('impossible to print the message');
         }
     }
-
-
     async actualizar_aux(messages, content, url) {
         if (!(content === undefined)) {
             const doc = $rdf.sym(url);
@@ -158,5 +142,31 @@ export class ChatService {
         }
         return messages;
     }
+    public order( mess : message[] )
+    {
+        return mess.sort(function(a, b) {
+            let date1 = a.date;
+            let date2 = b.date;
+            return date2>date1 ? -1 : date2<date1 ? 1 : 0;
+        });
+    }
+    async write(senderId, ruta, messageContent, user)
+    {
+        this.ruta_seleccionada = ruta;
+        const senderPerson: Friend = {webid: senderId, name: this.getUserByUrl(senderId)};
+        //Receiver WebId
+        const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
+        const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
+        const stringToChange = '/profile/card#me';
+        const path = '/public/dechat1a/' + user + '/prueba.ttl';
+        senderId = senderId.replace(stringToChange, path);
+        const message = await this.readMessage(senderId);
+        if (message != null) {
+            this.updateTTL(senderId, message + '\n' + this.writeTTLMessage(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
 
+        } else {
+            this.updateTTL(senderId, this.writeTTL(this.rdf.session.webId, this.ruta_seleccionada, messageToSend));
+        }
+        return message;
+    }
 }
