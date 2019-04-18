@@ -74,7 +74,7 @@ export class RdfService {
   getValueFromVcard = (node: string, webId?: string): string | any => {
     return this.getValueFromNamespace(node, VCARD, webId);
   }
-  
+
 
   transformDataForm = (form: NgForm, me: any, doc: any) => {
     const insertions = [];
@@ -275,14 +275,7 @@ export class RdfService {
     return '';
   }
 
-  //Function to get phone number. This returns only the first phone number, which is temporary. It also ignores the type.
-  getPhone = () => {
-    const linkedUri = this.getValueFromVcard('hasTelephone');
 
-    if (linkedUri) {
-      return this.getValueFromVcard('value', linkedUri).split('tel:+')[1];
-    }
-  }
 
   getFriends = async () => {
     const person = this.session.webId;
@@ -324,7 +317,6 @@ export class RdfService {
       return {
         fn : this.getValueFromVcard('fn'),
         company : this.getValueFromVcard('organization-name'),
-        phone: this.getPhone(),
         role: this.getValueFromVcard('role'),
         image: this.getValueFromVcard('hasPhoto'),
         address: this.getAddress(),
