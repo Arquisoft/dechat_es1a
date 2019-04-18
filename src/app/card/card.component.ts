@@ -31,9 +31,6 @@ export class CardComponent implements OnInit  {
     // TODO: Remove this code and find a better way to get the old data
     localStorage.removeItem('oldProfileData');
 
-
-
-
     //RELOAD PAGE
     if (!localStorage.getItem('reload')) {
       /* set reload locally and then reload the page */
@@ -43,21 +40,6 @@ export class CardComponent implements OnInit  {
     } else {
       localStorage.removeItem('reload');
       // localStorage.clear(); // an option
-    }
-  }
-
-  async loadFriends() {
-    try {
-      const list_friends = await this.rdf.getFriends();
-      // const list_names = await this.rdf.getFriendsNames();
-      if (list_friends) {
-        document.write('<h1>These are my friends</h1>');
-        for (let i = 0; i < list_friends.length; i++) {
-          document.write('<a href=\'list_friends[i]\'>' + list_friends[i] + '</a><br>');
-        }
-      }
-    } catch (error) {
-      console.log(`Error: ${error}`);
     }
   }
 
