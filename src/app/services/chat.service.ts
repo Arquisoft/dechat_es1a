@@ -101,4 +101,7 @@ export class ChatService {
             }, err => console.log(err));
         }
     }
+    getUserByUrl(ruta: string): string {
+        return ruta.replace('https://', '').split('.')[0];
+    }
 }

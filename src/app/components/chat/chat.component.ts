@@ -30,10 +30,10 @@ export class ChatComponent implements OnInit {
             if (res.length ==  0) {
                 document.write('You don\'t have friends to chat');
             } else {
-                document.getElementById('receiver').innerHTML = this.getUserByUrl(res[0]);
+                document.getElementById('receiver').innerHTML = this.chat.getUserByUrl(res[0]);
                 this.mi_listado_de_friends = res;
                 this.ruta_seleccionada = res[0];
-                const name = this.getUserByUrl(this.ruta_seleccionada);
+                const name = this.chat.getUserByUrl(this.ruta_seleccionada);
                 this.chat.createNewFolder('dechat1a', '/public/');
                 this.chat.createNewFolder(name, '/public/dechat1a/');
             }
@@ -48,7 +48,7 @@ export class ChatComponent implements OnInit {
     initSelection(ruta) {
         this.messages = [];
         this.ruta_seleccionada = ruta;
-        const name = this.getUserByUrl(this.ruta_seleccionada);
+        const name = this.chat.getUserByUrl(this.ruta_seleccionada);
         this.chat.createNewFolder('dechat1a', '/public/');
         this.chat.createNewFolder(name, '/public/dechat1a/');
         document.getElementById('receiver').innerHTML = name;
@@ -57,7 +57,7 @@ export class ChatComponent implements OnInit {
     async actualizar() {
         const messages: message []  = [];
         try {
-            const user = this.getUserByUrl(this.ruta_seleccionada);
+            const user = this.chat.getUserByUrl(this.ruta_seleccionada);
             let senderId = this.rdf.session.webId;
             const stringToChange = '/profile/card#me';
             const path = '/public/dechat1a/' + user + '/prueba.ttl';
@@ -79,7 +79,7 @@ export class ChatComponent implements OnInit {
             }
 
             const urlArray = this.ruta_seleccionada.split('/');
-            const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
+            const url = 'https://' + urlArray[2] + '/public/dechat1a/' + this.chat.getUserByUrl(this.rdf.session.webId) + '/prueba.ttl';
             const contentReceiver = await this.readMessage(url);
 
 
@@ -149,23 +149,13 @@ export class ChatComponent implements OnInit {
         return elem.object.value;
     }
 
-    private getUserByUrl(ruta: string): string {
-        let sinhttp;
-        sinhttp = ruta.replace('https://', '');
-        const user = sinhttp.split('.')[0];
-        return user;
-    }
-
-
-
     async write() {
-        const user = this.getUserByUrl(this.ruta_seleccionada);
+        const user = this.chat.getUserByUrl(this.ruta_seleccionada);
         const messageContent = (<HTMLInputElement>document.getElementById('comment')).value;
         (document.getElementById('comment') as HTMLInputElement).value = '';
         let senderId = this.rdf.session.webId;
-        const senderPerson: Friend = {webid: senderId, name: this.getUserByUrl(senderId)};
-        //Receiver WebId
-        const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.getUserByUrl(this.ruta_seleccionada)};
+        const senderPerson: Friend = {webid: senderId, name: this.chat.getUserByUrl(senderId)};
+        const recipientPerson: Friend = {webid: this.ruta_seleccionada, name: this.chat.getUserByUrl(this.ruta_seleccionada)};
         const messageToSend: message = {content: messageContent, date: new Date(Date.now()), sender: senderPerson, recipient: recipientPerson};
         const stringToChange = '/profile/card#me';
         const path = '/public/dechat1a/' + user + '/prueba.ttl';
