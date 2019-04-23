@@ -21,10 +21,12 @@ describe('ChatService', () => {
     it('should be created', () => {
         const service: ChatService = TestBed.get(ChatService);
         expect(service).toBeTruthy();
+
     });
 
     it('loadFriends method should call RdfService', () => {
         const service: ChatService = TestBed.get(ChatService);
+        service.actualizar('https://fooroute');
         expect(service.loadFriends()).resolves.toEqual(['fooFriend1', 'fooFriend2']);
     });
 
