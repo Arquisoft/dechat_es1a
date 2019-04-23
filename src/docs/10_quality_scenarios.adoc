@@ -56,8 +56,6 @@ methods in the application must be well documented with JSDoc. Code quality
 is analized by means of Codacy (https://www.codacy.com/) and must be at least "b" level #
 
 
-|9 |[.SpellE]#Testability# |[.SpellE]#The project must implement continuous integration test using Travis CI.#
-|
-
-===
+|9 |[.SpellE]#Testability# |[.SpellE]#The project must implement continuous integration testing using Travis CI.#
+|===
 
