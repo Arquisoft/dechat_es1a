@@ -62,7 +62,7 @@ npm run test
 ----
 
 == Deployment on GH-Pages
-- App: 
+- App:
 ----
 npm run deploy
 ----
