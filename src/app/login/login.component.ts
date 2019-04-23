@@ -31,13 +31,6 @@ export class LoginComponent implements OnInit {
     this.identityProviders = this.auth.getIdentityProviders();
   }
 
-  /*
-  *  Alternate login-popup function for Solid. See service for more details.
-  */
-  onLoginPopup = async () => {
-    this.auth.solidLoginPopup();
-  }
-
   onLogin = async () => {
     const idp: string = this.selectedProviderUrl ? this.selectedProviderUrl : this.customProviderUrl;
 

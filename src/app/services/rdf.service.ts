@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Injectable } from '@angular/core';
 import { SolidSession } from '../models/solid-session.model';
 declare let solid: any;
@@ -11,8 +12,6 @@ const $rdf = require('rdflib');
 // TODO: Remove any UI interaction from this service
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import {T} from '@angular/core/src/render3';
-import {listener} from '@angular/core/src/render3/instructions';
 
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
@@ -75,15 +74,6 @@ export class RdfService {
     return this.getValueFromNamespace(node, VCARD, webId);
   }
 
-  /**
-   * Gets a node that matches the specified pattern using the FOAF onthology
-   * @param {string} node FOAF predicate to apply to the $rdf.any()
-   * @param {string?} webId The webId URL (e.g. https://yourpod.solid.community/profile/card#me)
-   * @return {string} The value of the fetched node or an emtpty string
-   */
-  getValueFromFoaf = (node: string, webId?: string) => {
-    return this.getValueFromNamespace(node, FOAF, webId);
-  }
 
   transformDataForm = (form: NgForm, me: any, doc: any) => {
     const insertions = [];
@@ -232,8 +222,8 @@ export class RdfService {
       case 'phone':
       case 'email':
         return 'value';
-      /*case 'note':
-        return 'hasNote';*/
+        /*case 'note':
+          return 'hasNote';*/
       default:
         return field;
     }
@@ -307,20 +297,6 @@ export class RdfService {
     }
   }
 
-  getFriendsNames = async () => {
-    const person = this.session.webId;
-    const friends = this.store.each($rdf.sym(person), FOAF('knows'));
-    const list_friends = Array<string>();
-    try {
-      for ( let i = 0; i < friends.length; i++) {
-        const fullName = this.store.any(friends[i], FOAF('name'));
-        list_friends.push(fullName);
-      }
-      return list_friends;
-    } catch (error) {
-      console.log(`Error fetching data: ${error}`);
-    }
-  }
   getProfile = async () => {
 
     if (!this.session) {

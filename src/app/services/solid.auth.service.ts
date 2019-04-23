@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
@@ -37,24 +38,6 @@ export class AuthService {
     this.session = from(solid.auth.currentSession());
   }
 
-  /**
-   * Alternative login-popup function. This will open a popup that will allow you to choose an identity provider
-   * without leaving the current page
-   * This is recommended if you don't want to leave the current workflow.
-   */
-  solidLoginPopup = async () => {
-    try {
-      await solid.auth.popupLogin({ popupUri: './login-popup'});
-      // Check if session is valid to avoid redirect issues
-      await this.isSessionActive();
-
-      // popupLogin success redirect to profile
-      this.router.navigate(['/card']);
-    } catch (error) {
-      console.log(`Error: ${error}`);
-    }
-  }
-
   /*
   * Signs out of Solid in this app, by calling the logout function and clearing the localStorage token
   */
@@ -74,10 +57,6 @@ export class AuthService {
     if (!localStorage.getItem('oldProfileData')) {
       localStorage.setItem('oldProfileData', JSON.stringify(profile));
     }
-  }
-
-  getOldUserData = () => {
-    return JSON.parse(localStorage.getItem('oldProfileData'));
   }
 
   /*
