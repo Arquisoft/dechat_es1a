@@ -54,6 +54,7 @@ describe('ChatComponent', () => {
 
 
         TestBed.configureTestingModule({
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
             declarations: [ ChatComponent ],
             imports: [ FormsModule, ToastrModule.forRoot()],
             providers: [{ provide: ChatService, useClass: MockChatService},
