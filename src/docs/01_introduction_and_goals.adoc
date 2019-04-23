@@ -2,7 +2,7 @@
 == Introduction and Goals
 
 This software project aims to be a SOLID chat, helping people communicate with each other in a decentralized way. 
-
+The main purpose of this project is to create a decentralized chat
 
 === Requirements Overview
 
