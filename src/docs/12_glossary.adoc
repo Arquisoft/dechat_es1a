@@ -2,7 +2,7 @@
 == Glossary
 
 
-[options="header"]
+[width="100%",cols="34%,33%"]
 |===
 | Term              | Definition
 | AngularJS         | Open source Model-View-Controller framework, developed by Google. [Official Website:](https://angular.io/)
