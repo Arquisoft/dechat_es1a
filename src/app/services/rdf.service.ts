@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Injectable } from '@angular/core';
 import { SolidSession } from '../models/solid-session.model';
 declare let solid: any;
