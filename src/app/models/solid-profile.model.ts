@@ -3,7 +3,6 @@
  * @see FOAF
  * @see VCARD
  */
-import {uri} from 'rdflib';
 
 export interface SolidProfile {
     address: {

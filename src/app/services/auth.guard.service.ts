@@ -6,7 +6,6 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
 
 import { AuthService } from './solid.auth.service';
 

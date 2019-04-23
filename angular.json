@@ -86,7 +86,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
+            ],
+            "codeCoverageExclude": [
+                "/**/auth.guard.service.ts",
+                "/**/rdf.service.ts",
+                "/**/solid.auth.service.ts"
+              ]
           }
         },
         "lint": {
