@@ -57,7 +57,5 @@ is analized by means of Codacy (https://www.codacy.com/) and must be at least "b
 
 
 |9 |[.SpellE]#Testability# |[.SpellE]#The project must implement continuous integration test using Travis CI.#
-|
-
-===
+|===
 

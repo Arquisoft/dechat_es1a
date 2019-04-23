@@ -505,6 +505,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_quality_scenarios">10.2. Quality Scenarios</a></li>
 </ul>
 </li>
+<li><a href="#section-technical-risks">11. Risks and Technical Debts</a></li>
+<li><a href="#section-glossary">12. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -1623,59 +1625,188 @@ is analized by means of Codacy (<a href="https://www.codacy.com/" class="bare">h
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>| Term              | Definition
-| AngularJS         | Open source Model-View-Controller framework, developed by Google. [Official Website:](<a href="https://angular.io/" class="bare">https://angular.io/</a>)
-| Cucumber          | Open-Source tool to make tests in a language that can be understood by people that aren&#8217;t familiarized with the computing technologies world.
-| Decentralized Web | Web technology where services are distributed rather than localized, where users own and control their own data
-| Docker            | Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](<a href="https://www.docker.com/" class="bare">https://www.docker.com/</a>)
-| Gherkin           | Programming language to make tests in Cucumber. It could be understood by humans and computers.
-| Heroku            | Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](<a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a>)
-| IDE               | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
-| Ionic             | Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](<a href="https://ionicframework.com/" class="bare">https://ionicframework.com/</a>)
-| JavaScript        | JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification.
-| Jest              | Test framework that allows between other languages JavaScript or React
-| Karma             | Is a test runner environment for the world of JavaScript
-| Linked Data       | Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks.
-| NodeJS            | Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](<a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>)
-| npm     	        | Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](<a href="https://www.npmjs.com/" class="bare">https://www.npmjs.com/</a>)
-| POD		        | Derived from "Personal Online Data". It&#8217;s a simple file that contains user data. Also can be accessed by other users/apps to write or read data.
-| Protractor        | Test framework for AngularJS and Angular applications that allows that your tests will run in a real browser
-| RDF		        | Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally.
-| Solid             | Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](<a href="https://solid.mit.edu/" class="bare">https://solid.mit.edu/</a>)
-| Stakeholder       | A stakeholder is a party that has an interest in a project and can either affect or be affected by the project.
-| WebStorm          | IDE for JavaScript development. [Official Website:](<a href="https://www.jetbrains.com/webstorm/" class="bare">https://www.jetbrains.com/webstorm/</a>)</p>
+<div style="page-break-after: always;"></div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Contents</div>
+<p>In the following page we are going to identify, measure and priorize the risks and different technical debts that the project has.</p>
+</div>
+<div class="paragraph">
+<div class="title">Risks</div>
+<p>The following, is the list of risks that we had in the project</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SOLID: We haven&#8217;t got any knowledge about this technology until it was presented to us for this project.</p>
+</li>
+<li>
+<p>AngularJS: Most of the members of the team don&#8217;t know a lot about this programming framework</p>
+</li>
+<li>
+<p>Heroku: We are going to use this platform to host our SOLID server. We have to learn how it works and accept that the account has restrictions.
+The principal restrictions that we have to face with Heroku are related to the number of queries that it allows with the free account that are 75 queries per user, app, hour.</p>
+</li>
+<li>
+<p>Typescript: As we researched, most SOLID apps are written using Typescript and we don&#8217;t know anything about it. Adapting to it will be a risk, although it can&#8217;t differ too much from Javascipt itself.</p>
+</li>
+<li>
+<p>Cucumber: In order to do the acceptance tests we have to learn to use Cucumber and Gherkin language to do this tests. Along with the use of JavaScript and Angular comes the difficulty to use Cucumber in this world, where we haven&#8217;t a lot of experiences</p>
+</li>
+<li>
+<p>Protractor: To run the tests of Cucumber in a more visual way we have to learn about protractor, how it works and how to make with it the cucumber tests</p>
+</li>
+<li>
+<p>JEST &amp; Kharma: To make the unit tests to the code we decide to learn and work in parallel these two technologies to make tests in the JavaScript world. To face that, we decided to split efforts working in parallel and applying at the end the one with better results</p>
+</li>
+<li>
+<p>Jest: Team members have no experience in the development of unit tests in JavaScript. In the project, unit test will be carried out by means of the test framework Jest, so it will require a learning phase.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Technical debt</div>
+<ul>
+<li>
+<p>Git: we have a lack of knowledge in this useful tool.</p>
+</li>
+<li>
+<p>Bootstrap: none of the team members have previous experience with these libraries. It will not be such a huge risk due to the extensive guide and documentation provided online.</p>
+</li>
+<li>
+<p>Cucumber: just one member of the team has used Cucumber as a tool for writing customer acceptance tests, so the rest of the team has a technical debt in this issue. Anyway we do not consider in as a severe risk.</p>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-glossary">12. Glossary</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 50.7462%;">
+<col style="width: 49.2538%;">
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;&lt;&lt;&lt;
-:homepage: <a href="http://arc42.org" class="bare">http://arc42.org</a></p>
-<p class="tableblock">:keywords: software-architecture, documentation, template, arc42</p>
-<p class="tableblock">:numbered!:
-<strong>About arc42</strong></p>
-<p class="tableblock">[role="lead"]
-arc42, the Template for documentation of
-software and system architecture.</p>
-<p class="tableblock">By Dr. Gernot Starke, Dr. Peter Hruschka and contributors.</p>
-<p class="tableblock">Template Revision: 7.0 EN (based on asciidoc), January 2017</p>
-<p class="tableblock">&#169;
-We acknowledge that this document uses material from the
-arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://www.arc42.de</a>.
-Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Term</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AngularJS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open source Model-View-Controller framework, developed by Google. [Official Website:](<a href="https://angular.io/" class="bare">https://angular.io/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open-Source tool to make tests in a language that can be understood by people that aren&#8217;t familiarized with the computing technologies world.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized Web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web technology where services are distributed rather than localized, where users own and control their own data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool designed to make it easier to create, deploy, and run applications by using containers. [Official Website:](<a href="https://www.docker.com/" class="bare">https://www.docker.com/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gherkin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Programming language to make tests in Cucumber. It could be understood by humans and computers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud platform as a service (PaaS) that lets companies build, deliver, monitor, and scale apps. [Official Website:](<a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IDE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ionic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open source, front-end SDK for developing Hybrid Mobile Applications using web technologies such as HTML, CSS and JavaScript. [Official Website:](<a href="https://ionicframework.com/" class="bare">https://ionicframework.com/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test framework that allows between other languages JavaScript or React</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Karma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is a test runner environment for the world of JavaScript</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linked Data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linked Data is a part of the Semantic Web in which the Data in RDF format are related through similar links to HTML hyperlinks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NodeJS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. [Official Website:](<a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">npm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. [Official Website:](<a href="https://www.npmjs.com/" class="bare">https://www.npmjs.com/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Derived from "Personal Online Data". It&#8217;s a simple file that contains user data. Also can be accessed by other users/apps to write or read data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Protractor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test framework for AngularJS and Angular applications that allows that your tests will run in a real browser</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model for encoding semantic relationships between items of data so that these relationships can be interpreted computationally.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Derived from "social linked data", is a proposed set of conventions and tools for building decentralized social applications based on Linked Data principles. [Official Website:](<a href="https://solid.mit.edu/" class="bare">https://solid.mit.edu/</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stakeholder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A stakeholder is a party that has an interest in a project and can either affect or be affected by the project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebStorm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IDE for JavaScript development. [Official Website:](<a href="https://www.jetbrains.com/webstorm/" class="bare">https://www.jetbrains.com/webstorm/</a>)</p></td>
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p><strong>About arc42</strong></p>
+</div>
+<div class="paragraph lead">
+<p>arc42, the Template for documentation of
+software and system architecture.</p>
+</div>
+<div class="paragraph">
+<p>By Dr. Gernot Starke, Dr. Peter Hruschka and contributors.</p>
+</div>
+<div class="paragraph">
+<p>Template Revision: 7.0 EN (based on asciidoc), January 2017</p>
+</div>
+<div class="paragraph">
+<p>&#169;
+We acknowledge that this document uses material from the
+arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://www.arc42.de</a>.
+Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-23 10:11:23 +0200
+Last updated 2019-04-23 10:20:51 +0200
 </div>
 </div>
 </body>
