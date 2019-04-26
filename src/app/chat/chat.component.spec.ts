@@ -5,9 +5,9 @@ import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ChatComponent} from './chat.component';
-import {RdfService} from '../../services/rdf.service';
-import {ChatService} from '../../services/chat.service';
-import {AuthService} from '../../services/solid.auth.service';
+import {RdfService} from '../services/rdf.service';
+import {ChatService} from '../services/chat.service';
+import {AuthService} from '../services/solid.auth.service';
 import {By} from '@angular/platform-browser';
 
 class MockChatService {

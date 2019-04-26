@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RdfService} from '../../services/rdf.service';
+import {RdfService} from '../services/rdf.service';
 import {ToastrService} from 'ngx-toastr';
-import {ChatService} from '../../services/chat.service';
-import {message} from '../../models/message.model';
+import {ChatService} from '../services/chat.service';
+import {message} from '../models/message.model';
 declare var require: any;
 @Component({
     selector: 'app-chat',
