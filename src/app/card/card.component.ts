@@ -77,9 +77,9 @@ export class CardComponent implements OnInit  {
   // and potentially format the address if we need to reformat it for this UI
   private setupProfileData() {
     if (this.profile) {
-      this.profileImage = this.profile.image ? this.profile.image : '/assets/images/profile.png';
+      this.profileImage = this.profile.image ? this.profile.image : './assets/images/profile.png';
     } else {
-      this.profileImage = '/assets/images/profile.png';
+      this.profileImage = './assets/images/profile.png';
     }
   }
 }
