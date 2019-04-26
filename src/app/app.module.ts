@@ -17,7 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { ChatComponent } from './chat/chat.component';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
@@ -48,7 +48,7 @@ const routes: Routes = [
 
 
     {
-        path: 'components/chat',
+        path: 'chat',
         component: ChatComponent
     }
 ];
