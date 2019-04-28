@@ -866,6 +866,9 @@ the users' PODs.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Level 1 - Context Diagram</dt>
+<dd>
+<p>Main schema of the architecture.</p>
+</dd>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -881,18 +884,29 @@ the users' PODs.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Person who is using the app.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeChat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentraliced web application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solid PODs provider. Stores PODs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage that contains all user&#8217;s data.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Level 2</dt>
+<dd>
+<p>Zoom in the main parts of the application.</p>
+</dd>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -908,18 +922,25 @@ the users' PODs.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">App</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized chat.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit, acceptance and load testing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Libraries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External libraries being used.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Level 3</dt>
+<dd>
+<p>Specific parts of the application and different types of tests.</p>
+</dd>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -935,42 +956,47 @@ the users' PODs.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Models</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mapping classes present in the code.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Components</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Different components integrated in the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Services</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Services being used in the app for it to work properly.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cucumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit testing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Acceptance testing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gatling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Load testing.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Level 4</dt>
+<dd>
+<p>For the app to be able to send messages in a proper way, models, services and components are needed. In this app the
+models used where those relating to the main functionality of the app (profile, session, message, friends and SOLID provider).</p>
+</dd>
 </dl>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Responsibility</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;black box 2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Text&gt;</em></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>The main services used are RDF for storing the messages in the POD, Authentication and AuthGuard for login and registration purposes
+and chat service, where all the code for interacting with the previous libraries is written.</p>
+</div>
+<div class="paragraph">
+<p>A component for each different view of the application is needed.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
