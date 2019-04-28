@@ -9,10 +9,12 @@ import {RdfService} from '../services/rdf.service';
 import {ChatService} from '../services/chat.service';
 import {AuthService} from '../services/solid.auth.service';
 import {By} from '@angular/platform-browser';
+import {SolidSession} from '../models/solid-session.model';
 
 class MockChatService {
 
     written = false;
+    ruta_seleccionada = 'fooRoute';
 
     async write(senderId, ruta, messageContent, user) {
         this.written = true;
@@ -25,6 +27,11 @@ class MockChatService {
     initChat(name) {
 
     }
+
+    actualizar(ruta_seleccionada) {
+        return ['fooMessage1'];
+    }
+    order() {}
 }
 
 describe('ChatComponent', () => {
@@ -42,6 +49,13 @@ describe('ChatComponent', () => {
         };
 
         const rdfServiceStub = {
+            session: new class implements SolidSession {
+                accessToken: 'fooSession';
+                clientId: 'fooClientId';
+                idToken: 'fooidToken';
+                sessionKey: 'fooSessionKey';
+                webId: 'fooWebId';
+            },
             getProfile: () => ({}),
             updateProfile: () => ({})
         };
@@ -82,11 +96,44 @@ describe('ChatComponent', () => {
     describe('Send the message', () => {
 
 
-        it('send button', () => {
+        it('send button must call to write method', () => {
             spyOn(component, 'write');
             const boton = fixture.debugElement.query(By.css('#btn-chat')).nativeElement;
             boton.click();
             expect(component.write).toHaveBeenCalledTimes(1);
+
+        });
+
+        it('write method should call the chat service', () => {
+            const chat: ChatService = fixture.debugElement.injector.get(ChatService);
+            spyOn(chat, 'write');
+            component.write();
+            expect(chat.write).toHaveBeenCalledTimes(1);
+
+        });
+
+        it('getPicture must return the profile photo', () => {
+            const user = 'https://yagoprado.solid.community/profile/card#me'
+            expect(component.getProfilePicture(user)).toBe('https://yagoprado.solid.community/profile/perfil.jpeg');
+
+        });
+
+        it('initSelection must put receiver ', () => {
+            const chat: ChatService = fixture.debugElement.injector.get(ChatService);
+            spyOn(chat, 'initChat');
+            component.initSelection('https://fooroute')
+            expect(chat.initChat).toHaveBeenCalledTimes(1);
+            expect(document.getElementById('receiver').innerHTML).toBe(name);
+
+        });
+
+        it('actualizar should update the message list ', () => {
+            const chat: ChatService = fixture.debugElement.injector.get(ChatService);
+            //spyOn(chat, 'actualizar');
+            //spyOn(chat, 'order');
+            component.actualizar();
+            expect (component.messages).toEqual([]);
+            //expect(chat.actualizar).toHaveBeenCalledTimes(1);
 
         });
 
