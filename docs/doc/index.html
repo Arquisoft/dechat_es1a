@@ -587,8 +587,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">A good working project so their reputation and skills (also their mark) improve.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ST2. Labra</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A good workflow and functional project so he sees we have learned the fundamentals of software architecture.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ST2. Software Architecture Professors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A good workflow and functional project so they can see we have learned the fundamentals of software architecture.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ST3. Inrupt</p></td>
@@ -755,19 +755,23 @@ while users exchange that same info in a private way, that is deciding who shoul
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Action</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P1. User 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P1. DeChat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized web based application that connects both PODs and makes the interactions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P2. User 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sends message to User 2 through the app.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P2. SOLID Pod User 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P3. SOLID Pod User 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stores the message sent, so only User 1 can read it.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P3. User 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P4. User 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reads the message from the app.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P4. Solid Pod User 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P5. Solid Pod User 2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stores the message received, so he can read it through the whole conversation.</p></td>
 </tr>
 </tbody>
@@ -1303,13 +1307,13 @@ on this list.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IDE: WebStorm by JetBrains</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">App deploy: Docker, Heroku</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">App deploy: GitHub Pages</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CSS &amp; HTML implementation: Bootstrap libraries</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Testing: Cucumber and Jest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testing: Cucumber, Jest and Gatling</p></td>
 </tr>
 </tbody>
 </table>
@@ -1317,6 +1321,10 @@ on this list.</p>
 <p>Relating to the Chat view, it will be arranged into a separate component, with its own HTML and CSS implementations. The layout is separated
 in two columns. On the left, a list of the user&#8217;s friends wil be displayed, and on the right, once you choose the
 friend you want to talk to, the chat view will pop up.</p>
+</div>
+<div class="paragraph">
+<p>An optimal color combination was chosen so it does not become a problem to colorblind users or those who have any kind of
+optical disability.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1355,24 +1363,21 @@ friend you want to talk to, the chat view will pop up.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Usability</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Each section of the technical documentation
-must be understood by itself without the need to read the rest of the
-documentation. Any content should be found immediately in the
-documentation</p></td>
+must be understood without the need to read the rest of the
+documentation. Any content should be found immediately.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Responsiveness</span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Once completed, the application must pass
-the Google Responsiveness Test
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tested with Google Responsiveness Test
 (<a href="https://search.google.com/test/mobile-friendly" class="bare">https://search.google.com/test/mobile-friendly</a>)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Securability</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A third party will not be allowed to access
-the data transmitted between two users in a chat session. When chatting,
-users can get access to his data and to his friend&#8217;s data,
-but not to other one&#8217;s data.</p></td>
+the data transmitted between two users in a chat session. While chatting,
+users can get access only to their own data.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
@@ -1385,33 +1390,33 @@ less than 3 minutes.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Efficiency</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When sending a message through the chat, it
-will be received by the recipient in a reasonable time (less than 3s).</p></td>
+will be received by the recipient in a reasonable time (less than 10s).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Modifiability</span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The application should have a
-correct design so that the modifications that must be made during the
+<td class="tableblock halign-left valign-top"><p class="tableblock">The application should have an
+appropriate design so that the modifications that must be made during the
 project can be addressed by the team in less than a week of work.#</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Robustness</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The system is compiled and passes
-all the tests without errors. Code coverage is analized by means of Codecov (<a href="https://codecov.io/" class="bare">https://codecov.io/</a>),
-and coverage percent should be at least 60%.#</p></td>
+all the tests without errors. Code coverage is analyzed by means of Codecov (<a href="https://codecov.io/" class="bare">https://codecov.io/</a>),
+and coverage percent should be at least 60%.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Maintainability</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The application must be divided into different modules. All public
-methods in the application must be well documented with JSDoc. Code quality
-is analized by means of Codacy (<a href="https://www.codacy.com/" class="bare">https://www.codacy.com/</a>) and must be at least "b" level #</p></td>
+methods in the application must be well understood. Code quality
+is analyzed by means of Codacy (<a href="https://www.codacy.com/" class="bare">https://www.codacy.com/</a>) and must be at least "b" level.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">Testability</span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="SpellE">The project must implement continuous integration testing using Travis CI.</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[.SpellE]#The project must implement continuous integration testing using Travis CI.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1428,34 +1433,35 @@ is analized by means of Codacy (<a href="https://www.codacy.com/" class="bare">h
 </div>
 <div class="paragraph">
 <div class="title">Risks</div>
-<p>The following, is the list of risks that we had in the project</p>
+<p>The following, is the list of risks found while developing the project</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>SOLID: We haven&#8217;t got any knowledge about this technology until it was presented to us for this project.</p>
+<p>SOLID: No previous knowledge about this technology until it was introduced to the team for this project.</p>
 </li>
 <li>
-<p>AngularJS: Most of the members of the team don&#8217;t know a lot about this programming framework</p>
+<p>AngularJS: Not a familiar framework for any of the team members.</p>
 </li>
 <li>
 <p>Heroku: We are going to use this platform to host our SOLID server. We have to learn how it works and accept that the account has restrictions.
-The principal restrictions that we have to face with Heroku are related to the number of queries that it allows with the free account that are 75 queries per user, app, hour.</p>
+The principal restrictions that we have to face with Heroku are related to the number of queries that it allows with the free account that are 75 queries per user, app, hour.
+Finally it was NOT used due to said limitations.</p>
+</li>
+<li>
+<p>GitHub Pages: web hosting service that must be used for deployment. First time for all team members.</p>
 </li>
 <li>
 <p>Typescript: As we researched, most SOLID apps are written using Typescript and we don&#8217;t know anything about it. Adapting to it will be a risk, although it can&#8217;t differ too much from Javascipt itself.</p>
 </li>
 <li>
-<p>Cucumber: In order to do the acceptance tests we have to learn to use Cucumber and Gherkin language to do this tests. Along with the use of JavaScript and Angular comes the difficulty to use Cucumber in this world, where we haven&#8217;t a lot of experiences</p>
+<p>Cucumber: In order to do the acceptance tests team members must learn Cucumber and Gherkin language.</p>
 </li>
 <li>
-<p>Protractor: To run the tests of Cucumber in a more visual way we have to learn about protractor, how it works and how to make with it the cucumber tests</p>
+<p>Protractor: Used to run Cucumber tests in a more visual way. Must learn the basics of this tool as well as how it works while used with Cucumber.</p>
 </li>
 <li>
-<p>JEST &amp; Kharma: To make the unit tests to the code we decide to learn and work in parallel these two technologies to make tests in the JavaScript world. To face that, we decided to split efforts working in parallel and applying at the end the one with better results</p>
-</li>
-<li>
-<p>Jest: Team members have no experience in the development of unit tests in JavaScript. In the project, unit test will be carried out by means of the test framework Jest, so it will require a learning phase.</p>
+<p>Jest: Only one team member has experience with this tool. In the project, unit testing will be carried out using Jest.</p>
 </li>
 </ul>
 </div>
@@ -1463,13 +1469,16 @@ The principal restrictions that we have to face with Heroku are related to the n
 <div class="title">Technical debt</div>
 <ul>
 <li>
-<p>Git: we have a lack of knowledge in this useful tool.</p>
+<p>Git: not a lot of experience with this tool.</p>
 </li>
 <li>
-<p>Bootstrap: none of the team members have previous experience with these libraries. It will not be such a huge risk due to the extensive guide and documentation provided online.</p>
+<p>Bootstrap: none of the team members has previous experience with these libraries. It will not be such a huge risk due to the extensive guide and documentation provided online.</p>
 </li>
 <li>
-<p>Cucumber: just one member of the team has used Cucumber as a tool for writing customer acceptance tests, so the rest of the team has a technical debt in this issue. Anyway we do not consider in as a severe risk.</p>
+<p>Cucumber: just one member of the team has used Cucumber as a tool for writing customer acceptance tests. It is not classified as a severe risk.</p>
+</li>
+<li>
+<p>Jest: just one member of the team has used Jest as a tool for writing unit tests. It is not classified as a severe risk.</p>
 </li>
 </ul>
 </div>
