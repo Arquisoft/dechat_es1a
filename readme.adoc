@@ -61,16 +61,10 @@ ng test
 npm run test
 ----
 
-== Deployment on GH-Pages
-- App:
-----
-npm run deploy
-----
-- Documentation:
-----
-npm run doc
-----
+- Application deployed
 
+https://arquisoft.github.io/dechat_es1a/
 
+- Documentation
 
-
+https://arquisoft.github.io/dechat_es1a/doc
