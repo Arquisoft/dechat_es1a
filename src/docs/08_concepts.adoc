@@ -13,12 +13,6 @@ image::./images/08-Crosscutting-Concepts-Structure-EN.png["Possible topics for c
 ****
 
 
-=== Domain Models
-
-_UML/ER Diagrams in progress_
-
-
-
 === Persistency
 
 As SOLID is decentralized, there is not going to be a database where everyone can check messages sent and received. Instead, we'll be creating folders for each conversation and only member of the conversation will have access to those folders, where all the relevant data is going to be stored. For this purpose we are going to use the .ttl format
@@ -27,10 +21,6 @@ As SOLID is decentralized, there is not going to be a database where everyone ca
 === User Interface
 
 The default interface used for Solid project is written in JavaScript and AngularJS with a minimal Bootstrap template.
-
-=== JavaScript and CSS optimization
-
-_In progress_
 
 === Transaction Processing
 
@@ -42,44 +32,16 @@ Session is handled by Solid Authentication Client, so it keeps you logged in and
 
 === Security
 
-_In progress_
+The security is provided by the Solid Authentication Client and the POD, that manages the session.
 
 === Safety
 
 No part of the system has life endangering aspect.
 
-=== Communications and Integration
-
-_In progress_
-
-=== Plausibility and Validity Checks
-
-_In progress_
-
 === Exception/Error Handling
 
 Errors handling to inconsistent data (in regard to the data models constraint) as well as failures to validation are mapped to HTTP errors. Those errors are handled by the frontends controller code. Technical errors (hardware, database etc.) are not handled and may lead to application failure or lost data.
 
-=== Logging, Tracing
-
-_In progress_
-
-=== Configurability
-
-_In progress_
-
-=== Internationalization
-
-English is the only supported language at the moment and there are no plans for creating a new one.
-
-=== Migration
-
-This app will be standalone and it is going to be automatically deployed using Heroku and Docker. Even with this setup, the client code is written so you can change your deployment setup and keep the client features with very few tweaks, making the chat more reliable and maintainable.
-
 === Testability
 
 For the testability we used JEST modules to test the JavaScript code and Angular side.
-
-=== Build-Management
-
-_In progress_
