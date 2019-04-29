@@ -2,16 +2,6 @@
 == Cross-cutting Concepts
 
 
-[role="arc42help"]
-****
-
-
-Note: it might be difficult to assign individual concepts to one specific topic
-on this list.
-
-image::./images/08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
-****
-
 
 === Persistency
 

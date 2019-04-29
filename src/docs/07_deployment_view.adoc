@@ -1,7 +1,7 @@
 [[section-deployment-view]]
 
 
-== Deployment 
+== Deployment
 
 GitHub Pages is used to deploy this client side application.
 
