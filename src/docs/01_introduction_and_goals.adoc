@@ -12,7 +12,7 @@ The main purpose of our app is to let people communicate with each other while s
 .Main features/requirements
 App requirements are written down in the  https://labra.solid.community/public/SoftwareArchitecture/EnunciadoPractica/#requirements[requirements document].
 
-This requirements revolve around a decentralized app, which is all https://github.com/solid/solid#about-solid[SOLID is about]. Other than that, the app has to be a classic chat where you can talk to friends (individually or in groups), receive notifications and share multimedia. 
+This requirements revolve around a decentralized app, which is all https://github.com/solid/solid#about-solid[SOLID is about]. Other than that, the app has to be a classic chat where you can talk to friends.
 
 === Quality Goals
 
@@ -31,7 +31,7 @@ This requirements revolve around a decentralized app, which is all https://githu
 |===
 |*Role/Name*|*Expectations*
 | ST1. Developers | A good working project so their reputation and skills (also their mark) improve.
-| ST2. Labra | A good workflow and functional project so he sees we have learned the fundamentals of software architecture.
+| ST2. Teachers | A good workflow and functional project so they can see we have learned the fundamentals of software architecture.
 | ST3. Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
 | ST4. Users | An app you can use if you feel your privacy is being invaded using other similar apps.
 | ST5. Technologies used | A new useful app so they can brand their technology with a relevant and innovative release.

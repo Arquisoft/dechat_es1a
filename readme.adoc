@@ -55,5 +55,10 @@ ng serve -o
 npm run test
 ----
 
+- Application deployed
 
+https://arquisoft.github.io/dechat_es1a/
 
+- Documentation
+
+https://arquisoft.github.io/dechat_es1a/doc
