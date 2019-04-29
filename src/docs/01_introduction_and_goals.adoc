@@ -30,7 +30,7 @@ These requirements revolve around a decentralized app, following the fundamental
 |===
 |*Role/Name*|*Expectations*
 | ST1. Developers | A good working project so their reputation and skills (also their mark) improve.
-| ST2. Labra | A good workflow and functional project so he sees we have learned the fundamentals of software architecture.
+| ST2. Software Architecture Professors | A good workflow and functional project so they can see we have learned the fundamentals of software architecture.
 | ST3. Inrupt | See their SOLID project implemented in a concrete app so they can start developing more and more SOLID apps.
 | ST4. Users | An app you can use if you feel your privacy is being invaded using other similar apps.
 |===
