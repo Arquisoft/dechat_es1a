@@ -19,4 +19,4 @@ in two columns. On the left, a list of the user's friends wil be displayed, and 
 friend you want to talk to, the chat view will pop up.
 
 An optimal color combination was chosen so it does not become a problem to colorblind users or those who have any kind of
-optical dissability.
+optical disability.
