@@ -24,7 +24,7 @@
                dropdownPosition="bottom"
                [items]="identityProviders"
                [(ngModel)]="selectedProviderUrl"
-               style="width: 360px; height: 48px; margin-left: auto; margin-right: auto;">
+               style="width: 360px; height: 48px; margin-left: auto; margin-right: auto;" name="providerSelection" ngDefaultControl>
 
       <!-- DROPDOWN TEMPLATE -->
       <ng-template ng-option-tmp let-item="item">
