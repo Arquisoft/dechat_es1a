@@ -1,35 +1,45 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
+Decentralization has nowadays many limitations, although it provides more privacy and security while treating personal data.
 
+These limitations are narrowed down to the PODs own limitations, as communication relies on their use.
 
-We'll take a look at how our chat interacts with everyone involved, as well as with all the techonologies we are going to use.
-
-
+Interaction only needs three main parts: application, user and POD. The application manages the storage of information in the PODs
+while users exchange that same info in a private way, that is deciding who should be able to view that stored data.
 
 === Business Context
 
 
-image::./images/Business Concept Diagram1.jpg[Business Concept Diagram]
+image::./images/buss_con_1.png[Business Concept Diagram]
 
 |===
 |*Participant*|*Action*
-| P1. User 1 | Sends message to the app.
-| P2. SOLID Pod User 1 | Stores the message sent, so only User 1 can read it.
-| P3. User 2 | Reads the message from the app.
-| P4. Solid Pod User 2 | Stores the message received, so he can read it through the whole conversation.
+| P1. DeChat | Decentralized web based application that connects both PODs and makes the interactions.
+| P2. User 1 | Sends message to User 2 through the app.
+| P3. SOLID Pod User 1 | Stores the message sent, so only User 1 can read it.
+| P4. User 2 | Reads the message from the app.
+| P5. Solid Pod User 2 | Stores the message received, so he can read it through the whole conversation.
 |===
 
 
 === Technical Context
 
+DeChat is a web based application which relies on the foundation of decentralization. For this to be reached, all data is stored in
+the users' PODs.
+
+Users will send messages through the chat using POD URLs, meaning it must be connected to the internet.
 
 
-
-image::./images/Deployment Diagram1.jpg[Deployment Diagram]
-
-Our application will be deployed using https://www.docker.com/why-docker[Docker] and https://www.heroku.com/[Heroku]. The application itself can be seen as two main artifacts: On one hand, the login using POD identifiers. On the other hand, the shared messages between the members of the chat.
+image::./images/tech_con.png[Technical Context Diagram]
 
 
-
+|===
+|*Object*|*Description*
+| O1. User | Represents the users of the chat.
+| O2. DeChat | Decentralized and web based application.
+| O3. POD | Individual storage unit for one user.
+| O4. POD Server | Server provided by SOLID in which PODs are stored.
+| O5. SOLID | New web ecosystem.
+|===
 

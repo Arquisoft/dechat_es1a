@@ -21,41 +21,38 @@ image::./images/qualities.jpeg[image,width=435,height=235]
 |[.SpellE]#Nr#. |[.SpellE]#Quality# |[.SpellE]#Scenario#
 
 |1 |[.SpellE]#Usability# |Each section of the technical documentation
-must be understood by itself without the need to read the rest of the
-documentation. Any content should be found immediately in the
-documentation
+must be understood without the need to read the rest of the
+documentation. Any content should be found immediately.
 
-|2 |[.SpellE]#Responsiveness# |Once completed, the application must pass
-the Google Responsiveness Test
+|2 |[.SpellE]#Responsiveness# |Tested with Google Responsiveness Test
 (https://search.google.com/test/mobile-friendly)
 
 |3 |[.SpellE]#Securability# |A third party will not be allowed to access
-the data transmitted between two users in a chat session. When chatting, 
-users can get access to his data and to his friend's data, 
-but not to other one's data.
+the data transmitted between two users in a chat session. While chatting,
+users can get access only to their own data.
 
 |4 |[.SpellE]#Simplicity# |A non-technical user who has never used the
 application should be able to open a chat session with another user in
 less than 3 minutes.
 
 |5 |[.SpellE]#Efficiency# |When sending a message through the chat, it
-will be received by the recipient in a reasonable time (less than 3s).
+will be received by the recipient in a reasonable time (less than 10s).
 
-|6 |[.SpellE]#Modifiability# |The application should have a 
-correct design so that the modifications that must be made during the 
+|6 |[.SpellE]#Modifiability# |The application should have an
+appropriate design so that the modifications that must be made during the
 project can be addressed by the team in less than a week of work.#
 
 
 |7 |[.SpellE]#Robustness# |The system is compiled and passes 
-all the tests without errors. Code coverage is analized by means of Codecov (https://codecov.io/),
-and coverage percent should be at least 60%.#
+all the tests without errors. Code coverage is analyzed by means of Codecov (https://codecov.io/),
+and coverage percent should be at least 60%.
 
 
 |8 |[.SpellE]#Maintainability# |The application must be divided into different modules. All public
-methods in the application must be well documented with JSDoc. Code quality 
-is analized by means of Codacy (https://www.codacy.com/) and must be at least "b" level #
+methods in the application must be well understood. Code quality
+is analyzed by means of Codacy (https://www.codacy.com/) and must be at least "b" level.
 
 
-|9 |[.SpellE]#Testability# |[.SpellE]#The project must implement continuous integration testing using Travis CI.#
+|9 |[.SpellE]#Testability# |[.SpellE]#The project must implement continuous integration testing using Travis CI.
 |===
 

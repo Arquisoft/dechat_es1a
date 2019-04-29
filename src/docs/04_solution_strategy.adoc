@@ -7,7 +7,7 @@ The Solid Community provides a simple "Solid Authentification Client" implemente
 
 This project will be developed using Webstorm IDE by Jetbrains. Webstorm is a light-weight and powerful JavaScript IDE that can easily handle complex server and client side development with Node.js. The latest version includes some major improvements regarding Angular and Node.js support, as well as autoimports while using JavaScript.
 
-App display will be carried out using Docker and Heroku, due to the experience of some team members with the use of these technologies.
+App display will be carried out using GitHub Pages, as it is provided by GitHub it will be easier to use and will require less technical experience with other tools such as Docker and Heroku.
 
 For new HTML views Bootstrap will be included as it provides a full CSS library, with responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
 

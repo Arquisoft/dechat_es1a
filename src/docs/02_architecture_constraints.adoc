@@ -10,45 +10,43 @@
 
 |  | *Constraint* | *Background and /or motivation*
 
-| TC1 | Implementation in JavaScript/TypeScript | Due to the application being web-based, the best option is using JavaScript.
+| TC1 | Documentation | Ascii language must be used, following the arc42 templates.
 
-| TC2 | Angular as front end framework | Most SOLID-based applications use this framework so it is a reasonable option.
+| TC2 | Browser | This web based application must work as planned regardless the browser being used (Chrome, Opera, Safari...).
 
-| TC3 | Docker and Heroku for application deployment | Due to several team members experience with this technologies, the choosen tools are Docker and Heroku.
+| TC3 | Deployment | Must be deployed using free tools and paying special attention to size limitations.
 
 | TC4 | Decentralized architecture | The application is based on SOLID, a project for the decentralization of applications, so the application will have a decentralized architecture.
 
-| TC5 | No databases | As TC4 explains, we won't be using any kind of traditional database. Rather so, we'll store data in private folders.
+| TC5 | Storage | As TC4 explains, databases will not be used. Rather so, data will be stored in private folders.
 
-| TC6 | Tests | We have to test the project using any available technology for the language that we used.
+| TC6 | Testing | The application must be tested using any available technology for the language that are used.
 
-| TC7 | Cucumber | We have to program acceptance tests using Cucumber and Gherkin language.
+| TC7 | Open Source | The application must have an open source MIT license.
 
-|=== 
+|===
 
 === Organizational Constraints
 
 .List of Organizational Constraints
-|=== 
+|===
 
-|  | *Constraint* | *Background and /or motivation*
+|  | *Constraint* | *Background*
 
-| OC1 | Team | The team is formed by Pelayo Rodríguez García, Sofía Martín Rodríguez, Daniel Bermejo Blanco, Jonathan Vallés Robla, Yago Prado Cueto, Adán Fernández Sánchez.
+| OC1 | Time | The project will be carried out during the Software Architecture course, lasting a total of 4 months.
 
-| OC2 | Time schedule | The project will be carried out during the Software Architecture course, lasting a total of 4 months.
+| OC2 | Team | Team members must try to organize their schedule to be able to carry out this project as well as meetings.
 
-| OC3 | Version control | For version control we have chosen GitHub.
+| OC3 | Economic resources | This project lacks any kind of economic support, so free development tools have to be used.
 
-| OC4 | WebStorm as IDE | WebStorm's IDE is one of the most powerful IDE for web development.
-
-|=== 
+|===
 
 === Conventions
 
 .List of Conventions
-|=== 
+|===
 
-|  | *Conventions* | *Background and / or motivation*
+|  | *Conventions* | *Background*
 
 | C1 | Architecture documentation | Structure based on the english arc42-Template using adoc.
 
