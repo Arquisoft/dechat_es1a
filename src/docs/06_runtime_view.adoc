@@ -1,48 +1,15 @@
 [[section-runtime-view]]
 == Runtime View
 
+image::./images/runtime.png[Runtime Diagram]
 
-[role="arc42help"]
-****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
+When a conversation starts for the first time, a new folder with a new turtle file is created in the user's POD.
 
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
+The user sends the message through the chat, and the
+application stores the message in the user's own POD writing it on the turtle file in ttl format. While writing it, the message is sent to the
+other user's POD also in ttl format.
 
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
+Once both PODs have the data stored, the app runs an update and takes the data present in the turtle file and
+prints it down on the chat view, so the receiver can read the message.
 
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
-
-.Form
-There are many notations for describing scenarios, e.g.
-
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
-* ...
-
-****
-
-=== Login
-
-
-* _<insert runtime diagram or textual description of the scenario>_
-* The login component connects with the services from the ID provider for the POD
-* The provider, if the user inserts the right credentials, will sign in in the application and chat with friends
-
-=== Show friends
-
-* _<insert runtime diagram or textual description of the scenario>_
-* The application will read from the POD the friends of the user and show them in a list where he will be available to chat with them
-
-=== Chat
-* _<insert runtime diagram or textual description of the scenario>_
-* In the view of friends, the user will click over a friend and start a chat with him.
-* The communication will be across the pods, writing and reading across them with the operations provided by the application
+The messages are stored with all the information relevant to them: date, hour, sender, receiver, and message content.

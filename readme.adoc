@@ -49,8 +49,14 @@ npm install --save-dev @angular-devkit/build-angular
 ng serve -o
 ----
 
-- Run tests:
+== Testing
 
+- Unit Tests:
+----
+ng test
+----
+
+- Acceptance & Unit Tests:
 ----
 npm run test
 ----
