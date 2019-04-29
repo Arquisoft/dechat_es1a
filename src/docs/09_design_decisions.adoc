@@ -9,11 +9,14 @@ All the design decisions made so far are explained and detailed in
 |Programming Language: JavaScript - Angular 6, TypeScript
 |Base project: Solid Auth Client
 |IDE: WebStorm by JetBrains
-|App deploy: Docker, Heroku
+|App deploy: GitHub Pages
 |CSS & HTML implementation: Bootstrap libraries
-|Testing: Cucumber and Jest
+|Testing: Cucumber, Jest and Gatling
 |===
 
 Relating to the Chat view, it will be arranged into a separate component, with its own HTML and CSS implementations. The layout is separated
 in two columns. On the left, a list of the user's friends wil be displayed, and on the right, once you choose the
 friend you want to talk to, the chat view will pop up.
+
+An optimal color combination was chosen so it does not become a problem to colorblind users or those who have any kind of
+optical dissability.
